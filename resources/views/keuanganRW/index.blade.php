@@ -4,8 +4,6 @@
 @section('content_header')
     <h1>Pengelolaan Kas RW</h1>
 @endsection
-@section('')
-@endsection
 @section('content')
 <head>
 <H1>PENGELOLAAN KAS RW</H1>
@@ -28,7 +26,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <BR></BR>
                         <tbody>
                             <tr>
                                 <td>01</td>
@@ -92,7 +89,6 @@
                                 </td>
                             </tr>
                         </tbody>
-                        <br>
                         <tfoot>
                             <tr>
                                 <th colspan="5">TOTAL KAS</th>
