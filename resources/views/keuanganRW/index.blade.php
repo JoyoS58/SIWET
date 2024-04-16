@@ -37,10 +37,11 @@
                                 <td>2 April 2023</td>
                                 <td>Pembayaran Kas</td>
                                 <td class="action-buttons">
-                                    <button class="edit-button"><a href="#">Edit</a></button>
-                                    <button class="delete-button"><a href="#" >Delete</a></button>
-                                    <button class="detail-button"><a href="#" >Detail</a></button>
+                                    <a href="#" class="btn btn-default btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-info btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
+
                             </tr>
                             <tr>
                                 <td>02</td>
@@ -48,10 +49,10 @@
                                 <td>50.000</td>
                                 <td>3 Apr 2023</td>
                                 <td>Dana Kerja Bakti</td>
-                                <td class="action-buttons2">
-                                    <button class="edit-button"><a href="#">Edit</a></button>
-                                    <button class="delete-button"><a href="#" >Delete</a></button>
-                                    <button class="detail-button"><a href="#" >Detail</a></button>
+                                <td class="action-buttons">
+                                    <a href="#" class="btn btn-default btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-info btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                             <tr>
@@ -61,9 +62,9 @@
                                 <td>5 Apr 2023</td>
                                 <td>Pembayaran Kas</td>
                                 <td class="action-buttons">
-                                    <button class="edit-button"><a href="#">Edit</a></button>
-                                    <button class="delete-button"><a href="#" >Delete</a></button>
-                                    <button class="detail-button"><a href="#" >Detail</a></button>
+                                    <a href="#" class="btn btn-default btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-info btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                             <tr>
@@ -73,9 +74,9 @@
                                 <td>6 April 2023</td>
                                 <td>Pembayaran Sampan</td>
                                 <td class="action-buttons">
-                                    <button class="edit-button"><a href="#">Edit</a></button>
-                                    <button class="delete-button"><a href="#" >Delete</a></button>
-                                    <button class="detail-button"><a href="#" >Detail</a></button>
+                                    <a href="#" class="btn btn-default btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-info btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                             <tr>
@@ -85,9 +86,9 @@
                                 <td>7 April 2023</td>
                                 <td>Sumbangan Acara Maulid Nabi</td>
                                 <td class="action-buttons">
-                                    <button class="edit-button"><a href="#">Edit</a></button>
-                                    <button class="delete-button"><a href="#" >Delete</a></button>
-                                    <button class="detail-button"><a href="#" >Detail</a></button>
+                                    <a href="#" class="btn btn-default btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-info btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                         </tbody>
