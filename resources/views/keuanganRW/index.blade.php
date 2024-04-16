@@ -104,4 +104,44 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="transactionModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="transactionForm">
+                <div class="form-group">
+                  <label for="transactionType">Jenis Transaksi:</label>
+                  <select class="form-control" id="transactionType">
+                    <option value="pemasukan">Pemasukan</option>
+                    <option value="pengeluaran">Pengeluaran</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="nominal">Nominal:</label>
+                  <input type="number" class="form-control" id="nominal" placeholder="Masukkan nominal">
+                </div>
+                <div class="form-group">
+                  <label for="tanggalTransaksi">Tanggal Transaksi:</label>
+                  <input type="date" class="form-control" id="tanggalTransaksi">
+                </div>
+                <div class="form-group">
+                  <label for="keterangan">Keterangan:</label>
+                  <textarea class="form-control" id="keterangan" rows="3"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveTransactionButton">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 @endsection
