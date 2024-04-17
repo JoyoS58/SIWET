@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +22,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/warga',[WargaController::class,'index'])->name('warga');
+Route::get('/keuanganPKK',[KeuanganPKKController::class,'index']);
+Route::get('/keuanganPKK/create',[KeuanganPKKController::class,'create']);
+Route::get('/keuanganPKK/edit',[KeuanganPKKController::class,'edit']);
+Route::get('/keuanganPKK/show',[KeuanganPKKController::class,'show']);

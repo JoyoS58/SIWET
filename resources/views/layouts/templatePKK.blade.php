@@ -30,7 +30,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar elevation-4" style="background-color: #2739DC;">
     <!-- Sidebar -->
-    @include('layouts.sidebar')
+    @include('layouts.sidebarPKK')
     <!-- /.sidebar -->
   </aside>
 
