@@ -1,7 +1,11 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\KeuanganRWController;
+=======
+>>>>>>> 62d168ce51896ef06d5463e8b881819c8d693621
 use App\Http\Controllers\KeuanganPKKController;
+use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+<<<<<<< HEAD
 // Route::get('/keuanganRW', [App\Http\Controllers\KeuanganRWController::class, 'index'])->name('keuanganRW');
 
 // Route::group(['prefix' => 'PKK'],function (){
@@ -31,6 +36,11 @@ Route::get('/keuanganRW',[KeuanganRWController::class,'index']);
 Route::get('/keuanganRW/create',[KeuanganRWController::class,'create']);
 Route::get('/keuanganRW/edit',[KeuanganRWController::class,'edit']);
 Route::get('/keuanganRW/show',[KeuanganRWController::class,'show']);
+=======
+
+Route::get('/warga',[WargaController::class,'index']);
+
+>>>>>>> 62d168ce51896ef06d5463e8b881819c8d693621
 
 Route::get('/keuanganPKK',[KeuanganPKKController::class,'index']);
 Route::get('/keuanganPKK/create',[KeuanganPKKController::class,'create']);
