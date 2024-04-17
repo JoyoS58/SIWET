@@ -12,12 +12,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <h3 class="card-title">Pengelolaan Keuangan Rukun Warga</h3>
-                        <div class="col-md-12 text-right">
-                            <button type="button" class="btn btn-info add-transaction-button" data-toggle="modal" data-target="#transactionModal">Add Transaksi</button>
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-md-6">
+                          <h3 class="card-title">Pengelolaan Keuangan Rukun Warga</h3>
                         </div>
-                    </div>
+                        <div class="col-md-6 text-right">
+                          <p><button type="button" class="btn btn-info add-transaction-button" data-toggle="modal" data-target="#transactionModal">Add Transaksi</button></p>
+                        </div>
+                      </div>                      
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
@@ -40,10 +42,9 @@
                                 <td>Pembayaran Kas</td>
                                 <td class="action-buttons">
                                     <a href="#" class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#transactionModalEdit"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#deleteConfirmationModal"><i class="fas fa-trash"></i> Delete</a>
                                     <a href="#" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td>02</td>
@@ -53,7 +54,7 @@
                                 <td>Dana Kerja Bakti</td>
                                 <td class="action-buttons">
                                     <a href="#" class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#transactionModalEdit"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#deleteConfirmationModal"><i class="fas fa-trash"></i> Delete</a>
                                     <a href="#" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
@@ -65,7 +66,7 @@
                                 <td>Pembayaran Kas</td>
                                 <td class="action-buttons">
                                     <a href="#" class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#transactionModalEdit"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#deleteConfirmationModal"><i class="fas fa-trash"></i> Delete</a>
                                     <a href="#" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
@@ -77,7 +78,7 @@
                                 <td>Pembayaran Sampan</td>
                                 <td class="action-buttons">
                                     <a href="#" class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#transactionModalEdit"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#deleteConfirmationModal"><i class="fas fa-trash"></i> Delete</a>
                                     <a href="#" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
@@ -89,7 +90,7 @@
                                 <td>Sumbangan Acara Maulid Nabi</td>
                                 <td class="action-buttons">
                                     <a href="#" class="btn btn-primary btn-sm edit-button" data-toggle="modal" data-target="#transactionModalEdit"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-danger btn-sm delete-button" data-toggle="modal" data-target="#deleteConfirmationModal"><i class="fas fa-trash"></i> Delete</a>
                                     <a href="#" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
@@ -145,6 +146,7 @@
           </div>
         </div>
       </div>
+
       <div class="modal fade" id="transactionModalEdit" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
@@ -183,5 +185,25 @@
             </div>
           </div>
         </div>
-      </div>      
+      </div>
+      
+      <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Konfirmasi Hapus Transaksi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah Anda yakin ingin menghapus transaksi ini?</p>
+                    <p id="transactionDetails"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-danger" id="deleteButton">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 @endsection
