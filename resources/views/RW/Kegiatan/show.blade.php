@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title">Detail Anggota</h3>
+            <h3 class="card-title">Detail Kegiatan</h3>
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
@@ -15,24 +15,36 @@
             @else --}}
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
-                        <th>ID Anggota</th>
-                        <td>3</td>
-                    </tr>
-                    <tr>
                         <th>ID Pengurus</th>
                         <td>3</td>
                     </tr>
                     <tr>
-                        <th>Nama</th>
+                        <th>ID Kegiatan</th>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Kegiatan</th>
+                        <td>Kerja Bakti</td>
+                    </tr>
+                    <tr>
+                        <th>Penanggung Jawab</th>
                         <td>Iwan</td>
                     </tr>
                     <tr>
-                        <th>Jabatan</th>
-                        <td>Ketua Divisi Kerajinan</td>
+                        <th>Tanggal Kegiatan</th>
+                        <td>18-04-2024</td>
                     </tr>
                     <tr>
-                        <th>Nomor Telepon</th>
-                        <td>081xxx</td>
+                        <th>Waktu Kegiatan</th>
+                        <td>08:00 - 10:00</td>
+                    </tr>
+                    <tr>
+                        <th>Tempat Kegiatan</th>
+                        <td>Lapangan Rampal</td>
+                    </tr>
+                    <tr>
+                        <th>Deskripsi Kegiatan</th>
+                        <td>Melakukan pembersihan dan pembuatan gazebo di sekitar lapanagan Rampal</td>
                     </tr>
                 </table>
             {{-- @endempty --}}

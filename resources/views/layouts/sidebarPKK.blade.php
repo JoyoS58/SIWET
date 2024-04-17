@@ -29,7 +29,7 @@
             </li>
             <li class="nav-header">Kegiatan</li>
             <li class="nav-item">
-                <a href="{{ url('/stok') }}" class="nav-link text-white">
+                <a href="{{ url('/kegiatanPKK') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>Kegiatan</p>
                 </a>

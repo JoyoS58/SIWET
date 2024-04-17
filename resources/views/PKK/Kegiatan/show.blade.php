@@ -1,9 +1,9 @@
-@extends('layouts.template')
+@extends('layouts.templatePKK')
 
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title">Detail Anggota</h3>
+            <h3 class="card-title">Detail Kegiatan</h3>
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
@@ -15,28 +15,32 @@
             @else --}}
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
-                        <th>ID Anggota</th>
-                        <td>3</td>
-                    </tr>
-                    <tr>
                         <th>ID Pengurus</th>
                         <td>3</td>
                     </tr>
                     <tr>
-                        <th>Nama</th>
-                        <td>Iwan</td>
+                        <th>ID Kegiatan</th>
+                        <td>3</td>
                     </tr>
                     <tr>
-                        <th>Jabatan</th>
-                        <td>Ketua Divisi Kerajinan</td>
+                        <th>Nama Kegiatan</th>
+                        <td>Kerja Bakti</td>
                     </tr>
                     <tr>
-                        <th>Nomor Telepon</th>
-                        <td>081xxx</td>
+                        <th>Tanggal Kegiatan</th>
+                        <td>4 April 2024</td>
+                    </tr>
+                    <tr>
+                        <th>Penanggung Jawab</th>
+                        <td>Syahrul Faroh</td>
+                    </tr>
+                    <tr>
+                        <th>Tempat Kegiatan</th>
+                        <td>Lapangan Tengah</td>
                     </tr>
                 </table>
             {{-- @endempty --}}
-            <a href="{{url('user')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{url('kegiatanPKK')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection
