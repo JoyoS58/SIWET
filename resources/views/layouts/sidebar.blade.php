@@ -11,7 +11,7 @@
             </li>
             <li class="nav-header">Warga</li>
             <li class="nav-item">
-                <a href="{{ url('/level') }}" class="nav-link text-white">
+                <a href="{{ url('/warga') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-layer-group"></i>
                     <p>Data Warga</p>
                 </a>
@@ -24,7 +24,7 @@
             </li>
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
-                <a href="{{ route('keuanganRW') }}" class="nav-link text-white">
+                <a href=# class="nav-link text-white">
                     <i class="nav-icon far fa-bookmark"></i>
                     <p>Keuangan RW</p>
                 </a>
