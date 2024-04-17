@@ -9,7 +9,7 @@
             <form action="{{url('kegiatanPKK')}}" method="POST" class="form-horizontal">
                 @csrf
                 <div class="form-group row">
-                    <label class="col-1 control-label col-form-label">nominal</label>
+                    <label class="col-1 control-label col-form-label">Nama KegiatanS</label>
                     <div class="col-11">
                         <input type="number" class="form-control" id="nominal" name="nominal" value="{{old('nominal')}}" required>
                         @error('nominal')

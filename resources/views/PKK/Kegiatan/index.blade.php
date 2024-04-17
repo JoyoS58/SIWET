@@ -1,8 +1,8 @@
 @extends('layouts.templatePKK')
-@section('title', 'Pengelolaan Kas PKK')
+@section('title', 'Kegiatan PKK')
 
 @section('content_header')
-    <h1>Pengelolaan Kegiatan PKK</h1>
+<h1>Pengelolaan Kegiatan PKK</h1>
 @endsection
 @section('content')
 <head>
@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h3 class="card-title mb-0">Pengelolaan Kegiatan PKK</h3>
-                    <a href="{{ url('/KegiatanPKK/create') }}" class="btn btn-primary btn-sm ml-auto">Tambah</a>
+                    <a href="{{ url('/kegiatanPKK/create') }}" class="btn btn-primary btn-sm ml-auto">Add Kegiatan</a>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
@@ -33,9 +33,9 @@
                                 <td>Syahrul Faroh</td>
                                 <td>Lapangan Tengah</td>
                                 <td class="action-buttons">
-                                    <a href="{{ url('/KegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="{{ url('/kegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash" data-toggle="modal" data-target="#deleteConfirmationModal"></i> Delete</a>
-                                    <a href="{{ url('/KegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{ url('/kegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                             <tr>
@@ -44,9 +44,9 @@
                                 <td>Ikhwandi</td>
                                 <td>Balai Desa</td>
                                 <td class="action-buttons">
-                                    <a href="{{ url('/KegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="{{ url('/kegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash" data-toggle="modal" data-target="#deleteConfirmationModal"></i> Delete</a>
-                                    <a href="{{ url('/KegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{ url('/kegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                             <tr>
@@ -55,9 +55,9 @@
                                 <td>Riski Abdi</td>
                                 <td>Lapangan Tengah</td>
                                 <td class="action-buttons">
-                                    <a href="{{ url('/KegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="{{ url('/kegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash" data-toggle="modal" data-target="#deleteConfirmationModal"></i> Delete</a>
-                                    <a href="{{ url('/KegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{ url('/kegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                             <tr>
@@ -66,9 +66,9 @@
                                 <td>Joyo Sugito</td>
                                 <td>Lapangan Tengah</td>
                                 <td class="action-buttons">
-                                    <a href="{{ url('/KegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="{{ url('/kegiatanPKK/edit') }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash" data-toggle="modal" data-target="#deleteConfirmationModal"></i> Delete</a>
-                                    <a href="{{ url('/KegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{ url('/kegiatanPKK/show') }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
                             </tr>
                         </tbody>
