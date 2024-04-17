@@ -1,7 +1,7 @@
 <div class="sidebar text-white">
     <a href="{{ url('/')}}" class="brand-link text-white">
       <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin RW</span>
+      <span class="brand-text font-weight-light">Admin PKK</span>
     </a>
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -13,31 +13,32 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-header">Warga</li>
+            <li class="nav-header">Anggota</li>
             <li class="nav-item">
                 <a href="{{ url('/level') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-layer-group"></i>
-                    <p>Data Warga</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ url('/user') }}" class="nav-link text-white">
-                    <i class="nav-icon far fa-user"></i>
-                    <p>Data Mahasiswa Kos</p>
+                    <p>Anggota</p>
                 </a>
             </li>
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
-                <a href="{{ route('keuanganRW') }}" class="nav-link text-white">
+                <a href="{{ url('/keuanganPKK') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-bookmark"></i>
-                    <p>Keuangan RW</p>
+                    <p>Keuangan</p>
                 </a>
             </li>
             <li class="nav-header">Kegiatan</li>
             <li class="nav-item">
                 <a href="{{ url('/stok') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
-                    <p>Kegiatan RW</p>
+                    <p>Kegiatan</p>
+                </a>
+            </li>
+            <li class="nav-header">Sistem Pendukung Keputusan</li>
+            <li class="nav-item">
+                <a href="{{ url('/stok') }}" class="nav-link text-white">
+                    <i class="nav-icon fas fa-cubes"></i>
+                    <p>Pra-Koperasi</p>
                 </a>
             </li>
         </ul>

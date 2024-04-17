@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\KeuanganPKKController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +24,11 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/keuanganRW', [App\Http\Controllers\KeuanganRWController::class, 'index'])->name('keuanganRW');
 
+// Route::group(['prefix' => 'PKK'],function (){
+//     Route::get('/',[KeuanganController::class,'index']);
+// });
+
+Route::get('/keuanganPKK',[KeuanganPKKController::class,'index']);
+Route::get('/keuanganPKK/create',[KeuanganPKKController::class,'create']);
+Route::get('/keuanganPKK/edit',[KeuanganPKKController::class,'edit']);
+Route::get('/keuanganPKK/show',[KeuanganPKKController::class,'show']);
