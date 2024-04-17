@@ -12,7 +12,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Pengelolaan Kas Rukun Warga</h3>
+                    <div class="row">
+                        <h3 class="card-title">Pengelolaan Kas Rukun Warga</h3>
+                        <div class="col-md-12 text-right">
+                            <button type="button" class="btn btn-primary add-transaction-button" data-toggle="modal" data-target="#transactionModal">Add Transaksi</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered table-hover">
