@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\AnggotaPKKController;
-use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\KegiatanRWController;
 use App\Http\Controllers\KeuanganRWController;
 use App\Http\Controllers\KeuanganPKKController;
 use App\Http\Controllers\WargaController;
@@ -43,3 +43,7 @@ Route::get('/anggotaPKK',[AnggotaPKKController::class,'index']);
 Route::get('/anggotaPKK/create',[AnggotaPKKController::class,'create']);
 Route::get('/anggotaPKK/edit',[AnggotaPKKController::class,'edit']);
 Route::get('/anggotaPKK/show',[AnggotaPKKController::class,'show']);
+Route::get('/kegiatanRW',[KegiatanRWController::class,'index']);
+Route::get('/kegiatanRW/create',[KegiatanRWController::class,'create']);
+Route::get('/kegiatanRW/edit',[KegiatanRWController::class,'edit']);
+Route::get('/kegiatanRW/show',[KegiatanRWController::class,'show']);

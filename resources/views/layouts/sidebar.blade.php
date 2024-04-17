@@ -28,18 +28,15 @@
             </li>
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
-<<<<<<< HEAD
                 <a href="{{ url('/keuanganRW') }}" class="nav-link text-white">
-=======
                 <a href=# class="nav-link text-white">
->>>>>>> 62d168ce51896ef06d5463e8b881819c8d693621
                     <i class="nav-icon far fa-bookmark"></i>
                     <p>Keuangan RW</p>
                 </a>
             </li>
             <li class="nav-header">Kegiatan</li>
             <li class="nav-item">
-                <a href="{{ url('/stok') }}" class="nav-link text-white">
+                <a href="{{ url('/kegiatanRW') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>Kegiatan RW</p>
                 </a>
