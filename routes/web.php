@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\KeuanganController;
+use App\Http\Controllers\KeuanganRWController;
 use App\Http\Controllers\KeuanganPKKController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,11 +22,15 @@ Route::get('/', function () {
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/keuanganRW', [App\Http\Controllers\KeuanganRWController::class, 'index'])->name('keuanganRW');
+// Route::get('/keuanganRW', [App\Http\Controllers\KeuanganRWController::class, 'index'])->name('keuanganRW');
 
 // Route::group(['prefix' => 'PKK'],function (){
 //     Route::get('/',[KeuanganController::class,'index']);
 // });
+Route::get('/keuanganRW',[KeuanganRWController::class,'index']);
+Route::get('/keuanganRW/create',[KeuanganRWController::class,'create']);
+Route::get('/keuanganRW/edit',[KeuanganRWController::class,'edit']);
+Route::get('/keuanganRW/show',[KeuanganRWController::class,'show']);
 
 Route::get('/keuanganPKK',[KeuanganPKKController::class,'index']);
 Route::get('/keuanganPKK/create',[KeuanganPKKController::class,'create']);
