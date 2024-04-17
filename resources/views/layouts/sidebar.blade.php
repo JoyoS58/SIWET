@@ -24,7 +24,7 @@
             </li>
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
-                <a href="{{ url('/kategori') }}" class="nav-link text-white">
+                <a href="{{ route('keuanganRW') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-bookmark"></i>
                     <p>Keuangan RW</p>
                 </a>
