@@ -15,7 +15,7 @@
             </li>
             <li class="nav-header">Anggota</li>
             <li class="nav-item">
-                <a href="{{ url('/level') }}" class="nav-link text-white">
+                <a href="{{ url('/anggotaPKK') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-layer-group"></i>
                     <p>Anggota</p>
                 </a>

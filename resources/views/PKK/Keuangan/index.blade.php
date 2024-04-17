@@ -1,5 +1,5 @@
 @extends('layouts.templatePKK')
-@section('title', 'Pengelolaan Kas RW')
+@section('title', 'Pengelolaan Kas PKK')
 
 @section('content_header')
     <h1>Pengelolaan Keuangan PKK</h1>
@@ -35,9 +35,9 @@
                                 <td>2 April 2023</td>
                                 <td>Pembayaran Kas</td>
                                 <td class="action-buttons">
-                                    <a href="#" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="{{url('/keuanganPKK/edit')}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="#" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
-                                    <a href="#" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{url('/keuanganPKK/show')}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                 </td>
 
                             </tr>

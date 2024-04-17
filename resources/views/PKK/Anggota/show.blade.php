@@ -15,7 +15,7 @@
             @else --}}
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
-                        <th>ID Transaksi</th>
+                        <th>ID Anggota</th>
                         <td>3</td>
                     </tr>
                     <tr>
@@ -23,20 +23,16 @@
                         <td>3</td>
                     </tr>
                     <tr>
-                        <th>Jenis Transaksi</th>
-                        <td>Pemasukan</td>
+                        <th>Nama</th>
+                        <td>Iwan</td>
                     </tr>
                     <tr>
-                        <th>Nominal</th>
-                        <td>Rp. 1.000.000</td>
+                        <th>Jabatan</th>
+                        <td>Ketua Divisi Kerajinan</td>
                     </tr>
                     <tr>
-                        <th>Keterangan</th>
-                        <td>Iuran Warga</td>
-                    </tr>
-                    <tr>
-                        <th>Tanggal</th>
-                        <td>14-04-2024</td>
+                        <th>Nomor Telepon</th>
+                        <td>081xxx</td>
                     </tr>
                 </table>
             {{-- @endempty --}}

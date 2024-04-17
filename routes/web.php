@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnggotaPKKController;
 use App\Http\Controllers\KeuanganController;
 use App\Http\Controllers\KeuanganPKKController;
 use Illuminate\Support\Facades\Route;
@@ -32,3 +33,7 @@ Route::get('/keuanganPKK',[KeuanganPKKController::class,'index']);
 Route::get('/keuanganPKK/create',[KeuanganPKKController::class,'create']);
 Route::get('/keuanganPKK/edit',[KeuanganPKKController::class,'edit']);
 Route::get('/keuanganPKK/show',[KeuanganPKKController::class,'show']);
+Route::get('/anggotaPKK',[AnggotaPKKController::class,'index']);
+Route::get('/anggotaPKK/create',[AnggotaPKKController::class,'create']);
+Route::get('/anggotaPKK/edit',[AnggotaPKKController::class,'edit']);
+Route::get('/anggotaPKK/show',[AnggotaPKKController::class,'show']);
