@@ -8,16 +8,16 @@ class WargaController extends Controller
 {
     public function index()
     {
-        return view('warga.index');
+        return view('RW.warga.index');
     }
     public function create()
     {
-        return view('warga.create');
+        return view('RW.warga.create');
     }
     public function edit(){
-        return view('warga.edit');
+        return view('RW.warga.edit');
     }
     public function show(){
-        return view('warga.show');
+        return view('RW.warga.show');
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\KegiatanRWController;
 use App\Http\Controllers\KegiatanPKKController;
 use App\Http\Controllers\KeuanganRWController;
 use App\Http\Controllers\KeuanganPKKController;
+use App\Http\Controllers\MahasiswaKosController;
 use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,10 @@ Route::get('/warga',[WargaController::class,'index']);
 Route::get('/warga/create',[WargaController::class,'create']);
 Route::get('/warga/edit',[WargaController::class,'edit']);
 Route::get('/warga/show',[WargaController::class,'show']);
+Route::get('/mahasiswaKos',[MahasiswaKosController::class,'index']);
+Route::get('/mahasiswaKos/create',[MahasiswaKosController::class,'create']);
+Route::get('/mahasiswaKos/edit',[MahasiswaKosController::class,'edit']);
+Route::get('/mahasiswaKos/show',[MahasiswaKosController::class,'show']);
 Route::get('/keuanganPKK',[KeuanganPKKController::class,'index']);
 Route::get('/keuanganPKK/create',[KeuanganPKKController::class,'create']);
 Route::get('/keuanganPKK/edit',[KeuanganPKKController::class,'edit']);
