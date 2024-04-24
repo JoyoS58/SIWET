@@ -55,3 +55,4 @@ Route::get('/kegiatanPKK',[KegiatanPKKController::class,'index']);
 Route::get('/kegiatanPKK/create',[KegiatanPKKController::class,'create']);
 Route::get('/kegiatanPKK/edit',[KegiatanPKKController::class,'edit']);
 Route::get('/kegiatanPKK/show',[KegiatanPKKController::class,'show']);
+Route::get('/login',[]);
