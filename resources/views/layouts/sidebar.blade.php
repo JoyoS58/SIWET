@@ -20,8 +20,9 @@
                     <p>Data Warga</p>
                 </a>
             </li>
+            <li class="nav-header">MahasiswaKos</li>
             <li class="nav-item">
-                <a href="{{ url('/user') }}" class="nav-link text-white">
+                <a href="{{ url('/mahasiswaKos') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-user"></i>
                     <p>Data Mahasiswa Kos</p>
                 </a>
