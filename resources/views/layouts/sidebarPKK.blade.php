@@ -1,6 +1,6 @@
 <div class="sidebar text-white">
     <a href="{{ url('/')}}" class="brand-link text-white">
-      <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../resources/img/logo.jpg" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">Admin PKK</span>
     </a>
     <!-- Sidebar Menu -->

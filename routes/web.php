@@ -1,9 +1,13 @@
 <?php
+
+use App\Http\Controllers\AdminRWController;
 use App\Http\Controllers\AnggotaPKKController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\KegiatanRWController;
 use App\Http\Controllers\KegiatanPKKController;
 use App\Http\Controllers\KeuanganRWController;
 use App\Http\Controllers\KeuanganPKKController;
+use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\MahasiswaKosController;
 use App\Http\Controllers\WargaController;
 use Illuminate\Support\Facades\Route;
@@ -60,4 +64,12 @@ Route::get('/kegiatanPKK',[KegiatanPKKController::class,'index']);
 Route::get('/kegiatanPKK/create',[KegiatanPKKController::class,'create']);
 Route::get('/kegiatanPKK/edit',[KegiatanPKKController::class,'edit']);
 Route::get('/kegiatanPKK/show',[KegiatanPKKController::class,'show']);
-Route::get('/login',[]);
+Route::get('/login',[ControllersLoginController::class,'index'])->name('login');
+Route::post('/proses_login',[ControllersLoginController::class,'login'])->name('proses_login');
+
+Route::group(['middleware' => ['auth']], function(){
+
+    Route::group(['middleware' => ['cek_login:adminRW']], function(){
+        Route::resource('adminRW',AdminRWController::class);
+    });
+});
