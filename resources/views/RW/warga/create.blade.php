@@ -10,10 +10,10 @@
         <form action="{{url('warga/create')}}" method="POST" class="form-horizontal">
             @csrf
             <div class="form-group row">
-                <label class="col-2 control-label col-form-label">Nik</label>
+                <label class="col-2 control-label col-form-label">NIK</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="no_kk" name="no_kk" value="{{old('no_kk')}}" required>
-                    @error('no_kk')
+                    <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukkan NIK" required>
+                    @error('nik')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
@@ -21,8 +21,8 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">No KK</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="no_kk" name="no_kk" value="{{old('no_kk')}}" required>
-                    @error('no_kk')
+                    <input type="number" class="form-control" id="nokk" name="nokk" placeholder="Masukkan Nomor KK" required>
+                    @error('nokk')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
@@ -30,7 +30,7 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Nama</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{old('nama')}}" required>
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama" required>
                     @error('nama')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
@@ -39,8 +39,8 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Tanggal Lahir</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{old('tanggal_lahir')}}" required>
-                    @error('tanggal_lahir')
+                    <input type="text" class="form-control" id="ttl" name="ttl" placeholder="Masukkan Tempat dan Tanggal Lahir" required>
+                    @error('ttl')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
