@@ -1,6 +1,6 @@
 
 @extends('layouts.template')
-@section('title', 'Pengelolaan Kas RW')
+@section('title', 'Pengelolaan Data Mahasiswa Kos')
 
 @section('content_header')
     <h1>Pengelolaan Data Mahasiswa Kos</h1>
@@ -16,7 +16,7 @@
                     <div class="row">
                         <h3 class="card-title">Pengelolaan Data Mahasiswa Kos</h3>
                         <div class="col-md-12 text-right">
-                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('mahasiswaKos/create')}}">tambah</a>
+                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('mahasiswaKos/create')}}">Tambah</a>
                         </div>
                     </div>
                 </div>

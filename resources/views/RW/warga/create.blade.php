@@ -7,7 +7,7 @@
         <div class="card-tools"></div>
     </div>
     <div class="card-body">
-        <form action="{{url('warga/create')}}" method="POST" class="form-horizontal">
+        <form action="{{url('Warga')}}" method="POST" class="form-horizontal">
             @csrf
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">NIK</label>
@@ -15,6 +15,20 @@
                     <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukkan NIK" required>
                     @error('nik')
                     <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 control-label col-form-label" for="id_rt">ID_RT</label>
+                <div class="col-10">
+                    <select class="form-control" id="id_rt" name="id_rt" required>
+                        <option value="">Pilih ID_RT</option>
+                        @foreach($RT as $rt)
+                            <option value="{{ $rt->ID_RT }}"> RT {{ $rt->nomor_RT }}</option>
+                        @endforeach
+                    </select>
+                    @error('id_rt')
+                        <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
             </div>
@@ -37,7 +51,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 control-label col-form-label">Tanggal Lahir</label>
+                <label class="col-2 control-label col-form-label">Tempat, Tanggal Lahir</label>
                 <div class="col-10">
                     <input type="text" class="form-control" id="ttl" name="ttl" placeholder="Masukkan Tempat dan Tanggal Lahir" required>
                     @error('ttl')
@@ -46,18 +60,31 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-2 control-label col-form-label" for="pekerjaan">Pekerjaan</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder="Masukkan Pekerjaan" required>
+                    @error('pekerjaan')
+                        <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Jenis Kelamin</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" value="{{old('jenis_kelamin')}}" required>
+                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                        <option value="">Pilih Jenis Kelamin</option>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
                     @error('jenis_kelamin')
-                    <small class="form-text text-danger">{{$message}}</small>
+                        <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Alamat</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="alamat" name="alamat" value="{{old('alamat')}}" required>
+                    <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat" required>
                     @error('alamat')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
@@ -66,26 +93,40 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Agama</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="agama" name="agama" value="{{old('agama')}}" required>
+                    <select class="form-control" id="agama" name="agama" required>
+                        <option value="">Pilih Agama</option>
+                        <option value="Islam">Islam</option>
+                        <option value="Kristen Protestan">Kristen Protestan</option>
+                        <option value="Katolik">Katolik</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Buddha">Buddha</option>
+                        <option value="Konghucu">Konghucu</option>
+                        <!-- Jika ada agama lain yang ingin ditambahkan, tambahkan pilihan di sini -->
+                    </select>
                     @error('agama')
-                    <small class="form-text text-danger">{{$message}}</small>
+                        <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Jenis Penduduk</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="jenis_penduduk" name="jenis_penduduk" value="{{old('jenis_penduduk')}}" required>
+                    <select class="form-control" id="jenis_penduduk" name="jenis_penduduk" required>
+                        <option value="">Pilih Jenis Penduduk</option>
+                        <option value="Penduduk Tetap">Penduduk Tetap</option>
+                        <option value="Penduduk Kontrak">Penduduk Kontrak</option>
+                    </select>
                     @error('jenis_penduduk')
-                    <small class="form-text text-danger">{{$message}}</small>
+                        <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
             </div>
+
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label"></label>
                 <div class="col-10">
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                    <a href="{{url('warga')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
+                    <a href="{{url('Warga')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
                 </div>
             </div>
         </form>

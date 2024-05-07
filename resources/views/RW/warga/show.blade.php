@@ -16,31 +16,43 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>NIK</th>
-                        <td>0888786857537</td>
+                        <td>{{$Warga->NIK}}</td>
+                    </tr>
+                    <tr>
+                        <th>ID_RT</th>
+                        <td>{{$Warga->ID_RT}}</td>
                     </tr>
                     <tr>
                         <th>No KK</th>
-                        <td>099989796663</td>
+                        <td>{{$Warga->nomor_KK}}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td>Iwan</td>
+                        <td>{{$Warga->nama}}</td>
                     </tr>
                     <tr>
                         <th>Alamat</th>
-                        <td>jln senggani</td>
+                        <td>{{$Warga->alamat}}</td>
+                    </tr>
+                    <tr>
+                        <th>Pekerjaan</th>
+                        <td>{{$Warga->pekerjaan}}</td>
+                    </tr>
+                    <tr>
+                        <th>Agama</th>
+                        <td>{{$Warga->agama}}</td>
                     </tr>
                     <tr>
                         <th>Jenis Penduduk</th>
-                        <td>penduduk tetap</td>
+                        <td>{{$Warga->jenis_Penduduk}}</td>
                     </tr>
                     <tr>
-                        <th>Tanggal Lahir</th>
-                        <td>08-12-2003</td>
+                        <th>Tempat, Tanggal Lahir</th>
+                        <td>{{$Warga->tempat_Tanggal_Lahir}}</td>
                     </tr>
                     <tr>
                         <th>jenis Kelamin</th>
-                        <td>laki-laki</td>
+                        <td>{{$Warga->jenis_Kelamin}}</td>
                     </tr>
                 </table>
             {{-- @endempty --}}
