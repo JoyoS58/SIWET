@@ -11,10 +11,13 @@
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user"></i></span>
 
+              @php
+                $jumlahWarga = \App\Models\Warga::count(); // Menghitung jumlah warga
+              @endphp
               <div class="info-box-content">
                 <span class="info-box-text text-center">Jumlah Warga</span>
                 <span class="info-box-number text-center">
-                  100
+                  {{$jumlahWarga}}
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -22,13 +25,20 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+          @php
+            use App\Models\KeuanganRW;
+                // Mengambil data saldo dari database
+            $saldo = KeuanganRW::first(); // Anda bisa mengubah ini sesuai dengan kondisi data yang diinginkan
+            $saldoFormatted = number_format($saldo->saldo, 0, ',', '.'); // Format jumlah saldo sesuai kebutuhan
+          @endphp
+
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-money-bill"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text text-center">Saldo Kas RW</span>
-                <span class="info-box-number text-center">Rp. 271.000.000.000.000</span>
+                <span class="info-box-number text-center">{{$saldoFormatted}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -43,9 +53,12 @@
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
 
+              @php
+                $jumlahRT = \App\Models\RT::count(); // Menghitung jumlah RT
+              @endphp
               <div class="info-box-content">
                 <span class="info-box-text text-center">Jumlah RT</span>
-                <span class="info-box-number text-center">4</span>
+                <span class="info-box-number text-center">{{$jumlahRT}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -56,9 +69,12 @@
             <div class="info-box mb-3">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user-tie"></i></span>
 
+              @php
+                $jumlahMahasiswa = \App\Models\MahasiswaKos::count(); // Menghitung jumlah warga
+              @endphp
               <div class="info-box-content">
                 <span class="info-box-text text-center">Jumlah Mahasiswa Kos</span>
-                <span class="info-box-number text-center">200</span>
+                <span class="info-box-number text-center">{{$jumlahMahasiswa}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -68,7 +84,9 @@
         </div>
         <!-- /.row -->
       </div>
-
+      @php
+      $kegiatans = \App\Models\KegiatanRW::all(); // Menghitung jumlah warga
+      @endphp
       <div class="row">
                 <div class="col-md-6">
                     <div class="card">
@@ -77,7 +95,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                  {{-- <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
@@ -112,7 +130,28 @@
                       <td>21-04-2024</td>
                     </tr>
                   </tbody>
-                </table>
+                </table> --}}
+                <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Nama Kegiatan</th>
+                          <th>Tanggal Pelaksanaan</th>
+                          <th>Keterangan</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach($kegiatans as $index => $kegiatan)
+                      <tr>
+                          <td>{{ $index + 1 }}</td>
+                          <td>{{ $kegiatan->nama_Kegiatan }}</td>
+                          <td>{{ $kegiatan->tanggal }}</td>
+                          <td>{{ $kegiatan->deskripsi }}</td>
+                      </tr>
+                      @endforeach
+                  </tbody>
+              </table>
+              
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
@@ -129,6 +168,9 @@
                 <!-- /.col-md-6 -->
 
                 <!-- Info box untuk tabel kedua di samping -->
+                @php
+                $keuangans = \App\Models\KeuanganRW::all(); // Menghitung jumlah warga
+                @endphp
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
@@ -136,7 +178,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            {{-- <table class="table table-bordered">
                             <thead>
                                 <tr>
                                 <th style="width: 10px">#</th>
@@ -177,7 +219,27 @@
                                 <td>Sumbangan Warga</td>
                                 </tr>
                             </tbody>
-                            </table>
+                            </table> --}}
+                            <table class="table table-bordered">
+                              <thead>
+                                  <tr>
+                                      <th style="width: 10px">#</th>
+                                      <th>Jenis Transaksi</th>
+                                      <th>Nominal</th>
+                                      <th>Keterangan</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  @foreach($keuangans as $index => $keuangan)
+                                  <tr>
+                                      <td>{{ $index + 1 }}</td>
+                                      <td>{{ $keuangan->jenis_Transaksi }}</td>
+                                      <td>{{ $keuangan->nominal }}</td>
+                                      <td>{{ $keuangan->deskripsi }}</td>
+                                  </tr>
+                                  @endforeach
+                              </tbody>
+                          </table>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
@@ -195,38 +257,4 @@
             </div>
             <!-- /.row -->
 </section>
-{{-- <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Hallo, apakabar!!</h3>
-        <div class="card-tools"></div>
-    </div>
-    <div class="card-body">
-        Selamat datang semua, ini adalah halaman utama dari aplikasi ini.
-    </div>
-</div> --}}
 @endsection
-{{-- @extends('adminlte::page')
-@section('title', 'Dashboard')
-@section('content_header')
-<h1>Dashboard</h1>
-@stop
-@section('content')
-<div class="card-body">
-<form>
-<div class="row">
-<div class="col-sm-6">
-<!-- text input -->
-<div class="form-group">
-<label>Level id</label><input type="text" class="form-control" placeholder="id">
-<div>
-</div>
-<button type = "submit" class ="btn btn-info">Submit </button>
-</div>
-@stop
-@section('css')
-{{-- Add here extra stylesheets --}}
-{{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-{{-- @stop
-@section('js')
-<script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
-@stop --}}

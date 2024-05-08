@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('tempat',100);
             $table->string('penanggung_Jawab',100);
-            $table->text('dekripsi');
+            $table->text('deskripsi');
             $table->timestamps();
 
             $table->foreign('ID_RW')->references('ID_RW')->on('RW');

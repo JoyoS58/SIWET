@@ -1,4 +1,4 @@
-<div class="sidebar text-white">
+<div class="sidebar text-white" style="position: fixed">
     <a href="{{ url('/')}}" class="brand-link text-white">
       <img src="../resources/img/logo.jpg" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">Admin PKK</span>
