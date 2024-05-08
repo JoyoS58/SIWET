@@ -58,13 +58,13 @@ Route::group(['prefix' => 'Warga'], function(){
     Route::delete('/delete/{id}', [WargaController::class, 'destroy']);
 });
 Route::group(['prefix' => 'MahasiswaKos'], function(){
-    Route::get('/',[MahasiswaKos::class,'index']);
-    Route::get('/create',[MahasiswaKos::class,'create']);
-    Route::post('/', [MahasiswaKos::class, 'store']);
-    Route::get('/edit/{id}', [MahasiswaKos::class, 'edit']);
-    Route::put('/{id}', [MahasiswaKos::class, 'update']);
-    Route::get('/show/{id}', [MahasiswaKos::class, 'show']);
-    Route::delete('/delete/{id}', [MahasiswaKos::class, 'destroy']);
+    Route::get('/',[MahasiswaKosController::class,'index']);
+    Route::get('/create',[MahasiswaKosController::class,'create']);
+    Route::post('/', [MahasiswaKosController::class, 'store']);
+    Route::get('/edit/{id}', [MahasiswaKosController::class, 'edit']);
+    Route::put('/{id}', [MahasiswaKosController::class, 'update']);
+    Route::get('/show/{id}', [MahasiswaKosController::class, 'show']);
+    Route::delete('/delete/{id}', [MahasiswaKosController::class, 'destroy']);
 });
 Route::get('/keuanganRW',[KeuanganRWController::class,'index']);
 Route::get('/keuanganRW/create',[KeuanganRWController::class,'create']);

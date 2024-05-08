@@ -16,35 +16,39 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>NIK</th>
-                        <td>0888786857537</td>
+                        <td>{{$mahasiswa->NIK}}</td>
+                    </tr>
+                    <tr>
+                        <th>ID_RT</th>
+                        <td>{{$mahasiswa->ID_RT}}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td>Iwan</td>
+                        <td>{{$mahasiswa->nama}}</td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
-                        <td>jln senggani</td>
+                        <th>Tempat, Tanggal Lahir</th>
+                        <td>{{$mahasiswa->tempat_Tanggal_Lahir}}</td>
                     </tr>
                     <tr>
-                        <th>No telp</th>
-                        <td>08765441345</td>
+                        <th>Alamat Kos</th>
+                        <td>{{$mahasiswa->alamat_Kos}}</td>
                     </tr>
                     <tr>
-                        <th>Tanggal Lahir</th>
-                        <td>08-12-2003</td>
+                        <th>Jenis Kelamin</th>
+                        <td>{{$mahasiswa->jenis_Kelamin}}</td>
                     </tr>
                     <tr>
-                        <th>jenis Kelamin</th>
-                        <td>laki-laki</td>
+                        <th>Agama</th>
+                        <td>{{$mahasiswa->agama}}</td>
                     </tr>
                     <tr>
                         <th>Universitas</th>
-                        <td>Polinema</td>
+                        <td>{{$mahasiswa->universitas}}</td>
                     </tr>
                     <tr>
                         <th>Jurusan</th>
-                        <td>Teknik Informatika</td>
+                        <td>{{$mahasiswa->jurusan}}</td>
                     </tr>
                 </table>
             {{-- @endempty --}}
