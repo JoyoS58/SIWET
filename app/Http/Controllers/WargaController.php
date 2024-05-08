@@ -64,6 +64,7 @@ class WargaController extends Controller
             'ttl' => 'required',
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
+            'pekerjaan' => 'required',
             'agama' => 'required',
             'jenis_penduduk' => 'required',
         ]);

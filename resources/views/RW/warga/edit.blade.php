@@ -83,6 +83,15 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-2 control-label col-form-label">Pekerjaan</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="{{old('pekerjaan',$Warga->pekerjaan)}}" required>
+                    @error('pekerjaan')
+                    <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Agama</label>
                 <div class="col-10">
                     <select class="form-control" id="agama" name="agama" required>
