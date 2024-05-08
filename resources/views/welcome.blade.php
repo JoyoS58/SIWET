@@ -25,13 +25,20 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+          @php
+            use App\Models\KeuanganRW;
+                // Mengambil data saldo dari database
+            $saldo = KeuanganRW::first(); // Anda bisa mengubah ini sesuai dengan kondisi data yang diinginkan
+            $saldoFormatted = number_format($saldo->saldo, 0, ',', '.'); // Format jumlah saldo sesuai kebutuhan
+          @endphp
+
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-money-bill"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text text-center">Saldo Kas RW</span>
-                <span class="info-box-number text-center">Rp. 271.000.000.000.000</span>
+                <span class="info-box-number text-center">{{$saldoFormatted}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
