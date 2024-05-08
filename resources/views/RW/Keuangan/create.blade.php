@@ -1,4 +1,86 @@
-@extends('layouts.template')
+@extends('layouts.template') 
+@section('content') 
+    <div class="card card-outline card-primary"> 
+        <div class="card-header"> 
+            <h3 class="card-title">{{ $page->title }}</h3> 
+            <div class="card-tools"></div> 
+        </div> 
+        <div class="card-body"> 
+            <form method="POST" action="{{ url('keuanganRW') }}" class="form-horizontal"> 
+                @csrf 
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">ID Pengurus</label> 
+                    <div class="col-11"> 
+                        <select class="form-control" id="ID_RW" name="ID_RW" required> 
+                            <option value="">- Pilih ID Pengurus -</option> 
+                            @foreach($ID_RW as $item) 
+                                <option value="{{ $item->ID_RW }}">{{ $item->ID_RW }}</option> 
+                            @endforeach 
+                        </select>
+                        @error('ID_RW') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div> 
+                </div> 
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Jenis Transaksi</label> 
+                    <div class="col-11"> 
+                        {{-- <input type="text" class="form-control" id="jenis_Transaksi" name="jenis_Transaksi" value="{{ old('jenis_Transaksi') }}" required>  --}}
+                        <select name="jenis_Transaksi" id="jenis_Transaksi" value="{{ old('jenis_Transaksi') }}" class="form-control" required>
+                            <option value="">- Pilih Jenis Transaksi -</option>
+                            <option value="Pemasukan">Pemasukan</option>
+                            <option value="Pengeluaran">Pengeluaran</option>
+                        </select>
+                        @error('jenis_Transaksi') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div> 
+                </div> 
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Nominal</label> 
+                    <div class="col-11"> 
+                        <input type="number" class="form-control" id="nominal" name="nominal" value="{{ old('nominal') }}" required> 
+                        @error('nominal') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div>
+                </div>  
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Keterangan</label> 
+                    <div class="col-11"> 
+                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}" required> 
+                        @error('deskripsi') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div>
+                </div>  
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Tanggal</label> 
+                    <div class="col-11"> 
+                        <input type="date" class="form-control" id="tanggal_Transaksi" name="tanggal_Transaksi" value="{{ old('tanggal_Transaksi') }}" required> 
+                        @error('tanggal_Transaksi') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div>
+                </div>  
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label"></label> 
+                    <div class="col-11"> 
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button> 
+                        <a class="btn btn-sm btn-default ml-1" href="{{ url('keuanganRW') }}">Kembali</a> 
+                    </div> 
+                </div> 
+            </form> 
+        </div> 
+    </div> 
+@endsection 
+@push('css') 
+@endpush 
+@push('js') 
+@endpush
+
+
+{{-- @extends('layouts.template')
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
@@ -81,4 +163,4 @@
 @endpush
 @push('js')
 
-@endpush
+@endpush --}}

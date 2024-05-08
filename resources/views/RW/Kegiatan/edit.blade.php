@@ -1,5 +1,100 @@
 @extends('layouts.template')
-@section('content')
+
+@section('content') 
+    <div class="card card-outline card-primary"> 
+        <div class="card-header"> 
+        <h3 class="card-title">{{ $page->title }}</h3> 
+        <div class="card-tools"></div> 
+        </div> 
+        <div class="card-body"> 
+        @empty($kegiatanRW) 
+            <div class="alert alert-danger alert-dismissible"> 
+                <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5> 
+                Data yang Anda cari tidak ditemukan. 
+            </div> 
+            <a href="{{ url('kegiatanRW') }}" class="btn btn-sm btn-default mt-2">Kembali</a> 
+        @else 
+            <form method="POST" action="{{ url('/kegiatanRW/'.$kegiatanRW->ID_) }}" class="form-horizontal"> 
+                @csrf 
+                {!! method_field('PUT') !!}  <!-- tambahkan baris ini untuk proses edit yang butuh method PUT -->  
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">ID Pengurus</label> 
+                    <div class="col-11"> 
+                        <select class="form-control" id="ID_RW" name="ID_RW" required> 
+                            <option value="">- Pilih ID Pengurus -</option> 
+                            @foreach($ID_RW as $item) 
+                                <option value="{{ $item->ID_RW }}">{{ $item->ID_RW }}</option> 
+                            @endforeach 
+                        </select>
+                        @error('ID_RW') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div> 
+                </div> 
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Nama Kegiatan</label> 
+                    <div class="col-11"> 
+                        <input type="text" class="form-control" id="Nama_Kegiatan" name="nama_Kegiatan" value="{{ old('nama_Kegiatan') }}" required> 
+                        @error('Nama_Kegiatan') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div> 
+                </div> 
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Tanggal Kegiatan</label> 
+                    <div class="col-11"> 
+                        <input type="date" class="form-control" id="tanggal" name="tangga" value="{{ old('tanggal') }}" required> 
+                        @error('tanggal') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div>
+                </div>  
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Penanggung Jawab</label> 
+                    <div class="col-11"> 
+                        <input type="text" class="form-control" id="penanggung_Jawab" name="penanggung_Jawab" value="{{ old('penanggung_Jawab') }}" required> 
+                        @error('penanggung_Jawab') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div>
+                </div>    
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Tempat Kegiatan</label> 
+                    <div class="col-11"> 
+                        <input type="text" class="form-control" id="tempat" name="tempat" value="{{ old('tempat') }}" required> 
+                        @error('tempat') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div>
+                </div>    
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label">Keterangan</label> 
+                    <div class="col-11"> 
+                        <input type="text" class="form-control" id="dekripsi" name="dekripsi" value="{{ old('dekripsi') }}" required> 
+                        @error('dekripsi') 
+                            <small class="form-text text-danger">{{ $message }}</small> 
+                        @enderror 
+                    </div>
+                </div>    
+                <div class="form-group row"> 
+                    <label class="col-1 control-label col-form-label"></label> 
+                    <div class="col-11"> 
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button> 
+                        <a class="btn btn-sm btn-default ml-1" href="{{ url('kegiatanRW') }}">Kembali</a> 
+                    </div> 
+                </div> 
+            </form> 
+        @endempty 
+        </div> 
+    </div> 
+@endsection 
+ 
+@push('css') 
+@endpush 
+@push('js') 
+@endpush
+
+{{-- @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
             <h3 class="card-title">Edit Kegiatan RW</h3>
@@ -86,4 +181,4 @@
             </form>
         </div>
     </div>
-@endsection
+@endsection --}}

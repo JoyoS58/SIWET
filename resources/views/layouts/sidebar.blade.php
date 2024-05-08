@@ -1,4 +1,4 @@
-<div class="sidebar text-white">
+<div class="sidebar text-white" style="position: fixed">
     <a href="{{ url('/')}}" class="brand-link text-white">
       <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin RW</span>

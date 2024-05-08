@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class RW extends Model
+{
+    use HasFactory;
+    protected $table = 'rw';
+    protected $primaryKey = 'ID_RW';
+
+    protected $fillable = ['nama_Pengurus', 'jabatan_Pengurus','nomor_RW'];
+
+
+//     public function users(): HasMany{
+//         return $this->hasMany(User::class);
+//     }
+}
