@@ -128,29 +128,31 @@ input{
     </style>
 </head>
 <body>  
-    <form action="{{url('proses_login')}}" method="post">
+    <form action="{{ url('proses_login')}}" method="post">
+        @csrf
         <div class="container">
-        <div class="box">
-            <div class="header">
-                <header><img src="../resources/img/logo.png" alt=""></header>
-                <h4>Login</h4>
+            <div class="box">
+                <div class="header">
+                    <header><img src="../resources/img/logo.png" alt=""></header>
+                    <h4>Login</h4>
+                </div>
+                <div class="input-box">
+                    <label for="username">Username</label>
+                    <input type="text" value="{{ Session::get('username') }}" class="input-field" id="username" name="username" required>
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" class="input-field" id="password" name="password" required>
+                    <i class="bx bx-lock"></i>
+                </div>
+                <div class="input-box">
+                    <input type="submit" class="input-submit" value="Masuk">
+                </div>
             </div>
-            <div class="input-box">
-                <label for="text">Username</label>
-                <input type="text" class="input-field" id="username" name="username" required>
-                <i class="bx bx-envelope"></i>
-            </div>
-            <div class="input-box">
-                <label for="password">Password</label>
-                <input type="password" class="input-field" id="password" name="password" required>
-                <i class="bx bx-lock"></i>
-            </div>
-            <div class="input-box">
-                <input type="submit" class="input-submit" value="Masuk">
-            </div>
-        </div>
-        <div class="wrapper"></div>
+            <div class="wrapper"></div>
         </div>
     </form>
 </body>
+
 </html>
