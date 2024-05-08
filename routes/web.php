@@ -94,9 +94,7 @@ Route::get('/kegiatanPKK',[KegiatanPKKController::class,'index']);
 Route::get('/kegiatanPKK/create',[KegiatanPKKController::class,'create']);
 Route::get('/kegiatanPKK/edit',[KegiatanPKKController::class,'edit']);
 Route::get('/kegiatanPKK/show',[KegiatanPKKController::class,'show']);
-Route::get('/login',[ControllersLoginController::class,'index'])->name('login');
-Route::post('/proses_login',[ControllersLoginController::class,'login'])->name('proses_login');
-Route::post('/cek_login',[ControllersLoginController::class,'login'])->name('cek_login');
+
 
 
 Route::group(['middleware' => ['auth']], function(){
