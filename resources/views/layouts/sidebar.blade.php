@@ -16,14 +16,14 @@
             <li class="nav-header">RT</li>
             <li class="nav-item">
                 <a href="{{ url('/RT') }}" class="nav-link text-white">
-                    <i class="nav-icon fas fa-layer-group"></i>
+                    <i class="nav-icon fas fas fa-user"></i>
                     <p>Data RT</p>
                 </a>
             </li>
             <li class="nav-header">Warga</li>
             <li class="nav-item">
                 <a href="{{ url('/warga') }}" class="nav-link text-white">
-                    <i class="nav-icon fas fa-layer-group"></i>
+                    <i class="nav-icon fas fa-users"></i>
                     <p>Data Warga</p>
                 </a>
             </li>
@@ -37,15 +37,15 @@
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
                 <a href="{{ url('/keuanganRW') }}" class="nav-link text-white">
-                    <i class="nav-icon far fa-bookmark"></i>
-                    <p>Keuangan RW</p>
+                    <i class="nav-icon fas fa-money-bill"></i>
+                    <p>Data Keuangan RW</p>
                 </a>
             </li>
             <li class="nav-header">Kegiatan</li>
             <li class="nav-item">
                 <a href="{{ url('/kegiatanRW') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
-                    <p>Kegiatan RW</p>
+                    <p>Data Kegiatan RW</p>
                 </a>
             </li>
         </ul>
