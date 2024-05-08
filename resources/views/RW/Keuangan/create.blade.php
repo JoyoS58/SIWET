@@ -6,6 +6,11 @@
         <div class="card-tools"></div>
     </div>
     <div class="card-body">
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
         <form action="{{url('keuanganRW')}}" method="POST" class="form-horizontal">
             @csrf
             <div class="form-group row">

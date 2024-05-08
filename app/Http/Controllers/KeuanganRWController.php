@@ -33,17 +33,25 @@ public function store(Request $request)
         'deskripsi' => 'required',
     ]);
 
-    $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
+    // Get the initial balance
+    $saldoAwal = $this->getSaldoAwal();
 
+    // Calculate new saldo
     $newSaldo = $this->calculateSaldo($saldoAwal, $request->jenis_Transaksi, $request->nominal);
 
+    // If the transaction is a withdrawal and the balance is insufficient, redirect back with an error message
+    if ($request->jenis_Transaksi === 'Pengeluaran' && $newSaldo < 0) {
+        return redirect()->back()->with('error', 'Saldo tidak mencukupi untuk melakukan pengeluaran.');
+    }
+
+    // Save the transaction
     KeuanganRW::create([
         'ID_RW' => 1,
         'jenis_Transaksi' => $request->jenis_Transaksi,
         'nominal' => $request->nominal,
         'tanggal_Transaksi' => $request->tanggal_Transaksi,
         'deskripsi' => $request->deskripsi,
-        'saldo' => $newSaldo, // Update saldo with the new calculated value
+        'saldo' => $newSaldo,
     ]);
 
     return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Disimpan');

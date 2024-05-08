@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <head>
-<H1>PENGELOLAAN Data Mahasiswa Kos</H1>
+<H1>Pengelolaan Data Mahasiswa Kos</H1>
 </head>
     <div class="row">
         <div class="col-md-12">
