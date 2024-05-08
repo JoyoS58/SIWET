@@ -84,7 +84,9 @@
         </div>
         <!-- /.row -->
       </div>
-
+      @php
+      $kegiatans = \App\Models\KegiatanRW::all(); // Menghitung jumlah warga
+      @endphp
       <div class="row">
                 <div class="col-md-6">
                     <div class="card">
@@ -93,7 +95,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                  {{-- <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
@@ -128,7 +130,28 @@
                       <td>21-04-2024</td>
                     </tr>
                   </tbody>
-                </table>
+                </table> --}}
+                <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Nama Kegiatan</th>
+                          <th>Tanggal Pelaksanaan</th>
+                          <th>Keterangan</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      @foreach($kegiatans as $index => $kegiatan)
+                      <tr>
+                          <td>{{ $index + 1 }}</td>
+                          <td>{{ $kegiatan->nama_Kegiatan }}</td>
+                          <td>{{ $kegiatan->tanggal }}</td>
+                          <td>{{ $kegiatan->deskripsi }}</td>
+                      </tr>
+                      @endforeach
+                  </tbody>
+              </table>
+              
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
@@ -145,6 +168,9 @@
                 <!-- /.col-md-6 -->
 
                 <!-- Info box untuk tabel kedua di samping -->
+                @php
+                $keuangans = \App\Models\KeuanganRW::all(); // Menghitung jumlah warga
+                @endphp
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
@@ -152,7 +178,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            {{-- <table class="table table-bordered">
                             <thead>
                                 <tr>
                                 <th style="width: 10px">#</th>
@@ -193,7 +219,27 @@
                                 <td>Sumbangan Warga</td>
                                 </tr>
                             </tbody>
-                            </table>
+                            </table> --}}
+                            <table class="table table-bordered">
+                              <thead>
+                                  <tr>
+                                      <th style="width: 10px">#</th>
+                                      <th>Jenis Transaksi</th>
+                                      <th>Nominal</th>
+                                      <th>Keterangan</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  @foreach($keuangans as $index => $keuangan)
+                                  <tr>
+                                      <td>{{ $index + 1 }}</td>
+                                      <td>{{ $keuangan->jenis_Transaksi }}</td>
+                                      <td>{{ $keuangan->nominal }}</td>
+                                      <td>{{ $keuangan->deskripsi }}</td>
+                                  </tr>
+                                  @endforeach
+                              </tbody>
+                          </table>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
