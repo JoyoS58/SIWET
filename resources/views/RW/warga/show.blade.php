@@ -3,7 +3,7 @@
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
-            <h3 class="card-title">Detail Mahasiswa Kos</h3>
+            <h3 class="card-title">Detail Warga</h3>
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
@@ -16,43 +16,47 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>NIK</th>
-                        <td>{{$mahasiswa->NIK}}</td>
+                        <td>{{$Warga->NIK}}</td>
                     </tr>
                     <tr>
                         <th>ID_RT</th>
-                        <td>{{$mahasiswa->ID_RT}}</td>
+                        <td>{{$Warga->ID_RT}}</td>
+                    </tr>
+                    <tr>
+                        <th>No KK</th>
+                        <td>{{$Warga->nomor_KK}}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td>{{$mahasiswa->nama}}</td>
+                        <td>{{$Warga->nama}}</td>
                     </tr>
                     <tr>
-                        <th>Tempat, Tanggal Lahir</th>
-                        <td>{{$mahasiswa->tempat_Tanggal_Lahir}}</td>
+                        <th>Alamat</th>
+                        <td>{{$Warga->alamat}}</td>
                     </tr>
                     <tr>
-                        <th>Alamat Kos</th>
-                        <td>{{$mahasiswa->alamat_Kos}}</td>
-                    </tr>
-                    <tr>
-                        <th>Jenis Kelamin</th>
-                        <td>{{$mahasiswa->jenis_Kelamin}}</td>
+                        <th>Pekerjaan</th>
+                        <td>{{$Warga->pekerjaan}}</td>
                     </tr>
                     <tr>
                         <th>Agama</th>
-                        <td>{{$mahasiswa->agama}}</td>
+                        <td>{{$Warga->agama}}</td>
                     </tr>
                     <tr>
-                        <th>Universitas</th>
-                        <td>{{$mahasiswa->universitas}}</td>
+                        <th>Jenis Penduduk</th>
+                        <td>{{$Warga->jenis_Penduduk}}</td>
                     </tr>
                     <tr>
-                        <th>Jurusan</th>
-                        <td>{{$mahasiswa->jurusan}}</td>
+                        <th>Tempat, Tanggal Lahir</th>
+                        <td>{{$Warga->tempat_Tanggal_Lahir}}</td>
+                    </tr>
+                    <tr>
+                        <th>jenis Kelamin</th>
+                        <td>{{$Warga->jenis_Kelamin}}</td>
                     </tr>
                 </table>
             {{-- @endempty --}}
-            <a href="{{url('mahasiswaKos')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{url('warga')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection

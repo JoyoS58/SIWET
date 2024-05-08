@@ -9,7 +9,9 @@ use App\Http\Controllers\KeuanganRWController;
 use App\Http\Controllers\KeuanganPKKController;
 use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\MahasiswaKosController;
+use App\Http\Controllers\RTController;
 use App\Http\Controllers\WargaController;
+use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +38,34 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::group(['prefix' => 'PKK'],function (){
 //     Route::get('/',[KeuanganController::class,'index']);
 // });
+
+Route::group(['prefix' => 'RT'], function(){
+    Route::get('/',[RTController::class,'index']);
+    Route::get('/create',[RTController::class,'create']);
+    Route::post('/', [RTController::class, 'store']);
+    Route::get('/edit/{id}', [RTController::class, 'edit']);
+    Route::put('/{id}', [RTController::class, 'update']);
+    Route::get('/show/{id}', [RTController::class, 'show']);
+    Route::delete('/delete/{id}', [RTController::class, 'destroy']);
+});
+Route::group(['prefix' => 'Warga'], function(){
+    Route::get('/',[WargaController::class,'index']);
+    Route::get('/create',[WargaController::class,'create']);
+    Route::post('/', [WargaController::class, 'store']);
+    Route::get('/edit/{id}', [WargaController::class, 'edit']);
+    Route::put('/{id}', [WargaController::class, 'update']);
+    Route::get('/show/{id}', [WargaController::class, 'show']);
+    Route::delete('/delete/{id}', [WargaController::class, 'destroy']);
+});
+Route::group(['prefix' => 'MahasiswaKos'], function(){
+    Route::get('/',[MahasiswaKosController::class,'index']);
+    Route::get('/create',[MahasiswaKosController::class,'create']);
+    Route::post('/', [MahasiswaKosController::class, 'store']);
+    Route::get('/edit/{id}', [MahasiswaKosController::class, 'edit']);
+    Route::put('/{id}', [MahasiswaKosController::class, 'update']);
+    Route::get('/show/{id}', [MahasiswaKosController::class, 'show']);
+    Route::delete('/delete/{id}', [MahasiswaKosController::class, 'destroy']);
+});
 Route::get('/keuanganRW',[KeuanganRWController::class,'index']);
 Route::get('/keuanganRW/create',[KeuanganRWController::class,'create']);
 Route::get('/keuanganRW/edit',[KeuanganRWController::class,'edit']);
