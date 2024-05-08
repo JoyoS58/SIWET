@@ -9,13 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class RW extends Model
 {
     use HasFactory;
-    protected $table = 'rw';
-    protected $primaryKey = 'ID_RW';
+    protected $table = "RW";
+    protected $primaryKey = "ID_RW";
 
-    protected $fillable = ['nama_Pengurus', 'jabatan_Pengurus','nomor_RW'];
+    protected $fillable = ['nama_Pengurus','jabatan_Pengurus','nomor_RW'];
 
-
-//     public function users(): HasMany{
-//         return $this->hasMany(User::class);
-//     }
+    public function rt(){
+        return $this->hasMany(RT::class);
+    }
 }

@@ -1,6 +1,6 @@
 <div class="sidebar text-white" style="position: fixed">
     <a href="{{ url('/')}}" class="brand-link text-white">
-      <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../resources/img/logo.jpg"class="brand-image img-circle elevation">
       <span class="brand-text font-weight-light">Admin RW</span>
     </a>
     <!-- Sidebar Menu -->
@@ -13,6 +13,13 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+            <li class="nav-header">RT</li>
+            <li class="nav-item">
+                <a href="{{ url('/RT') }}" class="nav-link text-white">
+                    <i class="nav-icon fas fa-layer-group"></i>
+                    <p>Data RT</p>
+                </a>
+            </li>
             <li class="nav-header">Warga</li>
             <li class="nav-item">
                 <a href="{{ url('/warga') }}" class="nav-link text-white">
@@ -20,7 +27,7 @@
                     <p>Data Warga</p>
                 </a>
             </li>
-            <li class="nav-header">MahasiswaKos</li>
+            <li class="nav-header">Mahasiswa Kos</li>
             <li class="nav-item">
                 <a href="{{ url('/mahasiswaKos') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-user"></i>

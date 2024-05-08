@@ -18,7 +18,7 @@
     font-weight: 600;
 }
 body{
-    background: url(img2.jpg);
+    background: url('../resources/img/bg.jpg');
     background-size: cover;
 }
 .container{
@@ -57,12 +57,13 @@ body{
     justify-content: right;
 }
 header img{
-    width: 25px;
+    width: 100px;
 }
-.header p{
+.header h4{
     font-size: 25px;
     font-weight: 800;
     margin-top: 10px;
+    text-align: center
 }
 .header h1{
     font-size: 10px;
@@ -126,35 +127,30 @@ input{
 }
     </style>
 </head>
-<body>
-      
-    <div class="container">
-
-       <div class="box">
-        <div class="header">
-            <header><img src="logo2.png" alt=""></header>
-            <p>Silahkan Melakukan Log in Terlebih dahulu</p>
+<body>  
+    <form action="{{url('proses_login')}}" method="post">
+        <div class="container">
+        <div class="box">
+            <div class="header">
+                <header><img src="../resources/img/logo.png" alt=""></header>
+                <h4>Login</h4>
+            </div>
+            <div class="input-box">
+                <label for="text">Username</label>
+                <input type="text" class="input-field" id="username" name="username" required>
+                <i class="bx bx-envelope"></i>
+            </div>
+            <div class="input-box">
+                <label for="password">Password</label>
+                <input type="password" class="input-field" id="password" name="password" required>
+                <i class="bx bx-lock"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="input-submit" value="Masuk">
+            </div>
         </div>
-        <div class="input-box">
-            <label for="email">NIK</label>
-            <input type="email" class="input-field" id="email" required>
-            <i class="bx bx-envelope"></i>
+        <div class="wrapper"></div>
         </div>
-        <div class="input-box">
-            <label for="pass">Password</label>
-            <input type="password" class="input-field" id="pass" required>
-            <i class="bx bx-lock"></i>
-        </div>
-        <div class="input-box">
-            <input type="submit" class="input-submit" value="Masuk">
-        </div>
-        <div class="bottom">
-            <span><a href="#">Sign Up</a></span>
-            <span><a href="#">Forgot Password?</a></span>
-        </div>
-       </div>
-       <div class="wrapper"></div>
-    </div>
-
+    </form>
 </body>
 </html>
