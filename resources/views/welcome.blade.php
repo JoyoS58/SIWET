@@ -26,11 +26,15 @@
           </div>
           <!-- /.col -->
           @php
-            use App\Models\KeuanganRW;
-                // Mengambil data saldo dari database
-            $saldo = KeuanganRW::first(); // Anda bisa mengubah ini sesuai dengan kondisi data yang diinginkan
-            $saldoFormatted = number_format($saldo->saldo, 0, ',', '.'); // Format jumlah saldo sesuai kebutuhan
-          @endphp
+    use App\Models\KeuanganRW;
+    // Mengambil data saldo terbaru dari database
+    $saldoTerbaru = KeuanganRW::latest()->first();
+    if ($saldoTerbaru) {
+        $saldoFormatted = number_format($saldoTerbaru->saldo, 0, ',', '.'); // Format jumlah saldo sesuai kebutuhan
+    } else {
+        $saldoFormatted = '0'; // Jika tidak ada data saldo tersedia, maka saldo dianggap nol
+}
+@endphp
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
