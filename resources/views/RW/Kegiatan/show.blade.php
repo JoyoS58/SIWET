@@ -30,7 +30,7 @@
                     </tr>
                     <tr>
                         <th>Keterangan</th>
-                        <td>{{$kegiatanRW->dekripsi}}</td>
+                        <td>{{$kegiatanRW->deskripsi}}</td>
                     </tr>
                 </table>
             <a href="{{url('kegiatanRW')}}" class="btn btn-sm btn-default mt-2">Kembali</a>

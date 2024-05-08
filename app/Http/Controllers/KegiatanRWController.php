@@ -21,7 +21,7 @@ class KegiatanRWController extends Controller
             'tanggal' => 'required',
             'penanggung_Jawab' =>'required',
             'tempat' =>'required',
-            'dekripsi' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         KegiatanRW::create([
@@ -31,7 +31,7 @@ class KegiatanRWController extends Controller
             'tanggal' => $request->tanggal,
             'penanggung_Jawab' => $request->penanggung_Jawab,
             'tempat' => $request->tempat,
-            'dekripsi' => $request->dekripsi,
+            'deskripsi' => $request->deskripsi,
         ]);
 
         return redirect('kegiatanRW')->with('success', 'Data Kegiatan Berhasil Disimpan');
@@ -55,7 +55,7 @@ class KegiatanRWController extends Controller
             'tanggal' => 'required',
             'penanggung_Jawab' =>'required',
             'tempat' =>'required',
-            'dekripsi' => 'required',
+            'deskripsi' => 'required',
         ]);
 
         KegiatanRW::find($id)->update([
@@ -65,7 +65,7 @@ class KegiatanRWController extends Controller
             'tanggal' => $request->tanggal,
             'penanggung_Jawab' => $request->penanggung_Jawab,
             'tempat' => $request->tempat,
-            'dekripsi' => $request->dekripsi,
+            'deskripsi' => $request->deskripsi,
         ]);
 
         return redirect('kegiatanRW')->with('success', 'Data Kegiatan Berhasil Diubah');

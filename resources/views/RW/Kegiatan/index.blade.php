@@ -39,7 +39,7 @@
                                     <td>{{ $kegiatanRW->tanggal }}</td>
                                     <td>{{ $kegiatanRW->penanggung_Jawab }}</td>
                                     <td>{{ $kegiatanRW->tempat }}</td>
-                                    <td>{{ $kegiatanRW->dekripsi }}</td>
+                                    <td>{{ $kegiatanRW->deskripsi }}</td>
                                     <td class="action-buttons">
                                         <a href="{{url('kegiatanRW/show/' . $kegiatanRW->ID_Kegiatan_RW)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                         <a href="{{url('kegiatanRW/edit/' . $kegiatanRW->ID_Kegiatan_RW)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>

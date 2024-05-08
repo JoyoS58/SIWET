@@ -57,8 +57,8 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Keterangan</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="dekripsi" name="dekripsi" placeholder="Masukkan Keterangan" required>
-                    @error('dekripsi')
+                    <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukkan Keterangan" required>
+                    @error('deskripsi')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
