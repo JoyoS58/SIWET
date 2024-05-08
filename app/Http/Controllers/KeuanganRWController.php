@@ -15,14 +15,18 @@ class KeuanganRWController extends Controller
 {
     $dataKeuangan = KeuanganRW::all();
     $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
-    $dataKeuangan->saldo = $saldoAwal;
+
+    // Tambahkan atribut saldo pada setiap data keuangan
+    foreach ($dataKeuangan as $keuanganRw) {
+        $keuanganRw->saldo = $saldoAwal;
+    }
+
     return view('RW.Keuangan.index', compact('dataKeuangan'));
 }
 
 public function store(Request $request)
 {
     $validate = $request->validate([
-        'ID_Transaksi' => 'required',
         'jenis_Transaksi' => 'required',
         'nominal' => 'required',
         'tanggal_Transaksi' => 'required',
@@ -44,6 +48,7 @@ public function store(Request $request)
 
     return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Disimpan');
 }
+
 
 private function getSaldoAwal()
 {
@@ -70,29 +75,54 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
     {
         $keuanganRW = KeuanganRW::find($id);
         $RW = RW::all();
-        return view('RW.Kegiatan.edit', ['keuanganRW' => $keuanganRW,'RW' => $RW]);
+        return view('RW.Keuangan.edit', ['keuanganRW' => $keuanganRW,'RW' => $RW]);
     }
     public function update(Request $request, string $id)
-    {
-        $request->validate([
-            'ID_Transaksi' => 'required',
-            'jenis_Transaksi' => 'required',
-            'nominal' => 'required',
-            'tanggal_Transaksi' =>'required',
-            'deskripsi' => 'required',
-        ]);
+{
+    $request->validate([
+        'jenis_Transaksi' => 'required',
+        'nominal' => 'required',
+        'tanggal_Transaksi' =>'required',
+        'deskripsi' => 'required',
+    ]);
 
-        KeuanganRW::find($id)->update([
-            // 'ID_RW' =>  $request->ID_RW,
-            'ID_Transaksi' => $request->ID_Transaksi,
-            'jenis_Transaksi' => $request->jenis_Transaksi,
-            'nominal' => $request->nominal,
-            'tanggal_Transaksi' => $request->tanggal_Transaksi,
-            'deskripsi' => $request->deskripsi,
-        ]);
-
-        return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Diubah');
+    $keuanganRW = KeuanganRW::find($id);
+    if (!$keuanganRW) {
+        return redirect('keuanganRW')->with('error', 'Data Keuangan tidak ditemukan');
     }
+
+    $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
+
+    $newNominal = $request->nominal;
+    $oldNominal = $keuanganRW->nominal;
+    $jenisTransaksi = $request->jenis_Transaksi;
+
+    $newSaldo = $this->calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNominal, $newNominal);
+
+    $keuanganRW->update([
+        'jenis_Transaksi' => $request->jenis_Transaksi,
+        'nominal' => $newNominal,
+        'tanggal_Transaksi' => $request->tanggal_Transaksi,
+        'deskripsi' => $request->deskripsi,
+        'saldo' => $newSaldo,
+    ]);
+
+    return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Diubah');
+}
+
+private function calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNominal, $newNominal)
+{
+    if ($jenisTransaksi === 'Pemasukan') {
+        $saldoDifference = $newNominal - $oldNominal;
+        $newSaldo = $saldoAwal + $saldoDifference;
+    } else {
+        $saldoDifference = $oldNominal - $newNominal;
+        $newSaldo = $saldoAwal - $saldoDifference;
+    }
+
+    return $newSaldo;
+}
+
     public function show(string $id)
     {
         $keuanganRW = KeuanganRW::find($id);
@@ -112,19 +142,5 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
             return redirect('keuanganRW')->with('error', 'Data Keuangan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
-    // public function index()
-    // {
-    //     return view('RW.Keuangan.index');
-    // }
-    // public function create()
-    // {
-    //     return view('RW.Keuangan.create');
-    // }
-    // public function edit(){
-    //     return view('RW.Keuangan.edit');
-    // }
-    // public function show(){
-    //     return view('RW.Keuangan.show');
-    // }
 }
 
