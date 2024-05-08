@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class RW extends Model
 {
     use HasFactory;
-
     protected $table = "RW";
     protected $primaryKey = "ID_RW";
 
