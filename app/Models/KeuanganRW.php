@@ -11,6 +11,7 @@ class KeuanganRW extends Model
 {
     protected $table = 'kas_rw';
     protected $primaryKey = 'ID_Transaksi';
+    public $incrementing = true;
 
     protected $fillable = [
         'ID_RW',

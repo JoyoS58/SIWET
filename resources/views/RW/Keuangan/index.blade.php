@@ -2,120 +2,64 @@
 @section('title', 'Pengelolaan Kas RW')
 
 @section('content_header')
-    <h1>Pengelolaan Keuangan RW</h1>
+<h1>Pengelolaan Keuangan RW</h1>
 @endsection
 
 @section('content')
-    <div class="card card-outline card-primary">
-        <div class="card-header">
-            <h3 class="card-title">{{$page->title}}</h3>
-            <div class="card-tools">
-                <a href="{{url('keuanganRW/create')}}" class="btn btn-sm btn-primary mt-1">Add Transaksi</a>
-            </div>
-        </div>
-        <div class="card-body">
-            {{-- @if (session('success'))
-                <div class="alert alert-success">{{session('success')}}</div>
-            @endif
-            @if (session('error'))
-                <div class="alert alert-danger">{{session('error')}}</div>
-            @endif --}}
-            {{-- <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group row">
-                        <label for="" class="col-1 control-label col-form-label">Filter: </label>
-                        <div class="col-3">
-                            <select name="ID_RW" id="ID_RW" class="form-control" required>
-                                <option value="">- Semua -</option>
-                                @foreach ($RW as $item)
-                                    <option value="{{$item->ID_RW}}">{{$item->kategori_nama}}</option>
-                                @endforeach
-                            </select>
-                            <small class="form-text text-muted">Kategori Barang</small>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="card-title">Pengelolaan Keuangan Warga</h3>
+                        <div class="col-md-12 text-right">
+                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('keuanganRW/create')}}">Tambah</a>
                         </div>
                     </div>
                 </div>
-            </div> --}}
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_barang">
-                <thead>
-                    <tr>
-                        <th>ID Transaksi</th>
-                        <th>Jenis Transaksi</th>
-                        <th>Nominal</th>
-                        <th>Tanggal Transaksi</th>
-                        <th>Keterangan</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-            </table>
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID Transaksi</th>
+                                <th>Jenis Transaksi</th>
+                                <th>Nominal</th>
+                                <th>Tanggal Transaksi</th>
+                                <th>Keterangan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($dataKeuangan as $keuanganRw)
+                                <tr>
+                                    <td>{{ $keuanganRw->ID_Transaksi }}</td>
+                                    <td>{{ $keuanganRw->jenis_Transaski }}</td>
+                                    <td>{{ $keuanganRw->nominal }}</td>
+                                    <td>{{ $keuanganRw->tanggal_Transaksi }}</td>
+                                    <td>{{ $keuanganRw->deskripsi }}</td>
+                                    <td class="action-buttons">
+                                        <a href="{{url('keuanganRW/show/' . $keuanganRW->ID_Transaksi)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                        <a href="{{url('keuanganRw/edit/' . $keuanganRW->ID_Transaksi)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                        <form id="deleteForm{{$keuanganRw->ID_Transaksi}}" action="{{ url('keuanganRw/delete/' . $keuanganRw->ID_Transaksi) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                        <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$keuanganRw->ID_Transaksi}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
+    </div>     
 @endsection
 
-@push('css')
-@endpush
 
-@push('js')
-    <script>
-        $(document).ready(function() { 
-            var dataTransaksi = $('#table_transaksi').DataTable({ 
-            serverSide: true,     // serverSide: true, jika ingin menggunakan server side processing 
-            ajax: { 
-                "url": "{{ url('keuangan/list') }}", 
-                "dataType": "json", 
-                "type": "POST",
-                "data": function (d) {
-                    d.ID_RW = $('#ID_RW').val();
-                }
-            }, 
-            columns: [ 
-                { 
-                    data: "DT_RowIndex", // nomor urut dari laravel datatable addIndexColumn()            
-                    className: "text-center", 
-                    orderable: false, 
-                    searchable: false     
-                },
-                { 
-                    data: "jenis_Transaksi",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "nominal",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "tanggal_Transaksi",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "keterangan",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "aksi",                
-                    className: "", 
-                    orderable: false,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: false    // searchable: true, jika ingin kolom ini bisa dicari 
-                } 
-            ] 
-        });
-
-        $('#ID_RW').on('change', function() {
-            dataTransaski.ajax.reload();
-        })
-    }); 
-  </script> 
-@endpush 
-{{-- 
-@section('content')
+{{-- @section('content')
 <head>
 <H3>Pengelolaan Keuangan RW</H3>
 </head>

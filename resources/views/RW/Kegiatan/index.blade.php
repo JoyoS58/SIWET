@@ -6,119 +6,60 @@
 @endsection
 
 @section('content')
-    <div class="card card-outline card-primary">
-        <div class="card-header">
-            <h3 class="card-title">{{$page->title}}</h3>
-            <div class="card-tools">
-                <a href="{{url('kegiatanRW/create')}}" class="btn btn-sm btn-primary mt-1">Add Kegiatan</a>
-            </div>
-        </div>
-        <div class="card-body">
-            @if (session('success'))
-                <div class="alert alert-success">{{session('success')}}</div>
-            @endif
-            @if (session('error'))
-                <div class="alert alert-danger">{{session('error')}}</div>
-            @endif
-            {{-- <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group row">
-                        <label for="" class="col-1 control-label col-form-label">Filter: </label>
-                        <div class="col-3">
-                            <select name="ID_RW" id="ID_RW" class="form-control" required>
-                                <option value="">- Semua -</option>
-                                @foreach ($RW as $item)
-                                    <option value="{{$item->ID_RW}}">{{$item->kategori_nama}}</option>
-                                @endforeach
-                            </select>
-                            <small class="form-text text-muted">Kategori Barang</small>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="card-title">Pengelolaan Kegiatan Warga</h3>
+                        <div class="col-md-12 text-right">
+                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('kegiatanRW/create')}}">Tambah</a>
                         </div>
                     </div>
                 </div>
-            </div> --}}
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_barang">
-                <thead>
-                    <tr>
-                        <th>Nama Kegiatan</th>
-                        <th>Tanggal Kegiatan</th>
-                        <th>Penanggung Jawab</th>
-                        <th>Tempat Kegiatan</th>
-                        <th>Keterangan</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-            </table>
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nama Kegiatan</th>
+                                <th>Waktu Kegiatan</th>
+                                <th>Tanggal Kegiatan</th>
+                                <th>Penanggung Jawab</th>
+                                <th>Tempat Kegiatan</th>
+                                <th>Keterangan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($dataKegiatan as $kegiatanRW)
+                                <tr>
+                                    {{-- <td>{{ $kegiatanRW->ID_Kegiatan_RW }}</td> --}}
+                                    <td>{{ $kegiatanRW->nama_Kegiatan }}</td>
+                                    <td>{{ $kegiatanRW->waktu }}</td>
+                                    <td>{{ $kegiatanRW->tanggal }}</td>
+                                    <td>{{ $kegiatanRW->penanggung_Jawab }}</td>
+                                    <td>{{ $kegiatanRW->tempat }}</td>
+                                    <td>{{ $kegiatanRW->dekripsi }}</td>
+                                    <td class="action-buttons">
+                                        <a href="{{url('kegiatanRW/show/' . $kegiatanRW->ID_Kegiatan_RW)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                        <a href="{{url('kegiatanRW/edit/' . $kegiatanRW->ID_Kegiatan_RW)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                        <form id="deleteForm{{$kegiatanRW->ID_Kegiatan_RW}}" action="{{ url('kegiatanRW/delete/' . $kegiatanRW->ID_Kegiatan_RW) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                        <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$kegiatanRW->ID_Kegiatan_RW}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
+    </div>     
 @endsection
-
-@push('css')
-@endpush
-
-@push('js')
-    <script>
-        $(document).ready(function() { 
-            var datakegiatan = $('#table_kegiatan').DataTable({ 
-            serverSide: true,     // serverSide: true, jika ingin menggunakan server side processing 
-            ajax: { 
-                "url": "{{ url('kegiatan/list') }}", 
-                "dataType": "json", 
-                "type": "POST",
-                "data": function (d) {
-                    d.ID_RW = $('#ID_RW').val();
-                }
-            }, 
-            columns: [ 
-                { 
-                    data: "DT_RowIndex", // nomor urut dari laravel datatable addIndexColumn()            
-                    className: "text-center", 
-                    orderable: false, 
-                    searchable: false     
-                },
-                { 
-                    data: "nama_Kegiatan",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                    data: "tanggal",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "penanggung_Jawab",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "tempat",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "keterangan",                
-                    className: "", 
-                    orderable: true,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: true    // searchable: true, jika ingin kolom ini bisa dicari 
-                },
-                { 
-                    data: "aksi",                
-                    className: "", 
-                    orderable: false,    // orderable: true, jika ingin kolom ini bisa diurutkan 
-                    searchable: false    // searchable: true, jika ingin kolom ini bisa dicari 
-                } 
-            ] 
-        });
-
-        $('#ID_RW').on('change', function() {
-            datakegiatan.ajax.reload();
-        })
-    }); 
-  </script> 
-@endpush 
 
 {{-- @section('content')
 <head>

@@ -11,155 +11,105 @@ use Yajra\DataTables\Facades\DataTables;
 
 class KeuanganRWController extends Controller
 {
-    public function index(){
-        $breadcrumb = (object)[
-            'title' => 'Keuangan RW',
-            'list' => ['Home', 'Keuangan']
-        ];
+    public function index()
+{
+    $dataKeuangan = KeuanganRW::all();
+    $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
+    $dataKeuangan->saldo = $saldoAwal;
+    return view('RW.Keuangan.index', compact('dataKeuangan'));
+}
 
-        $page = (object)[
-            'title' => 'Daftar transaksi'
-        ];
+public function store(Request $request)
+{
+    $validate = $request->validate([
+        'ID_Transaksi' => 'required',
+        'jenis_Transaksi' => 'required',
+        'nominal' => 'required',
+        'tanggal_Transaksi' => 'required',
+        'deskripsi' => 'required',
+    ]);
 
-        $activeMenu = 'keuanganRW';
+    $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
 
-        $ID_RW = RW::all();
+    $newSaldo = $this->calculateSaldo($saldoAwal, $request->jenis_Transaksi, $request->nominal);
 
-        return view('RW.Keuangan.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'ID_RW' => $ID_RW, 'activeMenu' => $activeMenu]);
+    KeuanganRW::create([
+        'ID_RW' => 1,
+        'jenis_Transaksi' => $request->jenis_Transaksi,
+        'nominal' => $request->nominal,
+        'tanggal_Transaksi' => $request->tanggal_Transaksi,
+        'deskripsi' => $request->deskripsi,
+        'saldo' => $newSaldo, // Update saldo with the new calculated value
+    ]);
+
+    return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Disimpan');
+}
+
+private function getSaldoAwal()
+{
+    $saldoAwal = KeuanganRW::orderBy('ID_Transaksi', 'desc')->first()->saldo ?? 0; // Get the last recorded saldo, if any, or set it to 0
+    return $saldoAwal;
+}
+
+private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
+{
+    if ($jenisTransaksi === 'Pemasukan') {
+        $newSaldo = $saldoAwal + $nominal;
+    } else {
+        $newSaldo = $saldoAwal - $nominal;
     }
 
-    public function list(Request $request){
-        $keuanganRW = KeuanganRW::select('ID_Transaksi','ID_RW','nominal','jenis_Transaksi','tanggal_Transaksi','saldo','deskripsi')
-                    ->with('ID_RW');
-
-        if ($request->ID_RW) {
-            $keuanganRW->where('ID_RW', $request->ID_RW);
-        }
-
-        return DataTables::of($keuanganRW)
-            ->addIndexColumn()
-            ->addColumn('aksi', function ($keuanganRW) {  // menambahkan kolom aksi 
-                $btn = '';
-                $btn .= '<a href="'.url('/keuanganRW/' . $keuanganRW->ID_Transaksi . '/edit').'" class="btn btn-primary btn-sm">Edit</a> '; 
-                $btn .= '<form class="d-inline-block" method="POST" action="'. 
-                        url('/keuanganRW/'.$keuanganRW->ID_Transaksi).'">' 
-                        . csrf_field() . method_field('DELETE') .  
-                        '<button type="submit" class="btn btn-danger btn-sm" 
-                        onclick="return confirm(\'Apakah Anda yakit menghapus data 
-                        ini?\');">Hapus</button></form>';      
-                $btn  = '<a href="'.url('/keuanganRW/' . $keuanganRW->ID_Transaksi).'" class="btn btn-success btn-sm">Detail</a>';
-                return $btn; 
-            }) 
-            ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html 
-            ->make(true);
+    return $newSaldo;
+}
+    public function create()
+    {
+        $dataRW = RW::all();
+        return view('RW.Keuangan.create',['RW' => $dataRW]);
     }
-
-    public function create(){
-        $breadcrumb = (object)[
-            'title' => 'Tambah Transaksi',
-            'list'  => ['Home', 'keuanganRW', 'Tambah']
-        ];
-
-        $page = (object)[
-            'title' => 'Tambah Transaksi baru'
-        ];
-
-        $ID_RW = RW::all();
-        $activeMenu = 'keuanganRW';
-
-        return view('RW.Keuangan.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'ID_RW' => $ID_RW, 'activeMenu' => $activeMenu]);
-    }
-
-    public function store(Request $request){
-        $request->validate([
-            'ID_RW' => 'required|integer',
-            'nominal' => 'required|decimal:2,10',
-            'jenis_Transaksi' => 'required|string',
-            'tanggal_Transaksi' =>'required|date',
-            'saldo' =>'required|decimal',
-            'deskripsi' => 'required|string',
-        ]);
-
-        KeuanganRW::create([
-            'ID_RW' => $request->ID_RW,
-            'nominal' => $request->nominal,
-            'jenis_Transaksi' => $request->jenis_Transaksi,
-            'tanggal_Transaksi' => $request->tanggal_Transaksi,
-            'saldo' => $request->saldo,
-            'deskripsi' => $request->deskripsi,
-        ]);
-
-        return redirect('/keuanganRW')->with('success', 'Data Transaksi berhasil disimpan');
-    }
-
-    public function show(String $id){
-        $keuanganRW = KeuanganRW::with('RW')->find($id);
-
-        $breadcrumb = (object)[
-            'title' => 'Detail Transaksi',
-            'list' => ['Home', 'keuanganRW', 'Detail'],
-        ];
-
-        $page = (object)[
-            'title' => 'Detail Transaksi'
-        ];
-
-        $activeMenu = 'keuanganRW';
-
-        return view('RW.Keuangan.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'keuanganRW' => $keuanganRW, 'activeMenu' => $activeMenu]);
-    }
-
-    public function edit(String $id){
+    public function edit(string $id)
+    {
         $keuanganRW = KeuanganRW::find($id);
         $RW = RW::all();
-
-        $breadcrumb = (object)[
-            'title' => 'Edit Transaksi',
-            'list' => ['Home', 'KeuanganRW', 'Edit']
-        ];
-
-        $page = (object)[
-            'title' => 'Edit User'
-        ];
-
-        $activeMenu = 'KeuanganRW';
-
-        return view('RW.Keuangan.edit', ['breadcrumb' => $breadcrumb, 'page' => $page, 'keuanganRW' => $keuanganRW, 'RW' => $RW, 'activeMenu' => $activeMenu]);
+        return view('RW.Kegiatan.edit', ['keuanganRW' => $keuanganRW,'RW' => $RW]);
     }
-
-    public function update(Request $request, String $id){
+    public function update(Request $request, string $id)
+    {
         $request->validate([
-            'ID_RW' => 'required|string',
-            'nominal' => 'required|decimal',
-            'jenis_Transaksi' => 'required|string',
-            'tanggal_Transaksi' =>'required|date',
-            'saldo' =>'required|decimal',
-            'deskripsi' => 'required|string',
+            'ID_Transaksi' => 'required',
+            'jenis_Transaksi' => 'required',
+            'nominal' => 'required',
+            'tanggal_Transaksi' =>'required',
+            'deskripsi' => 'required',
         ]);
 
         KeuanganRW::find($id)->update([
-            'ID_RW' => $request->ID_RW,
-            'nominal' => $request->nominal,
+            // 'ID_RW' =>  $request->ID_RW,
+            'ID_Transaksi' => $request->ID_Transaksi,
             'jenis_Transaksi' => $request->jenis_Transaksi,
+            'nominal' => $request->nominal,
             'tanggal_Transaksi' => $request->tanggal_Transaksi,
-            'saldo' => $request->saldo,
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect('/keuanganRW')->with('success', 'Data Transaksi berhasil diubah');
+        return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Diubah');
     }
-
-    public function destroy(String $id){
+    public function show(string $id)
+    {
+        $keuanganRW = KeuanganRW::find($id);
+        return view('RW.Keuangan.show', ['keuanganRW' => $keuanganRW]);
+    }
+    public function destroy(string $id)
+    {
         $check = KeuanganRW::find($id);
         if (!$check) {
-            return redirect('/KeuanganRW')->with('error', 'Data Transaksi tidak ditemukan');
+            return redirect('keuanganRW')->with('error', 'Data Keuangan tidak ditemukan');
         }
-
         try {
             KeuanganRW::destroy($id);
-            return redirect('/keuanganRW')->with('success', 'Data Transaksi berhasil dihapus');
-        }catch(\Illuminate\Database\QueryException $e) {
-            return redirect('/keuanganRW')->with('error', 'Data user gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
+
+            return redirect('keuanganRW')->with('success', 'Data Keuangan berhasil dihapus');
+        } catch (\illuminate\Database\QueryException $e) {
+            return redirect('keuanganRW')->with('error', 'Data Keuangan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
     // public function index()

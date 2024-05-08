@@ -43,10 +43,10 @@ Route::group(['prefix' => 'keuanganRW'], function(){
     Route::post('/list', [KeuanganRWController::class, 'list']);
     Route::get('/create', [KeuanganRWController::class, 'create']);
     Route::post('/', [KeuanganRWController::class, 'store']);
-    Route::get('/{id}', [KeuanganRWController::class, 'show']);
-    Route::get('/{id}/edit', [KeuanganRWController::class, 'edit']);
+    Route::get('/show/{id}', [KeuanganRWController::class, 'show']);
+    Route::get('/edit/{id}', [KeuanganRWController::class, 'edit']);
     Route::put('/{id}', [KeuanganRWController::class, 'update']);
-    Route::delete('/{id}', [KeuanganRWController::class, 'destroy']);    
+    Route::delete('/delete/{id}', [KeuanganRWController::class, 'destroy']);    
 });
 
 // Route::get('/keuanganRW',[KeuanganRWController::class,'index']);
@@ -106,10 +106,10 @@ Route::group(['prefix' => 'kegiatanRW'], function(){
     Route::post('/list', [KegiatanRWController::class, 'list']);
     Route::get('/create', [KegiatanRWController::class, 'create']);
     Route::post('/', [KegiatanRWController::class, 'store']);
-    Route::get('/{id}', [KegiatanRWController::class, 'show']);
-    Route::get('/{id}/edit', [KegiatanRWController::class, 'edit']);
+    Route::get('/show/{id}', [KegiatanRWController::class, 'show']);
+    Route::get('/edit/{id}', [KegiatanRWController::class, 'edit']);
     Route::put('/{id}', [KegiatanRWController::class, 'update']);
-    Route::delete('/{id}', [KegiatanRWController::class, 'destroy']);    
+    Route::delete('/delete/{id}', [KegiatanRWController::class, 'destroy']);    
 });
 // Route::get('/kegiatanRW',[KegiatanRWController::class,'index']);
 // Route::get('/kegiatanRW/create',[KegiatanRWController::class,'create']);
