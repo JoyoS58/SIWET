@@ -18,7 +18,7 @@ class RTController extends Controller
             'ketua_rt' => 'required',
             'sekretaris_rt' => 'required',
             'bendahara_rt' => 'required',
-            'nomor_rt' => 'required',
+            'nomor_rt' => 'required|unique',
         ]);
 
         RT::create([
