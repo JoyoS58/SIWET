@@ -18,9 +18,9 @@ class RTController extends Controller
             'ketua_rt' => 'required',
             'sekretaris_rt' => 'required',
             'bendahara_rt' => 'required',
-            'nomor_rt' => 'required|unique',
+            'nomor_rt' => 'required|unique:RT,nomor_RT',
         ]);
-
+    
         RT::create([
             'ID_RW' => '1',
             'ketua_RT' => $request->ketua_rt,
@@ -28,7 +28,7 @@ class RTController extends Controller
             'bendahara_RT' => $request->bendahara_rt,
             'nomor_RT' => $request->nomor_rt,
         ]);
-
+    
         return redirect('/RT')->with('success', 'Data RT Berhasil Disimpan');
     }
     public function create()
@@ -46,9 +46,9 @@ class RTController extends Controller
             'ketua_rt' => 'required',
             'sekretaris_rt' => 'required',
             'bendahara_rt' => 'required',
-            'nomor_rt' => 'required',
+            'nomor_rt' => 'required|unique:RT,nomor_RT,'.$id.',ID_RT',
         ]);
-
+    
         RT::find($id)->update([
             'ID_RW' => '1',
             'ketua_RT' => $request->ketua_rt,
@@ -56,7 +56,7 @@ class RTController extends Controller
             'bendahara_RT' => $request->bendahara_rt,
             'nomor_RT' => $request->nomor_rt,
         ]);
-
+    
         return redirect('/RT')->with('success', 'Data RT Berhasil Diubah');
     }
     public function show(string $id)

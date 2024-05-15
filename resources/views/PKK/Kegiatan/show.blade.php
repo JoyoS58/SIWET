@@ -7,47 +7,38 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            {{-- @empty($transaction)
-                <div class="alert alert-danger alert-dismissible">
-                    <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
-                    Data yang Anda cari tidak ditemukan.
-                </div>
-            @else --}}
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
-                        <th>ID Pengurus</th>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <th>ID Kegiatan</th>
-                        <td>3</td>
-                    </tr>
-                    <tr>
                         <th>Nama Kegiatan</th>
-                        <td>Kerja Bakti</td>
+                        <td>{{$kegiatanPKK->nama_Kegiatan}}</td>
                     </tr>
                     <tr>
-                        <th>Tanggal Kegiatan</th>
-                        <td>4 April 2024</td>
+                        <th>Waktu Kegiatan</th>
+                        <td>{{$kegiatanPKK->waktu}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal Kegiatan </th>
+                        <td>{{$kegiatanPKK->tanggal}}</td>
                     </tr>
                     <tr>
                         <th>Penanggung Jawab</th>
-                        <td>Syahrul Faroh</td>
+                        <td>{{$kegiatanPKK->penanggung_Jawab}}</td>
                     </tr>
                     <tr>
                         <th>Tempat Kegiatan</th>
-                        <td>Lapangan Tengah</td>
+                        <td>{{$kegiatanPKK->tempat}}</td>
+                    </tr>
+                    <tr>
+                        <th>Keterangan</th>
+                        <td>{{$kegiatanPKK->deskripsi}}</td>
                     </tr>
                 </table>
-            {{-- @endempty --}}
             <a href="{{url('kegiatanPKK')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection
 
 @push('css')
-
 @endpush
 @push('js')
-
 @endpush
