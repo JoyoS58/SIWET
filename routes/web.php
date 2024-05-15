@@ -29,6 +29,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+Route::get('/RW', function () {
+    return view('RW.dasboardRW');
+});
+Route::get('/PKK', function () {
+    return view('PKK.dasboardPKK');
+});
 
 //Auth::routes();
 
@@ -46,11 +52,6 @@ Route::get('welcome', function () {
 
 
 
-// Route::get('/keuanganRW', [App\Http\Controllers\KeuanganRWController::class, 'index'])->name('keuanganRW');
-
-// Route::group(['prefix' => 'PKK'],function (){
-//     Route::get('/',[KeuanganController::class,'index']);
-// });
 Route::group(['prefix' => 'keuanganRW'], function(){
     Route::get('/', [KeuanganRWController::class, 'index']);
     Route::post('/list', [KeuanganRWController::class, 'list']);
@@ -61,11 +62,16 @@ Route::group(['prefix' => 'keuanganRW'], function(){
     Route::put('/{id}', [KeuanganRWController::class, 'update']);
     Route::delete('/delete/{id}', [KeuanganRWController::class, 'destroy']);    
 });
-
-// Route::get('/keuanganRW',[KeuanganRWController::class,'index']);
-// Route::get('/keuanganRW/create',[KeuanganRWController::class,'create']);
-// Route::get('/keuanganRW/edit',[KeuanganRWController::class,'edit']);
-// Route::get('/keuanganRW/show',[KeuanganRWController::class,'show']);
+Route::group(['prefix' => 'keuanganPKK'], function(){
+    Route::get('/', [KeuanganPKKController::class, 'index']);
+    Route::post('/list', [KeuanganPKKController::class, 'list']);
+    Route::get('/create', [KeuanganPKKController::class, 'create']);
+    Route::post('/', [KeuanganPKKController::class, 'store']);
+    Route::get('/show/{id}', [KeuanganPKKController::class, 'show']);
+    Route::get('/edit/{id}', [KeuanganPKKController::class, 'edit']);
+    Route::put('/{id}', [KeuanganPKKController::class, 'update']);
+    Route::delete('/delete/{id}', [KeuanganPKKController::class, 'destroy']);    
+});
 
 Route::group(['prefix' => 'RT'], function(){
     Route::get('/',[RTController::class,'index']);
@@ -94,26 +100,20 @@ Route::group(['prefix' => 'MahasiswaKos'], function(){
     Route::get('/show/{id}', [MahasiswaKosController::class, 'show']);
     Route::delete('/delete/{id}', [MahasiswaKosController::class, 'destroy']);
 });
-// Route::get('/keuanganRW',[KeuanganRWController::class,'index']);
-// Route::get('/keuanganRW/create',[KeuanganRWController::class,'create']);
-// Route::get('/keuanganRW/edit',[KeuanganRWController::class,'edit']);
-// Route::get('/keuanganRW/show',[KeuanganRWController::class,'show']);
-Route::get('/warga',[WargaController::class,'index']);
-Route::get('/warga/create',[WargaController::class,'create']);
-Route::get('/warga/edit',[WargaController::class,'edit']);
-Route::get('/warga/show',[WargaController::class,'show']);
-Route::get('/mahasiswaKos',[MahasiswaKosController::class,'index']);
-Route::get('/mahasiswaKos/create',[MahasiswaKosController::class,'create']);
-Route::get('/mahasiswaKos/edit',[MahasiswaKosController::class,'edit']);
-Route::get('/mahasiswaKos/show',[MahasiswaKosController::class,'show']);
-Route::get('/keuanganPKK',[KeuanganPKKController::class,'index']);
-Route::get('/keuanganPKK/create',[KeuanganPKKController::class,'create']);
-Route::get('/keuanganPKK/edit',[KeuanganPKKController::class,'edit']);
-Route::get('/keuanganPKK/show',[KeuanganPKKController::class,'show']);
-Route::get('/anggotaPKK',[AnggotaPKKController::class,'index']);
-Route::get('/anggotaPKK/create',[AnggotaPKKController::class,'create']);
-Route::get('/anggotaPKK/edit',[AnggotaPKKController::class,'edit']);
-Route::get('/anggotaPKK/show',[AnggotaPKKController::class,'show']);
+Route::group(['prefix' => 'AnggotaPKK'], function(){
+    Route::get('/',[AnggotaPKKController::class,'index']);
+    Route::get('/create',[AnggotaPKKController::class,'create']);
+    Route::post('/', [AnggotaPKKController::class, 'store']);
+    Route::get('/edit/{id}', [AnggotaPKKController::class, 'edit']);
+    Route::put('/{id}', [AnggotaPKKController::class, 'update']);
+    Route::get('/show/{id}', [AnggotaPKKController::class, 'show']);
+    Route::delete('/delete/{id}', [AnggotaPKKController::class, 'destroy']);
+});
+
+// Route::get('/anggotaPKK',[AnggotaPKKController::class,'index']);
+// Route::get('/anggotaPKK/create',[AnggotaPKKController::class,'create']);
+// Route::get('/anggotaPKK/edit',[AnggotaPKKController::class,'edit']);
+// Route::get('/anggotaPKK/show',[AnggotaPKKController::class,'show']);
 Route::group(['prefix' => 'kegiatanRW'], function(){
     Route::get('/', [KegiatanRWController::class, 'index']);
     Route::post('/list', [KegiatanRWController::class, 'list']);
@@ -124,16 +124,20 @@ Route::group(['prefix' => 'kegiatanRW'], function(){
     Route::put('/{id}', [KegiatanRWController::class, 'update']);
     Route::delete('/delete/{id}', [KegiatanRWController::class, 'destroy']);    
 });
-// Route::get('/kegiatanRW',[KegiatanRWController::class,'index']);
-// Route::get('/kegiatanRW/create',[KegiatanRWController::class,'create']);
-// Route::get('/kegiatanRW/edit',[KegiatanRWController::class,'edit']);
-// Route::get('/kegiatanRW/show',[KegiatanRWController::class,'show']);
-Route::get('/kegiatanPKK',[KegiatanPKKController::class,'index']);
-Route::get('/kegiatanPKK/create',[KegiatanPKKController::class,'create']);
-Route::get('/kegiatanPKK/edit',[KegiatanPKKController::class,'edit']);
-Route::get('/kegiatanPKK/show',[KegiatanPKKController::class,'show']);
-
-
+Route::group(['prefix' => 'kegiatanPKK'], function(){
+    Route::get('/', [KegiatanPKKController::class, 'index']);
+    Route::post('/list', [KegiatanPKKController::class, 'list']);
+    Route::get('/create', [KegiatanPKKController::class, 'create']);
+    Route::post('/', [KegiatanPKKController::class, 'store']);
+    Route::get('/show/{id}', [KegiatanPKKController::class, 'show']);
+    Route::get('/edit/{id}', [KegiatanPKKController::class, 'edit']);
+    Route::put('/{id}', [KegiatanPKKController::class, 'update']);
+    Route::delete('/delete/{id}', [KegiatanPKKController::class, 'destroy']);    
+});
+// Route::get('/kegiatanPKK',[KegiatanPKKController::class,'index']);
+// Route::get('/kegiatanPKK/create',[KegiatanPKKController::class,'create']);
+// Route::get('/kegiatanPKK/edit',[KegiatanPKKController::class,'edit']);
+// Route::get('/kegiatanPKK/show',[KegiatanPKKController::class,'show']);
 
 Route::group(['middleware' => ['auth']], function(){
 

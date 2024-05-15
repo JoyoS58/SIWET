@@ -11,7 +11,7 @@ class RT extends Model
 {
     use HasFactory;
 
-    protected $table = "RT";
+    protected $table = "rt";
     protected $primaryKey = "ID_RT";
 
     protected $fillable = ['ID_RW','ketua_RT','sekretaris_RT','bendahara_RT','nomor_RT'];
