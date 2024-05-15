@@ -16,7 +16,7 @@
                     <div class="row">
                         <h3 class="card-title">Pengelolaan Data Mahasiswa Kos</h3>
                         <div class="col-md-12 text-right">
-                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('mahasiswaKos/create')}}">Tambah</a>
+                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('MahasiswaKos/create')}}">Tambah</a>
                         </div>
                     </div>
                 </div>

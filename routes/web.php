@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\MahasiswaKosController;
 use App\Http\Controllers\RTController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\SPKController;
 use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
 });
 Route::get('/RW', function () {
     return view('RW.dasboardRW');
@@ -35,6 +36,8 @@ Route::get('/RW', function () {
 Route::get('/PKK', function () {
     return view('PKK.dasboardPKK');
 });
+Route::get('pengajuan/show/{id}', [SPKController::class, 'show']);
+
 
 //Auth::routes();
 
