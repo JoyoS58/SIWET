@@ -22,14 +22,14 @@
             </li>
             <li class="nav-header">Warga</li>
             <li class="nav-item">
-                <a href="{{ url('/warga') }}" class="nav-link text-white">
+                <a href="{{ url('/Warga') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-users"></i>
                     <p>Data Warga</p>
                 </a>
             </li>
             <li class="nav-header">Mahasiswa Kos</li>
             <li class="nav-item">
-                <a href="{{ url('/mahasiswaKos') }}" class="nav-link text-white">
+                <a href="{{ url('/MahasiswaKos') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-user"></i>
                     <p>Data Mahasiswa Kos</p>
                 </a>
