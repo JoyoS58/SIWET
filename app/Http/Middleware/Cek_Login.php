@@ -18,7 +18,7 @@ class Cek_Login
     {
         // cek sudah login atau belum . jika belum kembali ke halaman login
         if (!Auth::check()) {
-            return redirect('login');
+            return redirect('sesi');
         }
 
         // simpan data user pada variabel $user
@@ -30,7 +30,7 @@ class Cek_Login
         }
 
         // jika tidak memiliki akses maka kembalikan ke halaman login
-        return redirect('login')->with('error', 'Maaf anda tidak memiliki akses');
+        return redirect('sesi')->with('error', 'Maaf anda tidak memiliki akses');
         // return $next($request);
     }
 }
