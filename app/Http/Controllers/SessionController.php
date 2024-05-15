@@ -62,9 +62,9 @@ class SessionController extends Controller
             $user = Auth::user();
             // Redirect sesuai level user setelah login
             if ($user->level == 'adminrw') {
-                return redirect()->intended('RW.dashboardRW');
+                return redirect()->intended('RW');
             } elseif ($user->level == 'adminpkk') {
-                return redirect()->intended('PKK.dashboardPKK');
+                return redirect()->intended('PKK');
             }
             // return redirect()->intended('RW.dashboardRW')->with('success', 'Berhasil login');
         } else {
