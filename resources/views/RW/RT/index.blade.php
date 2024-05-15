@@ -24,6 +24,7 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Ketua RT</th>
                                 <th>Sekretaris RT</th>
                                 <th>Bendahara RT</th>
@@ -32,8 +33,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dataRT as $rt)
+                            @foreach($dataRT as $index => $rt)
                                 <tr>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $rt->ketua_RT }}</td>
                                     <td>{{ $rt->sekretaris_RT }}</td>
                                     <td>{{ $rt->bendahara_RT }}</td>

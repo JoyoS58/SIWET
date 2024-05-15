@@ -21,6 +21,7 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama Kegiatan</th>
                                 <th>Waktu Kegiatan</th>
                                 <th>Tanggal Kegiatan</th>
@@ -31,9 +32,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dataKegiatan as $kegiatanPKK)
+
+                            @foreach($dataKegiatan as $index => $kegiatanPKK)
                                 <tr>
-                                    {{-- <td>{{ $kegiatanPKK->ID_Kegiatan_PKK }}</td> --}}
+                                    <td>{{ $index + 1}}</td>
                                     <td>{{ $kegiatanPKK->nama_Kegiatan }}</td>
                                     <td>{{ $kegiatanPKK->waktu }}</td>
                                     <td>{{ $kegiatanPKK->tanggal }}</td>

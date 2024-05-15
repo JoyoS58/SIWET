@@ -21,6 +21,7 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>ID Transaksi</th>
                                 <th>Jenis Transaksi</th>
                                 <th>Nominal</th>
@@ -30,8 +31,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dataKeuangan as $keuanganRW)
+                            @foreach($dataKeuangan as $index => $keuanganRW)
                                 <tr>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $keuanganRW->ID_Transaksi }}</td>
                                     <td>{{ $keuanganRW->jenis_Transaksi }}</td>
                                     <td>{{ $keuanganRW->nominal }}</td>

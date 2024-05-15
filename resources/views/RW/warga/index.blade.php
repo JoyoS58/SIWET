@@ -20,6 +20,7 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Tempat, Tanggal Lahir</th>
                                 <th>Agama</th>
@@ -31,8 +32,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($dataWarga as $warga)
+                            @foreach($dataWarga as $index => $warga)
                                 <tr>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $warga->nama }}</td>
                                     <td>{{ $warga->tempat_Tanggal_Lahir }}</td>
                                     <td>{{ $warga->agama }}</td>

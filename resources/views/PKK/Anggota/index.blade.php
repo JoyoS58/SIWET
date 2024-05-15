@@ -24,6 +24,7 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Jabatan</th>
                                 <th>Nomor Telepon</th>
@@ -31,8 +32,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($AnggotaPKK as $anggota)
+                            @foreach($AnggotaPKK as $index => $anggota)
                                 <tr>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $anggota->nama }}</td>
                                     <td>{{ $anggota->jabatan }}</td>
                                     <td>{{ $anggota->nomor_Telepon }}</td>

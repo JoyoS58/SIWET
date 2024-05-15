@@ -24,6 +24,7 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Tempat, Tanggal Lahir</th>
                                 <th>Alamat Kos</th>
@@ -35,8 +36,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($mahasiswaKos as $mahasiswa)
+                            @foreach($mahasiswaKos as $index => $mahasiswa)
                                 <tr>
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $mahasiswa->nama }}</td>
                                     <td>{{ $mahasiswa->tempat_Tanggal_Lahir }}</td>
                                     <td>{{ $mahasiswa->alamat_Kos }}</td>
