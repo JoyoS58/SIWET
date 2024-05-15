@@ -13,7 +13,7 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">NIK</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="nik" name="nik" value="{{old('NIK',$mahasiswaKos->NIK)}}" required>
+                    <input type="number" class="form-control" id="nik" name="nik" value="{{old('NIK',$mahasiswaKos->NIK)}}" required>
                     @error('nik')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror

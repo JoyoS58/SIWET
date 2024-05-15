@@ -16,7 +16,7 @@ class MahasiswaKosController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nik' => 'required',
+            'nik' => 'required|unique:mahasiswa_kos,NIK',
             'id_rt' => 'required',
             'nama' => 'required',
             'ttl' => 'required',
