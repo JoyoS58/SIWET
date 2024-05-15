@@ -113,7 +113,7 @@
                 <div class="col-2"></div>
                 <div class="col-10">
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                    <a href="{{url('mahasiswaKos')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
+                    <a href="{{url('MahasiswaKos')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
                 </div>
             </div>
         </form>
