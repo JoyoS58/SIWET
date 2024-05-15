@@ -16,7 +16,7 @@ class WargaController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nik' => 'required',
+            'nik' => 'required|unique:warga,nik',
             'id_rt' => 'required',
             'nokk' => 'required',
             'nama' => 'required',
