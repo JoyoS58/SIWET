@@ -10,6 +10,7 @@ use App\Http\Controllers\KeuanganPKKController;
 use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\MahasiswaKosController;
 use App\Http\Controllers\RTController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
@@ -26,12 +27,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/sesi', [SessionController::class, 'index'])->name('sesi.get');
+Route::post('/proses_login', [SessionController::class, 'login'])->name('sesi.post');
+Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
+
+Route::get('welcome', function () {
+    return view('welcome'); // Atau arahkan ke controller lain sesuai kebutuhan
+})->middleware('auth')->name('welcome');
+
+
+
+
 
 // Route::get('/keuanganRW', [App\Http\Controllers\KeuanganRWController::class, 'index'])->name('keuanganRW');
 

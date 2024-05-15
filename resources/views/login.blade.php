@@ -1,3 +1,4 @@
+<!-- resources/views/auth/login.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../css/styleLogin.css">
+    <link rel="stylesheet" href="{{ asset('css/styleLogin.css') }}">
     <title>Login</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
@@ -57,7 +58,7 @@ body{
     justify-content: right;
 }
 header img{
-    width: 100px;
+    width: 50px;
 }
 .header h4{
     font-size: 25px;
@@ -128,12 +129,12 @@ input{
     </style>
 </head>
 <body>  
-    <form action="{{ url('proses_login')}}" method="post">
+    <form action="{{ route('sesi.post') }}" method="post">
         @csrf
         <div class="container">
             <div class="box">
                 <div class="header">
-                    <header><img src="../resources/img/logo.png" alt=""></header>
+                    <header><img src="{{ ('../resources/img/logo.png') }}" alt="Logo"></header>
                     <h4>Login</h4>
                 </div>
                 <div class="input-box">
@@ -149,6 +150,15 @@ input{
                 <div class="input-box">
                     <input type="submit" class="input-submit" value="Masuk">
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
             <div class="wrapper"></div>
         </div>
