@@ -8,10 +8,31 @@ use Illuminate\Http\Request;
 
 class WargaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dataWarga = Warga::all();
-        return view('RW.warga.index', compact('dataWarga'));
+        $query = Warga::query();
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where('nama', 'LIKE', "%$search%")
+                  ->orWhere('tempat_Tanggal_Lahir', 'LIKE', "%$search%")
+                  ->orWhere('alamat', 'LIKE', "%$search%")
+                  ->orWhere('pekerjaan', 'LIKE', "%$search%");
+        }
+
+        if ($request->has('filter') && $request->filter != '') {
+            // Jika filter yang dipilih adalah "Semua", abaikan filter
+            if ($request->filter != 'Semua') {
+                $filter = $request->filter;
+                $query->where('jenis_Penduduk', $filter);
+            }
+        }
+
+        $dataWarga = $query->get();
+
+        $jenisPenduduk = Warga::select('jenis_Penduduk')->distinct()->get();
+
+        return view('RW.warga.index', compact('dataWarga', 'jenisPenduduk'));
     }
     public function store(Request $request)
     {

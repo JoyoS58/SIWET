@@ -17,6 +17,28 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <!-- Search and Filter Form -->
+                    <form method="GET" action="{{ url('Warga') }}">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
+                            </div>
+                            <div class="col-md-4">
+                                <select name="filter" class="form-control">
+                                    <option value="Semua" {{ request('filter') == 'Semua' ? 'selected' : '' }}>Semua Jenis Penduduk</option>
+                                    @foreach($jenisPenduduk as $jp)
+                                        <option value="{{ $jp->jenis_Penduduk }}" {{ request('filter') == $jp->jenis_Penduduk ? 'selected' : '' }}>
+                                            {{ $jp->jenis_Penduduk }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
+
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -54,8 +76,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                        </tfoot>
                     </table>
                 </div>
             </div>

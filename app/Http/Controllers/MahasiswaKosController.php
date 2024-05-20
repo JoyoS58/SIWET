@@ -8,10 +8,27 @@ use Illuminate\Http\Request;
 
 class MahasiswaKosController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswaKos = MahasiswaKos::all();
-        return view('RW.MahasiswaKos.index', compact('mahasiswaKos'));
+        $query = MahasiswaKos::query();
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->where('nama', 'LIKE', "%$search%")
+                  ->orWhere('universitas', 'LIKE', "%$search%")
+                  ->orWhere('jurusan', 'LIKE', "%$search%");
+        }
+
+        if ($request->has('filter') && $request->filter != '') {
+            $filter = $request->filter;
+            $query->where('universitas', $filter);
+        }
+
+        $mahasiswaKos = $query->get();
+
+        $universitas = MahasiswaKos::select('universitas')->distinct()->get();
+
+        return view('RW.MahasiswaKos.index', compact('mahasiswaKos', 'universitas'));
     }
     public function store(Request $request)
     {
