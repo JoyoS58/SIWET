@@ -1,4 +1,3 @@
-
 @extends('layouts.template')
 @section('title', 'Pengelolaan Data RT')
 
@@ -7,54 +6,77 @@
 @endsection
 @section('content')
 <head>
-<H1>Pengelolaan Data RT</H1>
+    <h1>Pengelolaan Data RT</h1>
 </head>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="row">
-                        <h3 class="card-title">Pengelolaan Data RT</h3>
-                        <div class="col-md-12 text-right">
-                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('RT/create')}}">Tambah</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Ketua RT</th>
-                                <th>Sekretaris RT</th>
-                                <th>Bendahara RT</th>
-                                <th>Nomor RT</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($dataRT as $index => $rt)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $rt->ketua_RT }}</td>
-                                    <td>{{ $rt->sekretaris_RT }}</td>
-                                    <td>{{ $rt->bendahara_RT }}</td>
-                                    <td>{{ $rt->nomor_RT }}</td>
-                                    <td class="action-buttons">
-                                        <a href="{{ url('RT/show', $rt->ID_RT) }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                        <a href="{{ url('RT/edit', $rt->ID_RT) }}" class="btn btn-primary btn-sm edit-button" ><i class="fas fa-edit"></i> Edit</a>
-                                        <form id="deleteForm{{$rt->ID_RT}}" action="{{ url('RT/delete/' . $rt->ID_RT) }}" method="POST" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                        <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$rt->ID_RT}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <h3 class="card-title">Pengelolaan Data RT</h3>
+                    
                 </div>
             </div>
+            <div class="card-body row">
+                <!-- Search and Filter Form -->
+                <form method="GET" action="{{ url('RT') }}">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
+                        </div>
+                        <div class="col-md-4">
+                            <select name="filter" class="form-control">
+                                <option value="">Semua RT</option>
+                                @foreach($nomorRT as $n)
+                                    <option value="{{ $n->nomor_RT }}" {{ request('filter') == $n->nomor_RT ? 'selected' : '' }}>
+                                        {{ $n->nomor_RT }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="col text-right">
+                    <a type="button" class="btn btn-info add-transaction-button" href="{{ url('RT/create') }}">Tambah</a>
+                </div>
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Ketua RT</th>
+                            <th>Sekretaris RT</th>
+                            <th>Bendahara RT</th>
+                            <th>Nomor RT</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($dataRT as $index => $rt)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $rt->ketua_RT }}</td>
+                                <td>{{ $rt->sekretaris_RT }}</td>
+                                <td>{{ $rt->bendahara_RT }}</td>
+                                <td>{{ $rt->nomor_RT }}</td>
+                                <td class="action-buttons">
+                                    <a href="{{ url('RT/show', $rt->ID_RT) }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{ url('RT/edit', $rt->ID_RT) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <form id="deleteForm{{ $rt->ID_RT }}" action="{{ url('RT/delete/' . $rt->ID_RT) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{ $rt->ID_RT }}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>     
+    </div>
+</div>     
 @endsection

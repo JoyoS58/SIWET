@@ -8,19 +8,32 @@ use Illuminate\Http\Request;
 
 class KeuanganPKKController extends Controller
 {
-    public function index()
-{
-    $dataKeuangan = KeuanganPKK::all();
-    $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
-
-    // Tambahkan atribut saldo pada setiap data keuangan
-    foreach ($dataKeuangan as $keuanganPKK) {
-        $keuanganPKK->saldo = $saldoAwal;
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $filterJenis = $request->input('filter_jenis');
+    
+        $query = KeuanganPKK::query();
+    
+        if ($search) {
+            $query->where('ID_Transaksi', 'LIKE', "%$search%");
+        }
+    
+        if ($filterJenis) {
+            $query->where('jenis_Transaksi', $filterJenis);
+        }
+    
+        $dataKeuangan = $query->get();
+        $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
+    
+        // Tambahkan atribut saldo pada setiap data keuangan
+        foreach ($dataKeuangan as $keuanganPKK) {
+            $keuanganPKK->saldo == $saldoAwal;
+        }
+    
+        return view('PKK.Keuangan.index', compact('dataKeuangan'));
     }
-
-    return view('PKK.Keuangan.index', compact('dataKeuangan'));
-}
-
+    
 public function store(Request $request)
 {
     $validate = $request->validate([

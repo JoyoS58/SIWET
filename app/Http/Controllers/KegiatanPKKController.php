@@ -8,9 +8,26 @@ use Illuminate\Http\Request;
 
 class KegiatanPKKController extends Controller
 {
-    public function index(){
-        $dataKegiatan = KegiatanPKK::all();
-        return view('PKK.Kegiatan.index', compact('dataKegiatan'));
+    public function index(Request $request)
+    {
+        $query = KegiatanPKK::query();
+
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('nama_Kegiatan', 'LIKE', "%$search%")
+                  ->orWhere('penanggung_Jawab', 'LIKE', "%$search%")
+                  ->orWhere('tempat', 'LIKE', "%$search%");
+        }
+
+        if ($request->has('filter') && $request->filter != '') {
+            $filter = $request->filter;
+            $query->where('penanggung_Jawab', $filter);
+        }
+
+        $dataKegiatan = $query->get();
+        $penanggungJawab = KegiatanPKK::select('penanggung_Jawab')->distinct()->get();
+
+        return view('PKK.Kegiatan.index', compact('dataKegiatan', 'penanggungJawab'));
     }
     public function store(Request $request)
     {

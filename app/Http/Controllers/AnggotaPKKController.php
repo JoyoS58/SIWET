@@ -8,11 +8,27 @@ use Illuminate\Http\Request;
 
 class AnggotaPKKController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $AnggotaPKK = AnggotaPKK::all();
-        return view('PKK.Anggota.index', compact('AnggotaPKK'));
+        $search = $request->input('search');
+        $filterJabatan = $request->input('filter_jabatan');
+    
+        $query = AnggotaPKK::query();
+    
+        if ($search) {
+            $query->where('nama', 'LIKE', "%$search%");
+        }
+    
+        if ($filterJabatan) {
+            $query->where('jabatan', $filterJabatan);
+        }
+    
+        $AnggotaPKK = $query->get();
+        $jabatanOptions = AnggotaPKK::select('jabatan')->distinct()->pluck('jabatan');
+    
+        return view('PKK.Anggota.index', compact('AnggotaPKK', 'jabatanOptions'));
     }
+    
     public function store(Request $request)
     {
         $validate = $request->validate([
@@ -84,20 +100,4 @@ class AnggotaPKKController extends Controller
             return redirect('AnggotaPKK')->with('error', 'Data Anggota gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
-    // public function index()
-    // {
-    //     return view('PKK.Anggota.index');
-    // }
-    // public function create()
-    // {
-    //     return view('PKK.Anggota.create');
-    // }
-    // public function edit()
-    // {
-    //     return view('PKK.Anggota.edit');
-    // }
-    // public function show()
-    // {
-    //     return view('PKK.Anggota.show');
-    // }
 }

@@ -14,33 +14,37 @@
             <div class="card-header">
                 <div class="row">
                     <h3 class="card-title">Pengelolaan Data Mahasiswa Kos</h3>
-                    <div class="col-md-12 text-right">
-                        <a type="button" class="btn btn-info add-transaction-button" href="{{url('MahasiswaKos/create')}}">Tambah</a>
-                    </div>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body row">
                 <!-- Search and Filter Form -->
-                <form method="GET" action="{{ url('MahasiswaKos') }}">
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
+                <div class="col">
+                    <form method="GET" action="{{ url('MahasiswaKos') }}">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
+                            </div>
+                            <div class="col-md-4">
+                                <select name="filter" class="form-control">
+                                    <option value="">Select Universitas</option>
+                                    @foreach($universitas as $u)
+                                        <option value="{{ $u->universitas }}" {{ request('filter') == $u->universitas ? 'selected' : '' }}>
+                                            {{ $u->universitas }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <select name="filter" class="form-control">
-                                <option value="">Select Universitas</option>
-                                @foreach($universitas as $u)
-                                    <option value="{{ $u->universitas }}" {{ request('filter') == $u->universitas ? 'selected' : '' }}>
-                                        {{ $u->universitas }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div class="col text-right">
+                    <a type="button" class="btn btn-info add-transaction-button" href="{{url('MahasiswaKos/create')}}">Tambah</a>
+                </div>
+                
+                
 
                 <table class="table table-bordered table-hover">
                     <thead>

@@ -11,18 +11,35 @@ use Yajra\DataTables\Facades\DataTables;
 
 class KeuanganRWController extends Controller
 {
-    public function index()
-{
-    $dataKeuangan = KeuanganRW::all();
-    $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
+    public function index(Request $request)
+    {
+        $query = KeuanganRW::query();
 
-    // Tambahkan atribut saldo pada setiap data keuangan
-    foreach ($dataKeuangan as $keuanganRw) {
-        $keuanganRw->saldo = $saldoAwal;
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('ID_Transaksi', 'LIKE', "%$search%")
+                  ->orWhere('jenis_Transaksi', 'LIKE', "%$search%")
+                  ->orWhere('deskripsi', 'LIKE', "%$search%");
+        }
+
+        if ($request->has('filter') && $request->filter != '') {
+            $filter = $request->filter;
+            $query->where('jenis_Transaksi', $filter);
+        }
+
+        $dataKeuangan = $query->get();
+        $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
+
+        // Calculate saldo for each transaction
+        foreach ($dataKeuangan as $keuanganRw) {
+            $keuanganRw->saldo == $saldoAwal;
+            $saldoAwal += ($keuanganRw->jenis_Transaksi == 'Pemasukan' ? 1 : -1) * $keuanganRw->nominal;
+        }
+
+        $jenisTransaksi = KeuanganRW::select('jenis_Transaksi')->distinct()->get();
+
+        return view('RW.Keuangan.index', compact('dataKeuangan', 'jenisTransaksi'));
     }
-
-    return view('RW.Keuangan.index', compact('dataKeuangan'));
-}
 
 public function store(Request $request)
 {

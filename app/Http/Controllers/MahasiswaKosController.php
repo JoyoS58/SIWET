@@ -12,22 +12,29 @@ class MahasiswaKosController extends Controller
     {
         $query = MahasiswaKos::query();
 
-        if ($request->has('search')) {
+        // Check if search input is present and not empty
+        if ($request->has('search') && $request->search != '') {
             $search = $request->search;
-            $query->where('nama', 'LIKE', "%$search%")
+            $query->where(function($q) use ($search) {
+                $q->where('nama', 'LIKE', "%$search%")
                   ->orWhere('universitas', 'LIKE', "%$search%")
                   ->orWhere('jurusan', 'LIKE', "%$search%");
+            });
         }
 
+        // Check if filter input is present and not empty
         if ($request->has('filter') && $request->filter != '') {
             $filter = $request->filter;
             $query->where('universitas', $filter);
         }
 
+        // Get the filtered and searched data
         $mahasiswaKos = $query->get();
 
+        // Get distinct universities for the filter dropdown
         $universitas = MahasiswaKos::select('universitas')->distinct()->get();
 
+        // Return the view with the data
         return view('RW.MahasiswaKos.index', compact('mahasiswaKos', 'universitas'));
     }
     public function store(Request $request)
