@@ -53,7 +53,7 @@
                             <th>Nominal</th>
                             <th>Tanggal Transaksi</th>
                             <th>Keterangan</th>
-                            <th>Saldo</th>
+                            {{-- <th>Saldo</th> --}}
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -66,7 +66,7 @@
                                 <td>{{ $keuanganRW->nominal }}</td>
                                 <td>{{ $keuanganRW->tanggal_Transaksi }}</td>
                                 <td>{{ $keuanganRW->deskripsi }}</td>
-                                <td>{{ $keuanganRW->saldo }}</td>
+                                {{-- <td>{{ $keuanganRW->saldo }}</td> --}}
                                 <td class="action-buttons">
                                     <a href="{{ url('keuanganRW/show/' . $keuanganRW->ID_Transaksi) }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                     <a href="{{ url('keuanganRW/edit/' . $keuanganRW->ID_Transaksi) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>

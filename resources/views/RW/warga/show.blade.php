@@ -56,7 +56,7 @@
                     </tr>
                 </table>
             {{-- @endempty --}}
-            <a href="{{url('warga')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{url('Warga')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection
