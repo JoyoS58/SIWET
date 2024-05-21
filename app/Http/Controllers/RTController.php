@@ -8,10 +8,27 @@ use Illuminate\Http\Request;
 
 class RTController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dataRT = RT::all();
-        return view('RW.RT.index',compact('dataRT'));
+        $query = RT::query();
+
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('ketua_RT', 'LIKE', "%$search%")
+                  ->orWhere('sekretaris_RT', 'LIKE', "%$search%")
+                  ->orWhere('bendahara_RT', 'LIKE', "%$search%")
+                  ->orWhere('nomor_RT', 'LIKE', "%$search%");
+        }
+
+        if ($request->has('filter') && $request->filter != '') {
+            $filter = $request->filter;
+            $query->where('nomor_RT', $filter);
+        }
+
+        $dataRT = $query->get();
+        $nomorRT = RT::select('nomor_RT')->distinct()->get();
+
+        return view('RW.RT.index', compact('dataRT', 'nomorRT'));
     }
     public function store(Request $request){
         $validate = $request->validate([

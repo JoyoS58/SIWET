@@ -5,18 +5,19 @@
     <h1>Pengelolaan Data Warga</h1>
 @endsection
 @section('content')
+<head>
+    <h1>Pengelolaan Data Warga</h1>
+</head>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <h3 class="card-title">Pengelolaan Data Warga</h3>
-                        <div class="col-md-12 text-right">
-                            <a type="button" class="btn btn-info add-transaction-button" href="{{url('Warga/create')}}">Tambah</a>
-                        </div>
+                       
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body row">
                     <!-- Search and Filter Form -->
                     <form method="GET" action="{{ url('Warga') }}">
                         <div class="row mb-3">
@@ -38,6 +39,9 @@
                             </div>
                         </div>
                     </form>
+                    <div class="col text-right">
+                        <a type="button" class="btn btn-info add-transaction-button" href="{{url('Warga/create')}}">Tambah</a>
+                    </div>
 
                     <table class="table table-bordered table-hover">
                         <thead>
