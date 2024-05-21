@@ -126,6 +126,26 @@ input{
 .bottom span a:hover{
     text-decoration: underline;
 }
+.password-container {
+  position: relative; /* For positioning the icons */
+}
+
+.toggle-password,
+.close-password {
+    display: flex;
+    align-items: center;
+  cursor: pointer; /* Indicate clickable icons */
+  position: absolute; /* Position icons relative to container */
+  top: 50%; /* Center icons vertically */
+  transform: translateY(-50%); /* Adjust vertical centering */
+  right: 10px; /* Adjust horizontal spacing */
+  padding: 5px; /* Add some padding around icons */
+  font-size: 16px; /* Adjust icon size */
+}
+
+.close-password {
+  display: none; /* Initially hide close icon */
+}
     </style>
 </head>
 <body>  
@@ -141,12 +161,13 @@ input{
                     <label for="username">Username</label>
                     <input type="text" value="{{ Session::get('username') }}" class="input-field" id="username" name="username" required>
                     <i class="bx bx-envelope"></i>
-                </div>
-                <div class="input-box">
+                  </div>
+                  <div class="input-box password-container">
                     <label for="password">Password</label>
                     <input type="password" class="input-field" id="password" name="password" required>
-                    <i class="bx bx-lock"></i>
-                </div>
+                    <i class="bx bx-lock toggle-password"></i>
+                    <i class="bx bx-eye-close close-password"></i>
+                  </div>                       
                 <div class="input-box">
                     <input type="submit" class="input-submit" value="Masuk">
                 </div>
@@ -164,5 +185,43 @@ input{
         </div>
     </form>
 </body>
+<script>
+const togglePassword = document.querySelector('.toggle-password');
+const closePassword = document.querySelector('.close-password');
+const passwordInput = document.getElementById('password');
 
+passwordInput.addEventListener('focus', function () {
+  togglePassword.style.display = 'inline-block';
+  closePassword.style.display = 'none'; // Initially hide close icon
+});
+
+passwordInput.addEventListener('blur', function () {
+  if (passwordInput.type === 'password') {
+    closePassword.style.display = 'none';
+    togglePassword.classList.remove('bx-eye');
+    togglePassword.classList.add('bx-lock-alt');
+  }
+});
+
+togglePassword.addEventListener('click', function () {
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    closePassword.style.display = 'inline-block';
+    togglePassword.classList.remove('bx-lock-alt');
+    togglePassword.classList.add('bx-eye');
+  } else {
+    passwordInput.type = 'password';
+    closePassword.style.display = 'none';
+    togglePassword.classList.remove('bx-eye');
+    togglePassword.classList.add('bx-lock-alt');
+  }
+});
+
+closePassword.addEventListener('click', function () {
+  passwordInput.type = 'password';
+  closePassword.style.display = 'none';
+  togglePassword.classList.remove('bx-eye');
+  togglePassword.classList.add('bx-lock-alt');
+});
+</script>
 </html>
