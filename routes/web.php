@@ -148,3 +148,5 @@ Route::group(['middleware' => ['auth']], function(){
         Route::resource('adminRW',AdminRWController::class);
     });
 });
+
+Route::get('/spk',[SPKController::class,'index']);

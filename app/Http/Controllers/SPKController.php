@@ -13,4 +13,7 @@ class SPKController extends Controller
         return view('PKK.SPK.show', ['Warga' => $Warga]);
     }
 
+    public function index(){
+        return view('PKK.SPK.index');
+    }
 }
