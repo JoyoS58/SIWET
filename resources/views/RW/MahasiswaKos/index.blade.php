@@ -43,21 +43,19 @@
                 <div class="col text-right">
                     <a type="button" class="btn btn-info add-transaction-button" href="{{url('MahasiswaKos/create')}}">Tambah</a>
                 </div>
-                
-                
-
+                <div class="table-responsive">
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Tempat, Tanggal Lahir</th>
-                            <th>Alamat Kos</th>
-                            <th>Jenis Kelamin</th>
-                            <th>Agama</th>
-                            <th>Universitas</th>
-                            <th>Jurusan</th>
-                            <th>Aksi</th>
+                            <th width="20px" class="text-center">No</th>
+                            <th width="150px" class="text-center">Nama</th>
+                            <th width="150px" class="text-center">Tempat, Tanggal Lahir</th>
+                            <th width="200px" class="text-center">Alamat Kos</th>
+                            <th width="150px" class="text-center">Jenis Kelamin</th>
+                            <th width="100px" class="text-center">Agama</th>
+                            <th width="150px" class="text-center">Universitas</th>
+                            <th width="150px" class="text-center">Jurusan</th>
+                            <th width="100px" class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,6 +82,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

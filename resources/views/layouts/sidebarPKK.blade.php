@@ -39,6 +39,11 @@
                 <a href="{{ url('/spk') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>Pra-Koperasi</p>
+                    <ul>
+                        <li class="nav-item">Data Alternatif</li>
+                        <li>Data Kriteria</li>
+                        <li>Pemilihan</li>
+                    </ul>
                 </a>
             </li>
         </ul>
