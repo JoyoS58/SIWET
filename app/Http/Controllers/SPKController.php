@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kriteriaEdas;
 use App\Models\Warga;
 use Illuminate\Http\Request;
 
@@ -16,4 +17,5 @@ class SPKController extends Controller
     public function index(){
         return view('PKK.SPK.index');
     }
+
 }

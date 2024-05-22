@@ -19,7 +19,7 @@
     font-weight: 600;
 }
 body{
-    background: url('../resources/img/bg.jpg');
+    background: url('../public/assets/images/bg.jpg');
     background-size: cover;
 }
 .container{
