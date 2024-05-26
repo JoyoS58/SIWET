@@ -153,17 +153,49 @@ Route::group(['middleware' => ['auth']], function(){
     });
 });
 
-Route::get('/SPK',[SPKController::class,'index']);
+// Route::get('/SPK',[SPKController::class,'index']);
 
-Route::prefix('spk')->group(function () {
-    Route::get('criteria', [SpkController::class, 'index'])->name('criteria.index');
-    Route::get('criteria/create', [SpkController::class, 'create'])->name('criteria.create');
-    Route::post('criteria', [SpkController::class, 'store'])->name('criteria.store');
-    Route::get('criteria/{criterion}', [SpkController::class, 'show'])->name('criteria.show');
-    Route::get('criteria/{criterion}/edit', [SpkController::class, 'edit'])->name('criteria.edit');
-    Route::put('criteria/{criterion}', [SpkController::class, 'update'])->name('criteria.update');
-    Route::delete('criteria/{criterion}', [SpkController::class, 'destroy'])->name('criteria.destroy');
+// Route::prefix('spk')->group(function () {
+//     Route::get('criteria', [SpkController::class, 'index'])->name('criteria.index');
+//     Route::get('criteria/create', [SpkController::class, 'create'])->name('criteria.create');
+//     Route::post('criteria', [SpkController::class, 'store'])->name('criteria.store');
+//     Route::get('criteria/{criterion}', [SpkController::class, 'show'])->name('criteria.show');
+//     Route::get('criteria/{criterion}/edit', [SpkController::class, 'edit'])->name('criteria.edit');
+//     Route::put('criteria/{criterion}', [SpkController::class, 'update'])->name('criteria.update');
+//     Route::delete('criteria/{criterion}', [SpkController::class, 'destroy'])->name('criteria.destroy');
 
-    Route::get('edas/calculate', [SpkController::class, 'calculate'])->name('edas.calculate');
-    Route::get('edas/results', [SpkController::class, 'results'])->name('edas.results');
+//     Route::get('edas/calculate', [SpkController::class, 'calculate'])->name('edas.calculate');
+//     Route::get('edas/results', [SpkController::class, 'results'])->name('edas.results');
+// });
+Route::prefix('/spk')->group(function(){
+    Route::prefix('alternatif')->group(function(){
+        Route::get('/', [SPKController::class, 'indexAlternatif']);
+        Route::post('/list', [SPKController::class, 'list']);
+        Route::get('/create', [SPKController::class, 'create']);
+        Route::post('/', [SPKController::class, 'store']);
+        Route::get('/show/{id}', [SPKController::class, 'show']);
+        Route::get('/edit/{id}', [SPKController::class, 'edit']);
+        Route::put('/{id}', [SPKController::class, 'update']);
+        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
+    });
+    Route::prefix('kriteria')->group(function(){
+        Route::get('/', [SPKController::class, 'indexKriteria']);
+        Route::post('/list', [SPKController::class, 'list']);
+        Route::get('/create', [SPKController::class, 'create']);
+        Route::post('/', [SPKController::class, 'store']);
+        Route::get('/show/{id}', [SPKController::class, 'show']);
+        Route::get('/edit/{id}', [SPKController::class, 'edit']);
+        Route::put('/{id}', [SPKController::class, 'update']);
+        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
+    });
+    Route::prefix('pemilihan')->group(function(){
+        Route::get('/', [SPKController::class, 'indexPerhitungan']);
+        Route::post('/list', [SPKController::class, 'list']);
+        Route::get('/create', [SPKController::class, 'create']);
+        Route::post('/', [SPKController::class, 'store']);
+        Route::get('/show/{id}', [SPKController::class, 'show']);
+        Route::get('/edit/{id}', [SPKController::class, 'edit']);
+        Route::put('/{id}', [SPKController::class, 'update']);
+        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);
+    });
 });

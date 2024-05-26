@@ -35,17 +35,26 @@
                 </a>
             </li>
             <li class="nav-header">Sistem Pendukung Keputusan</li>
-            <li class="nav-item">
-                <a href="{{ url('/spk') }}" class="nav-link text-white">
-                    <i class="nav-icon fas fa-cubes"></i>
-                    <p>Pra-Koperasi</p>
-                    <ul>
-                        <li class="nav-item">Data Alternatif</li>
-                        <li>Data Kriteria</li>
-                        <li>Pemilihan</li>
-                    </ul>
-                </a>
-            </li>
+                <ul>
+                    <li class="nav-item">
+                        <a href="{{ url('/spk/alternatif') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-"></i>
+                            <p>Data Alternatif</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/spk/kriteria') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-cubes"></i>
+                            <p>Data Kriteria</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/spk/pemilihan') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-cubes"></i>
+                            <p>Pemilihan</p>
+                        </a>
+                    </li>
+                </ul>
         </ul>
     </nav>
 </div>
