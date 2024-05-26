@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                 'jabatan' => 'Ketua PKK'
             ]
         ]);
-        DB::table('user')->insert([
+        DB::table('User')->insert([
             [
                 'ID_RW' => 1,
                 'nama' => 'Admin RW',
