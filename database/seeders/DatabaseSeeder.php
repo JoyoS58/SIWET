@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use app\Models\RW;
 use app\Models\PKK;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,6 +31,22 @@ class DatabaseSeeder extends Seeder
                 'ID_RW' => 1,
                 'nama_Pengurus' => 'Wari',
                 'jabatan' => 'Ketua PKK'
+            ]
+        ]);
+        DB::table('user')->insert([
+            [
+                'ID_RW' => 1,
+                'nama' => 'Admin RW',
+                'username' => 'adminrw',
+                'password' => Hash::make('adminrw123'), // Password di-hash menggunakan Bcrypt
+                'level' => 'adminrw'
+            ],
+            [
+                'ID_RW' => 1,
+                'nama' => 'Admin PKK',
+                'username' => 'adminpkk',
+                'password' => Hash::make('adminpkk123'), // Password di-hash menggunakan Bcrypt
+                'level' => 'adminpkk'
             ]
         ]);
     }
