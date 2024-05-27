@@ -58,7 +58,7 @@ class SessionController extends Controller
             'username' => $request->username,
             'password' => $request->password
         ];
-
+        dd($request);
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             // Redirect sesuai level user setelah login
