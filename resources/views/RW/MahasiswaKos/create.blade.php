@@ -53,8 +53,8 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Alamat Kos</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="alamatkos" name="alamatkos" placeholder="Masukkan Alamat Kos" required>
-                    @error('alamatkos')
+                    <input type="text" class="form-control" id="alamatKos" name="alamatKos" placeholder="Masukkan Alamat Kos" required>
+                    @error('alamatKos')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama',100);
             $table->string('username',50);
             $table->string('password',255);
-            $table->string('level',50);
+            $table->enum('level',['adminrw','adminpkk']);
             $table->timestamps();
 
             $table->foreign('ID_RW')->references('ID_RW')->on('RW');

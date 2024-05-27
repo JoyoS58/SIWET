@@ -14,7 +14,7 @@ class RW extends Model
 
     protected $fillable = ['nama_Pengurus','jabatan_Pengurus','nomor_RW'];
 
-    public function rt(){
+    public function RT(){
         return $this->hasMany(RT::class);
     }
 }

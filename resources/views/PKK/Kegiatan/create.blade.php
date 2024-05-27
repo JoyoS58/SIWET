@@ -7,7 +7,7 @@
         <div class="card-tools"></div>
     </div>
     <div class="card-body">
-        <form action="{{url('kegiatanPKK')}}" method="POST" class="form-horizontal">
+        <form action="{{url('KegiatanPKK')}}" method="POST" class="form-horizontal">
             @csrf
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Nama Kegiatan</label>
@@ -68,7 +68,7 @@
                 <label class="col-2 control-label col-form-label"></label>
                 <div class="col-10">
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                    <a href="{{url('kegiatanPKK')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
+                    <a href="{{url('KegiatanPKK')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
                 </div>
             </div>
         </form>
@@ -85,7 +85,7 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            <form action="{{url('kegiatanPKK')}}" method="POST" class="form-horizontal">
+            <form action="{{url('KegiatanPKK')}}" method="POST" class="form-horizontal">
                 @csrf
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Nama KegiatanS</label>
@@ -137,7 +137,7 @@
                     <label class="col-1 control-label col-form-label"></label>
                     <div class="col-11">
                         <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                        <a href="{{url('kegiatanPKK')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
+                        <a href="{{url('KegiatanPKK')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
                     </div>
                 </div>
             </form>

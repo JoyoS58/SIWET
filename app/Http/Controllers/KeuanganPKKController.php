@@ -26,9 +26,9 @@ class KeuanganPKKController extends Controller
         $dataKeuangan = $query->get();
         $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
     
-        // Tambahkan atribut saldo pada setiap data keuangan
-        foreach ($dataKeuangan as $keuanganPKK) {
-            $keuanganPKK->saldo == $saldoAwal;
+        // Tambahkan atribut saldo pada setiap data Keuangan
+        foreach ($dataKeuangan as $KeuanganPKK) {
+            $KeuanganPKK->saldo == $saldoAwal;
         }
     
         return view('PKK.Keuangan.index', compact('dataKeuangan'));
@@ -64,7 +64,7 @@ public function store(Request $request)
         'saldo' => $newSaldo,
     ]);
 
-    return redirect('keuanganPKK')->with('success', 'Data Keuangan Berhasil Disimpan');
+    return redirect('KeuanganPKK')->with('success', 'Data Keuangan Berhasil Disimpan');
 }
 
 
@@ -91,9 +91,9 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
     }
     public function edit(string $id)
     {
-        $keuanganPKK = KeuanganPKK::find($id);
+        $KeuanganPKK = KeuanganPKK::find($id);
         $PKK = PKK::all();
-        return view('PKK.Keuangan.edit', ['keuanganPKK' => $keuanganPKK,'PKK' => $PKK]);
+        return view('PKK.Keuangan.edit', ['KeuanganPKK' => $KeuanganPKK,'PKK' => $PKK]);
     }
     public function update(Request $request, string $id)
 {
@@ -104,20 +104,20 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
         'deskripsi' => 'required',
     ]);
 
-    $keuanganPKK = KeuanganPKK::find($id);
-    if (!$keuanganPKK) {
-        return redirect('keuanganPKK')->with('error', 'Data Keuangan tidak ditemukan');
+    $KeuanganPKK = KeuanganPKK::find($id);
+    if (!$KeuanganPKK) {
+        return redirect('KeuanganPKK')->with('error', 'Data Keuangan tidak ditemukan');
     }
 
     $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
 
     $newNominal = $request->nominal;
-    $oldNominal = $keuanganPKK->nominal;
+    $oldNominal = $KeuanganPKK->nominal;
     $jenisTransaksi = $request->jenis_Transaksi;
 
     $newSaldo = $this->calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNominal, $newNominal);
 
-    $keuanganPKK->update([
+    $KeuanganPKK->update([
         'jenis_Transaksi' => $request->jenis_Transaksi,
         'nominal' => $newNominal,
         'tanggal' => $request->tanggal,
@@ -125,7 +125,7 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
         'saldo' => $newSaldo,
     ]);
 
-    return redirect('keuanganPKK')->with('success', 'Data Keuangan Berhasil Diubah');
+    return redirect('KeuanganPKK')->with('success', 'Data Keuangan Berhasil Diubah');
 }
 
 private function calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNominal, $newNominal)
@@ -143,36 +143,22 @@ private function calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNomina
 
     public function show(string $id)
     {
-        $keuanganPKK = KeuanganPKK::find($id);
-        return view('PKK.Keuangan.show', ['keuanganPKK' => $keuanganPKK]);
+        $KeuanganPKK = KeuanganPKK::find($id);
+        return view('PKK.Keuangan.show', ['KeuanganPKK' => $KeuanganPKK]);
     }
     public function destroy(string $id)
     {
         $check = KeuanganPKK::find($id);
         if (!$check) {
-            return redirect('keuanganPKK')->with('error', 'Data Keuangan tidak ditemukan');
+            return redirect('KeuanganPKK')->with('error', 'Data Keuangan tidak ditemukan');
         }
         try {
             KeuanganPKK::destroy($id);
 
-            return redirect('keuanganPKK')->with('success', 'Data Keuangan berhasil dihapus');
+            return redirect('KeuanganPKK')->with('success', 'Data Keuangan berhasil dihapus');
         } catch (\illuminate\Database\QueryException $e) {
-            return redirect('keuanganPKK')->with('error', 'Data Keuangan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
+            return redirect('KeuanganPKK')->with('error', 'Data Keuangan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
 
-    // public function index()
-    // {
-    //     return view('PKK.Keuangan.index');
-    // }
-    // public function create()
-    // {
-    //     return view('PKK.Keuangan.create');
-    // }
-    // public function edit(){
-    //     return view('PKK.Keuangan.edit');
-    // }
-    // public function show(){
-    //     return view('PKK.Keuangan.show');
-    // }
 }

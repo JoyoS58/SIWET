@@ -20,7 +20,7 @@
             </div>
             <div class="card-body row">
                 <!-- Search and Filter Form -->
-                <form method="GET" action="{{ url('keuanganPKK') }}">
+                <form method="GET" action="{{ url('KeuanganPKK') }}">
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <input type="text" name="search" class="form-control" placeholder="Search by ID Transaksi..." value="{{ request('search') }}">
@@ -38,7 +38,7 @@
                     </div>
                 </form>
                 <div class="col text-right">
-                    <a type="button" class="btn btn-info add-transaction-button" href="{{url('keuanganPKK/create')}}">Tambah</a>
+                    <a type="button" class="btn btn-info add-transaction-button" href="{{url('KeuanganPKK/create')}}">Tambah</a>
                 </div>
 
                 <table class="table table-bordered table-hover">
@@ -54,22 +54,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($dataKeuangan as $index => $keuanganPKK)
+                        @foreach($dataKeuangan as $index => $KeuanganPKK)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $keuanganPKK->ID_Transaksi }}</td>
-                                <td>{{ $keuanganPKK->jenis_Transaksi }}</td>
-                                <td>{{ $keuanganPKK->nominal }}</td>
-                                <td>{{ $keuanganPKK->tanggal }}</td>
-                                <td>{{ $keuanganPKK->deskripsi }}</td>
+                                <td>{{ $KeuanganPKK->ID_Transaksi }}</td>
+                                <td>{{ $KeuanganPKK->jenis_Transaksi }}</td>
+                                <td>{{ $KeuanganPKK->nominal }}</td>
+                                <td>{{ $KeuanganPKK->tanggal }}</td>
+                                <td>{{ $KeuanganPKK->deskripsi }}</td>
                                 <td class="action-buttons">
-                                    <a href="{{url('keuanganPKK/show/' . $keuanganPKK->ID_Transaksi)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                    <a href="{{ url('keuanganPKK/edit/' . $keuanganPKK->ID_Transaksi) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                    <form id="deleteForm{{$keuanganPKK->ID_Transaksi}}" action="{{ url('keuanganPKK/delete/' . $keuanganPKK->ID_Transaksi) }}" method="POST" style="display: none;">
+                                    <a href="{{url('KeuanganPKK/show/' . $KeuanganPKK->ID_Transaksi)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{ url('KeuanganPKK/edit/' . $KeuanganPKK->ID_Transaksi) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <form id="deleteForm{{$KeuanganPKK->ID_Transaksi}}" action="{{ url('KeuanganPKK/delete/' . $KeuanganPKK->ID_Transaksi) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$keuanganPKK->ID_Transaksi}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$KeuanganPKK->ID_Transaksi}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach

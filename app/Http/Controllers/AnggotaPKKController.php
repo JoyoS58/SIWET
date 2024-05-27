@@ -82,7 +82,7 @@ class AnggotaPKKController extends Controller
     public function show(string $id)
     {
         $AnggotaPKK = AnggotaPKK::find($id);
-        return view('PKK.Anggota.show', ['anggota' => $AnggotaPKK]);
+        return view('PKK.Anggota.show', ['Anggota' => $AnggotaPKK]);
     }
 
     public function destroy(string $id)

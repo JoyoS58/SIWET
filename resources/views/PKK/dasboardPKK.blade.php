@@ -29,8 +29,8 @@
   
             <!-- Saldo Kas PKK -->
             @php
-              $keuanganPKK = \App\Models\KeuanganPKK::latest()->first(); // Mengambil data saldo terbaru dari database
-              $saldoFormatted = ($keuanganPKK) ? number_format($keuanganPKK->saldo, 0, ',', '.') : '0'; // Format jumlah saldo sesuai kebutuhan
+              $KeuanganPKK = \App\Models\KeuanganPKK::latest()->first(); // Mengambil data saldo terbaru dari database
+              $saldoFormatted = ($KeuanganPKK) ? number_format($KeuanganPKK->saldo, 0, ',', '.') : '0'; // Format jumlah saldo sesuai kebutuhan
             @endphp
             <div class="col-12 col-sm-6 col-md-6">
               <div class="info-box mb-3">
@@ -49,7 +49,7 @@
           </div>
       </div>
       @php
-      $kegiatans = \App\Models\KegiatanPKK::all(); // Menghitung jumlah warga
+      $Kegiatans = \App\Models\KegiatanPKK::all(); // Menghitung jumlah warga
       @endphp
       <div class="row">
                 <div class="col-md-6">
@@ -69,12 +69,12 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach($kegiatans as $index => $kegiatan)
+                      @foreach($Kegiatans as $index => $Kegiatan)
                       <tr>
                           <td>{{ $index + 1 }}</td>
-                          <td>{{ $kegiatan->nama_Kegiatan }}</td>
-                          <td>{{ $kegiatan->tanggal }}</td>
-                          <td>{{ $kegiatan->deskripsi }}</td>
+                          <td>{{ $Kegiatan->nama_Kegiatan }}</td>
+                          <td>{{ $Kegiatan->tanggal }}</td>
+                          <td>{{ $Kegiatan->deskripsi }}</td>
                       </tr>
                       @endforeach
                   </tbody>
@@ -97,7 +97,7 @@
 
                 <!-- Info box untuk tabel kedua di samping -->
                 @php
-                $keuangans = \App\Models\KeuanganPKK::all(); // Menghitung jumlah warga
+                $Keuangans = \App\Models\KeuanganPKK::all(); // Menghitung jumlah warga
                 @endphp
                 <div class="col-md-6">
                     <div class="card">
@@ -116,12 +116,12 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  @foreach($keuangans as $index => $keuangan)
+                                  @foreach($Keuangans as $index => $Keuangan)
                                   <tr>
                                       <td>{{ $index + 1 }}</td>
-                                      <td>{{ $keuangan->jenis_Transaksi }}</td>
-                                      <td>{{ $keuangan->nominal }}</td>
-                                      <td>{{ $keuangan->deskripsi }}</td>
+                                      <td>{{ $Keuangan->jenis_Transaksi }}</td>
+                                      <td>{{ $Keuangan->nominal }}</td>
+                                      <td>{{ $Keuangan->deskripsi }}</td>
                                   </tr>
                                   @endforeach
                               </tbody>

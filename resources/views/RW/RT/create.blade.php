@@ -17,8 +17,8 @@
                 <div class="form-group row">
                     <label class="col-2 control-label col-form-label">Ketua RT</label>
                     <div class="col-10">
-                        <input type="text" class="form-control" id="ketua_rt" name="ketua_rt" placeholder="Masukkan Nama Ketua RT" required>
-                        @error('ketua_rt')
+                        <input type="text" class="form-control" id="ketua_RT" name="ketua_RT" placeholder="Masukkan Nama Ketua RT" required>
+                        @error('ketua_RT')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -26,8 +26,8 @@
                 <div class="form-group row">
                     <label class="col-2 control-label col-form-label">Sekretaris RT</label>
                     <div class="col-10">
-                        <input type="text" class="form-control" id="sekretaris_rt" name="sekretaris_rt" placeholder="Masukkan Nama Sekretaris RT" required>
-                        @error('sekretaris_rt')
+                        <input type="text" class="form-control" id="sekretaris_RT" name="sekretaris_RT" placeholder="Masukkan Nama Sekretaris RT" required>
+                        @error('sekretaris_RT')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -35,8 +35,8 @@
                 <div class="form-group row">
                     <label class="col-2 control-label col-form-label">Bendahara RT</label>
                     <div class="col-10">
-                        <input type="text" class="form-control" id="bendahara_rt" name="bendahara_rt" placeholder="Masukkan Nama Bendahara RT" required>
-                        @error('bendahara_rt')
+                        <input type="text" class="form-control" id="bendahara_RT" name="bendahara_RT" placeholder="Masukkan Nama Bendahara RT" required>
+                        @error('bendahara_RT')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -44,8 +44,8 @@
                 <div class="form-group row">
                     <label class="col-2 control-label col-form-label">Nomor RT</label>
                     <div class="col-10">
-                        <input type="number" class="form-control" id="nomor_rt" name="nomor_rt" placeholder="Masukkan Nomor RT" required>
-                        @error('nomor_rt')
+                        <input type="number" class="form-control" id="nomor_RT" name="nomor_RT" placeholder="Masukkan Nomor RT" required>
+                        @error('nomor_RT')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     </div>
@@ -54,7 +54,7 @@
                     <label class="col-2 control-label col-form-label"></label>
                     <div class="col-10">
                         <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                        <a href="{{url('/RT')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
+                        <a href="{{url('RT')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
                     </div>
                 </div>
             </form>

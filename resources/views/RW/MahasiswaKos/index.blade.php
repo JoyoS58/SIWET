@@ -59,24 +59,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($mahasiswaKos as $index => $mahasiswa)
+                        @foreach($MahasiswaKos as $index => $Mahasiswa)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $mahasiswa->nama }}</td>
-                                <td>{{ $mahasiswa->tempat_Tanggal_Lahir }}</td>
-                                <td>{{ $mahasiswa->alamat_Kos }}</td>
-                                <td>{{ $mahasiswa->jenis_Kelamin }}</td>
-                                <td>{{ $mahasiswa->agama }}</td>
-                                <td>{{ $mahasiswa->universitas }}</td>
-                                <td>{{ $mahasiswa->jurusan }}</td>
+                                <td>{{ $Mahasiswa->nama }}</td>
+                                <td>{{ $Mahasiswa->tempat_Tanggal_Lahir }}</td>
+                                <td>{{ $Mahasiswa->alamat_Kos }}</td>
+                                <td>{{ $Mahasiswa->jenis_Kelamin }}</td>
+                                <td>{{ $Mahasiswa->agama }}</td>
+                                <td>{{ $Mahasiswa->universitas }}</td>
+                                <td>{{ $Mahasiswa->jurusan }}</td>
                                 <td class="action-buttons">
-                                    <a href="{{url('MahasiswaKos/show/' . $mahasiswa->NIK)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                    <a href="{{url('MahasiswaKos/edit/' . $mahasiswa->NIK)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                    <form id="deleteForm{{$mahasiswa->NIK}}" action="{{ url('MahasiswaKos/delete/' . $mahasiswa->NIK) }}" method="POST" style="display: none;">
+                                    <a href="{{url('MahasiswaKos/show/' . $Mahasiswa->NIK)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{url('MahasiswaKos/edit/' . $Mahasiswa->NIK)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <form id="deleteForm{{$Mahasiswa->NIK}}" action="{{ url('MahasiswaKos/delete/' . $Mahasiswa->NIK) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$mahasiswa->NIK}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$Mahasiswa->NIK}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach

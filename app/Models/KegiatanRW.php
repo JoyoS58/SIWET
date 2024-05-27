@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class KegiatanRW extends Model
 {
-    protected $table = 'kegiatan_rw';
+    protected $table = 'Kegiatan_RW';
     protected $primaryKey = 'ID_Kegiatan_RW';
 
     protected $fillable = [
@@ -20,7 +20,7 @@ class KegiatanRW extends Model
         'penanggung_Jawab',
         'deskripsi',
     ];
-    public function rw(): BelongsTo{
+    public function RW(): BelongsTo{
         return $this->belongsTo(RW::class, 'ID_RW', 'ID_RW');
     }
 }

@@ -32,10 +32,10 @@ class RTController extends Controller
     }
     public function store(Request $request){
         $validate = $request->validate([
-            'ketua_rt' => 'required',
-            'sekretaris_rt' => 'required',
-            'bendahara_rt' => 'required',
-            'nomor_rt' => 'required|unique:RT,nomor_RT',
+            'ketua_RT' => 'required',
+            'sekretaris_RT' => 'required',
+            'bendahara_RT' => 'required',
+            'nomor_RT' => 'required|unique:RT,nomor_RT',
         ]);
     
         RT::create([
@@ -60,10 +60,10 @@ class RTController extends Controller
 
     public function update(Request $request, string $id){
         $request->validate([
-            'ketua_rt' => 'required',
-            'sekretaris_rt' => 'required',
-            'bendahara_rt' => 'required',
-            'nomor_rt' => 'required|unique:RT,nomor_RT,'.$id.',ID_RT',
+            'ketua_RT' => 'required',
+            'sekretaris_RT' => 'required',
+            'bendahara_RT' => 'required',
+            'nomor_RT' => 'required|unique:RT,nomor_RT,'.$id.',ID_RT',
         ]);
     
         RT::find($id)->update([

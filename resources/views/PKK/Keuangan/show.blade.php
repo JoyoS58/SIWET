@@ -10,22 +10,22 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>Jenis Transaksi</th>
-                        <td>{{$keuanganPKK->jenis_Transaksi}}</td>
+                        <td>{{$KeuanganPKK->jenis_Transaksi}}</td>
                     </tr>
                     <tr>
                         <th>Nominal</th>
-                        <td>{{$keuanganPKK->nominal}}</td>
+                        <td>{{$KeuanganPKK->nominal}}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Transaksi</th>
-                        <td>{{$keuanganPKK->tanggal}}</td>
+                        <td>{{$KeuanganPKK->tanggal}}</td>
                     </tr>
                     <tr>
                         <th>Keterangan</th>
-                        <td>{{$keuanganPKK->deskripsi}}</td>
+                        <td>{{$KeuanganPKK->deskripsi}}</td>
                     </tr>
                 </table>
-            <a href="{{url('keuanganPKK')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{url('KeuanganPKK')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection

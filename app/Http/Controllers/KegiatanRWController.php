@@ -51,7 +51,7 @@ class KegiatanRWController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect('kegiatanRW')->with('success', 'Data Kegiatan Berhasil Disimpan');
+        return redirect('KegiatanRW')->with('success', 'Data Kegiatan Berhasil Disimpan');
     }
     public function create()
     {
@@ -60,9 +60,9 @@ class KegiatanRWController extends Controller
     }
     public function edit(string $id)
     {
-        $kegiatanRW = KegiatanRW::find($id);
+        $KegiatanRW = KegiatanRW::find($id);
         $RW = RW::all();
-        return view('RW.Kegiatan.edit', ['kegiatanRW' => $kegiatanRW,'RW' => $RW]);
+        return view('RW.Kegiatan.edit', ['KegiatanRW' => $KegiatanRW,'RW' => $RW]);
     }
     public function update(Request $request, string $id)
     {
@@ -85,41 +85,25 @@ class KegiatanRWController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect('kegiatanRW')->with('success', 'Data Kegiatan Berhasil Diubah');
+        return redirect('KegiatanRW')->with('success', 'Data Kegiatan Berhasil Diubah');
     }
     public function show(string $id)
     {
-        $kegiatanRW = KegiatanRW::find($id);
-        return view('RW.Kegiatan.show', ['kegiatanRW' => $kegiatanRW]);
+        $KegiatanRW = KegiatanRW::find($id);
+        return view('RW.Kegiatan.show', ['KegiatanRW' => $KegiatanRW]);
     }
     public function destroy(string $id)
     {
         $check = KegiatanRW::find($id);
         if (!$check) {
-            return redirect('kegiatanRW')->with('error', 'Data Kegiatan tidak ditemukan');
+            return redirect('KegiatanRW')->with('error', 'Data Kegiatan tidak ditemukan');
         }
         try {
             KegiatanRW::destroy($id);
 
-            return redirect('kegiatanRW')->with('success', 'Data Kegiatan berhasil dihapus');
+            return redirect('KegiatanRW')->with('success', 'Data Kegiatan berhasil dihapus');
         } catch (\illuminate\Database\QueryException $e) {
-            return redirect('kegiatanRW')->with('error', 'Data Kegiatan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
+            return redirect('KegiatanRW')->with('error', 'Data Kegiatan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
-    // public function index()
-    // {
-    //     return view('RW.Kegiatan.index');
-    // }
-    // public function create()
-    // {
-    //     return view('RW.Kegiatan.create');
-    // }
-    // public function edit()
-    // {
-    //     return view('RW.Kegiatan.edit');
-    // }
-    // public function show()
-    // {
-    //     return view('RW.Kegiatan.show');
-    // }
 }

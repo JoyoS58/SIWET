@@ -20,7 +20,7 @@
             </div>
             <div class="card-body row">
                 <!-- Search and Filter Form -->
-                <form method="GET" action="{{ url('keuanganRW') }}">
+                <form method="GET" action="{{ url('KeuanganRW') }}">
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
@@ -41,7 +41,7 @@
                     </div>
                 </form>
                 <div class="col text-right">
-                    <a type="button" class="btn btn-info add-transaction-button" href="{{ url('keuanganRW/create') }}">Tambah</a>
+                    <a type="button" class="btn btn-info add-transaction-button" href="{{ url('KeuanganRW/create') }}">Tambah</a>
                 </div>
 
                 <table class="table table-bordered table-hover">
@@ -58,23 +58,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($dataKeuangan as $index => $keuanganRW)
+                        @foreach($dataKeuangan as $index => $KeuanganRW)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $keuanganRW->ID_Transaksi }}</td>
-                                <td>{{ $keuanganRW->jenis_Transaksi }}</td>
-                                <td>{{ $keuanganRW->nominal }}</td>
-                                <td>{{ $keuanganRW->tanggal_Transaksi }}</td>
-                                <td>{{ $keuanganRW->deskripsi }}</td>
-                                {{-- <td>{{ $keuanganRW->saldo }}</td> --}}
+                                <td>{{ $KeuanganRW->ID_Transaksi }}</td>
+                                <td>{{ $KeuanganRW->jenis_Transaksi }}</td>
+                                <td>{{ $KeuanganRW->nominal }}</td>
+                                <td>{{ $KeuanganRW->tanggal_Transaksi }}</td>
+                                <td>{{ $KeuanganRW->deskripsi }}</td>
+                                {{-- <td>{{ $KeuanganRW->saldo }}</td> --}}
                                 <td class="action-buttons">
-                                    <a href="{{ url('keuanganRW/show/' . $keuanganRW->ID_Transaksi) }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                    <a href="{{ url('keuanganRW/edit/' . $keuanganRW->ID_Transaksi) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                    <form id="deleteForm{{ $keuanganRW->ID_Transaksi }}" action="{{ url('keuanganRW/delete/' . $keuanganRW->ID_Transaksi) }}" method="POST" style="display: none;">
+                                    <a href="{{ url('KeuanganRW/show/' . $KeuanganRW->ID_Transaksi) }}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{ url('KeuanganRW/edit/' . $KeuanganRW->ID_Transaksi) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <form id="deleteForm{{ $KeuanganRW->ID_Transaksi }}" action="{{ url('KeuanganRW/delete/' . $KeuanganRW->ID_Transaksi) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{ $keuanganRW->ID_Transaksi }}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{ $KeuanganRW->ID_Transaksi }}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach

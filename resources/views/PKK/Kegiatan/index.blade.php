@@ -21,7 +21,7 @@
                 <div class="card-body row">
                     
                     <div class="col">
-                        <form method="GET" action="{{ url('kegiatanPKK') }}">
+                        <form method="GET" action="{{ url('KegiatanPKK') }}">
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ request('search') }}">
@@ -43,7 +43,7 @@
                         </form>
                     </div>
                     <div class="col text-right">
-                        <a type="button" class="btn btn-info add-transaction-button" href="{{url('kegiatanPKK/create')}}">Tambah</a>
+                        <a type="button" class="btn btn-info add-transaction-button" href="{{url('KegiatanPKK/create')}}">Tambah</a>
                     </div>
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -60,23 +60,23 @@
                         </thead>
                         <tbody>
 
-                            @foreach($dataKegiatan as $index => $kegiatanPKK)
+                            @foreach($dataKegiatan as $index => $KegiatanPKK)
                                 <tr>
                                     <td>{{ $index + 1}}</td>
-                                    <td>{{ $kegiatanPKK->nama_Kegiatan }}</td>
-                                    <td>{{ $kegiatanPKK->waktu }}</td>
-                                    <td>{{ $kegiatanPKK->tanggal }}</td>
-                                    <td>{{ $kegiatanPKK->penanggung_Jawab }}</td>
-                                    <td>{{ $kegiatanPKK->tempat }}</td>
-                                    <td>{{ $kegiatanPKK->deskripsi }}</td>
+                                    <td>{{ $KegiatanPKK->nama_Kegiatan }}</td>
+                                    <td>{{ $KegiatanPKK->waktu }}</td>
+                                    <td>{{ $KegiatanPKK->tanggal }}</td>
+                                    <td>{{ $KegiatanPKK->penanggung_Jawab }}</td>
+                                    <td>{{ $KegiatanPKK->tempat }}</td>
+                                    <td>{{ $KegiatanPKK->deskripsi }}</td>
                                     <td class="action-buttons">
-                                        <a href="{{url('kegiatanPKK/show/' . $kegiatanPKK->ID_Kegiatan)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                        <a href="{{url('kegiatanPKK/edit/' . $kegiatanPKK->ID_Kegiatan)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                        <form id="deleteForm{{$kegiatanPKK->ID_Kegiatan}}" action="{{ url('kegiatanPKK/delete/' . $kegiatanPKK->ID_Kegiatan) }}" method="POST" style="display: none;">
+                                        <a href="{{url('KegiatanPKK/show/' . $KegiatanPKK->ID_Kegiatan)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                        <a href="{{url('KegiatanPKK/edit/' . $KegiatanPKK->ID_Kegiatan)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                        <form id="deleteForm{{$KegiatanPKK->ID_Kegiatan}}" action="{{ url('KegiatanPKK/delete/' . $KegiatanPKK->ID_Kegiatan) }}" method="POST" style="display: none;">
                                             @csrf
                                             @method('DELETE')
                                         </form>
-                                        <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$kegiatanPKK->ID_Kegiatan}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                        <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$KegiatanPKK->ID_Kegiatan}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

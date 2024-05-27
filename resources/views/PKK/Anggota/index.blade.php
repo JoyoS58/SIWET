@@ -55,20 +55,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($AnggotaPKK as $index => $anggota)
+                        @foreach($AnggotaPKK as $index => $Anggota)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $anggota->nama }}</td>
-                                <td>{{ $anggota->jabatan }}</td>
-                                <td>{{ $anggota->nomor_Telepon }}</td>
+                                <td>{{ $Anggota->nama }}</td>
+                                <td>{{ $Anggota->jabatan }}</td>
+                                <td>{{ $Anggota->nomor_Telepon }}</td>
                                 <td class="action-buttons">
-                                    <a href="{{url('AnggotaPKK/show/' . $anggota->ID_Anggota)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                    <a href="{{url('AnggotaPKK/edit/' . $anggota->ID_Anggota)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                    <form id="deleteForm{{$anggota->ID_Anggota}}" action="{{ url('AnggotaPKK/delete/' . $anggota->ID_Anggota) }}" method="POST" style="display: none;">
+                                    <a href="{{url('AnggotaPKK/show/' . $Anggota->ID_Anggota)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
+                                    <a href="{{url('AnggotaPKK/edit/' . $Anggota->ID_Anggota)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <form id="deleteForm{{$Anggota->ID_Anggota}}" action="{{ url('AnggotaPKK/delete/' . $Anggota->ID_Anggota) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
-                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$anggota->ID_Anggota}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$Anggota->ID_Anggota}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach

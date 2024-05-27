@@ -11,23 +11,23 @@
             <table class="table table-bordered table-striped table-hover table-sm">
                 <tr>
                     <th>ID Anggota</th>
-                    <td>{{ $anggota->ID_Anggota }}</td>
+                    <td>{{ $Anggota->ID_Anggota }}</td>
                 </tr>
                 <tr>
                     <th>ID Pengurus</th>
-                    <td>{{ $anggota->ID_Pengurus }}</td>
+                    <td>{{ $Anggota->ID_Pengurus }}</td>
                 </tr>
                 <tr>
                     <th>Nama</th>
-                    <td>{{ $anggota->nama }}</td>
+                    <td>{{ $Anggota->nama }}</td>
                 </tr>
                 <tr>
                     <th>Jabatan</th>
-                    <td>{{ $anggota->jabatan }}</td>
+                    <td>{{ $Anggota->jabatan }}</td>
                 </tr>
                 <tr>
                     <th>Nomor Telepon</th>
-                    <td>{{ $anggota->nomor_Telepon }}</td>
+                    <td>{{ $Anggota->nomor_Telepon }}</td>
                 </tr>
             </table>
             <a href="{{ url('AnggotaPKK') }}" class="btn btn-sm btn-default mt-2">Kembali</a>

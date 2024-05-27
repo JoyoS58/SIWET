@@ -55,7 +55,7 @@ Route::get('welcome', function () {
 
 
 
-Route::group(['prefix' => 'keuanganRW'], function(){
+Route::group(['prefix' => 'KeuanganRW'], function(){
     Route::get('/', [KeuanganRWController::class, 'index']);
     Route::post('/list', [KeuanganRWController::class, 'list']);
     Route::get('/create', [KeuanganRWController::class, 'create']);
@@ -65,7 +65,7 @@ Route::group(['prefix' => 'keuanganRW'], function(){
     Route::put('/{id}', [KeuanganRWController::class, 'update']);
     Route::delete('/delete/{id}', [KeuanganRWController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'keuanganPKK'], function(){
+Route::group(['prefix' => 'KeuanganPKK'], function(){
     Route::get('/', [KeuanganPKKController::class, 'index']);
     Route::post('/list', [KeuanganPKKController::class, 'list']);
     Route::get('/create', [KeuanganPKKController::class, 'create']);
@@ -117,7 +117,7 @@ Route::group(['prefix' => 'AnggotaPKK'], function(){
 // Route::get('/anggotaPKK/create',[AnggotaPKKController::class,'create']);
 // Route::get('/anggotaPKK/edit',[AnggotaPKKController::class,'edit']);
 // Route::get('/anggotaPKK/show',[AnggotaPKKController::class,'show']);
-Route::group(['prefix' => 'kegiatanRW'], function(){
+Route::group(['prefix' => 'KegiatanRW'], function(){
     Route::get('/', [KegiatanRWController::class, 'index']);
     Route::post('/list', [KegiatanRWController::class, 'list']);
     Route::get('/create', [KegiatanRWController::class, 'create']);
@@ -127,7 +127,7 @@ Route::group(['prefix' => 'kegiatanRW'], function(){
     Route::put('/{id}', [KegiatanRWController::class, 'update']);
     Route::delete('/delete/{id}', [KegiatanRWController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'kegiatanPKK'], function(){
+Route::group(['prefix' => 'KegiatanPKK'], function(){
     Route::get('/', [KegiatanPKKController::class, 'index']);
     Route::post('/list', [KegiatanPKKController::class, 'list']);
     Route::get('/create', [KegiatanPKKController::class, 'create']);
@@ -141,10 +141,6 @@ Route::group(['prefix' => 'spk'], function(){
     Route::get('/', [SpkController::class, 'index']);
 
 });
-// Route::get('/kegiatanPKK',[KegiatanPKKController::class,'index']);
-// Route::get('/kegiatanPKK/create',[KegiatanPKKController::class,'create']);
-// Route::get('/kegiatanPKK/edit',[KegiatanPKKController::class,'edit']);
-// Route::get('/kegiatanPKK/show',[KegiatanPKKController::class,'show']);
 
 Route::group(['middleware' => ['auth']], function(){
 

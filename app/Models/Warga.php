@@ -10,7 +10,7 @@ class Warga extends Model
 {
     use HasFactory;
 
-    protected $table = "warga";
+    protected $table = "Warga";
     protected $primaryKey = "NIK";
 
     protected $fillable = ['NIK','ID_RT','nomor_KK','nama','tempat_Tanggal_Lahir','agama','alamat','pekerjaan','jenis_Kelamin','jenis_Penduduk'];

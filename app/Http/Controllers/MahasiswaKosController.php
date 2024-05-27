@@ -40,8 +40,8 @@ class MahasiswaKosController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nik' => 'required|unique:mahasiswa_kos,NIK',
-            'id_rt' => 'required',
+            'NIK' => 'required|unique:Mahasiswa_Kos,NIK',
+            'ID_RT' => 'required',
             'nama' => 'required',
             'ttl' => 'required',
             'alamatkos' => 'required',
@@ -80,8 +80,8 @@ class MahasiswaKosController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nik' => 'required',
-            'id_rt' => 'required',
+            'NIK' => 'required',
+            'ID_RT' => 'required',
             'nama' => 'required',
             'ttl' => 'required',
             'alamatkos' => 'required',
