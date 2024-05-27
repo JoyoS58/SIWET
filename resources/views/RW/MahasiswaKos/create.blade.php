@@ -19,15 +19,15 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 control-label col-form-label" for="id_rt">ID_RT</label>
+                <label class="col-2 control-label col-form-label" for="id_RT">ID_RT</label>
                 <div class="col-10">
-                    <select class="form-control" id="id_rt" name="id_rt" required>
+                    <select class="form-control" id="id_RT" name="id_RT" required>
                         <option value="">Pilih ID_RT</option>
-                        @foreach($RT as $rt)
-                            <option value="{{ $rt->ID_RT }}"> RT {{ $rt->nomor_RT }}</option>
+                        @foreach($RT as $RT)
+                            <option value="{{ $RT->ID_RT }}"> RT {{ $RT->nomor_RT }}</option>
                         @endforeach
                     </select>
-                    @error('id_rt')
+                    @error('id_RT')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>

@@ -7,10 +7,10 @@
         </div>
         <div class="card-body">
             @if (session('success'))
-                <div class="alert alert-success">{{session('success')}}</div>
+                <div class="aleRT aleRT-success">{{session('success')}}</div>
             @endif
             @if (session('error'))
-                <div class="alert alert-danger">{{session('error')}}</div>
+                <div class="aleRT aleRT-danger">{{session('error')}}</div>
             @endif
             <form action="{{url('RT')}}" method="POST" class="form-horizontal">
                 @csrf

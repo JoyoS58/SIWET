@@ -24,8 +24,8 @@
                 <div class="col-10">
                     <select class="form-control" id="ID_RT" name="ID_RT" required>
                         <option value="">Pilih ID_RT</option>
-                        @foreach($RT as $rt)
-                            <option value="{{ $rt->ID_RT }}" @if(old('ID_RT', $Warga->ID_RT) == $rt->ID_RT) selected @endif> RT {{ $rt->nomor_RT }}</option>
+                        @foreach($RT as $RT)
+                            <option value="{{ $RT->ID_RT }}" @if(old('ID_RT', $Warga->ID_RT) == $RT->ID_RT) selected @endif> RT {{ $RT->nomor_RT }}</option>
                         @endforeach
                     </select>
                     @error('ID_RT')
