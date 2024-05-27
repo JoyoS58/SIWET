@@ -105,18 +105,4 @@ class KegiatanPKKController extends Controller
             return redirect('kegiatanPKK')->with('error', 'Data Kegiatan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
-    // public function index()
-    // {
-    //     return view('PKK.Kegiatan.index');
-    // }
-    // public function create()
-    // {
-    //     return view('PKK.Kegiatan.create');
-    // }
-    // public function edit(){
-    //     return view('PKK.Kegiatan.edit');
-    // }
-    // public function show(){
-    //     return view('PKK.Kegiatan.show');
-    // }
 }
