@@ -6,7 +6,7 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            <form action="{{url('RT' . $RT->ID_RT)}}" method="POST" class="form-horizontal">
+            <form action="{{url('RT/' . $RT->ID_RT)}}" method="POST" class="form-horizontal">
                @csrf
                 {!! method_field('PUT') !!}
                 <div class="form-group row">
