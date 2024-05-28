@@ -56,5 +56,9 @@
                     </li>
                 </ul>
         </ul>
+        <a href="{{ url('/logout') }}" class="nav-link text-white">
+            <i class="nav-icon fas fa-cubes"></i>
+            <p>Logout</p>
+        </a>
     </nav>
 </div>

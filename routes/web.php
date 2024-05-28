@@ -26,17 +26,26 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware(['auth'])->group(function () {
+    // Rute-rute yang memerlukan autentikasi
+    Route::get('/RW', function () {
+        return view('RW.dasboardRW');
+    });
+
+    Route::get('/PKK', function () {
+        return view('PKK.dasboardPKK');
+    });
+
+    Route::get('pengajuan/show/{id}', [SPKController::class, 'show']);
+
+    Route::get('welcome', function () {
+        return view('welcome');
+    })->name('welcome');
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/RW', function () {
-    return view('RW.dasboardRW');
-});
-Route::get('/PKK', function () {
-    return view('PKK.dasboardPKK');
-});
-Route::get('pengajuan/show/{id}', [SPKController::class, 'show']);
 
 
 //Auth::routes();
@@ -47,15 +56,10 @@ Route::get('/sesi', [SessionController::class, 'index'])->name('sesi.get');
 Route::post('/proses_login', [SessionController::class, 'login'])->name('sesi.post');
 Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
 
-Route::get('welcome', function () {
-    return view('welcome'); // Atau arahkan ke controller lain sesuai kebutuhan
-})->middleware('auth')->name('welcome');
 
 
 
-
-
-Route::group(['prefix' => 'KeuanganRW'], function(){
+Route::group(['prefix' => 'KeuanganRW','middleware' => ['auth']], function(){
     Route::get('/', [KeuanganRWController::class, 'index']);
     Route::post('/list', [KeuanganRWController::class, 'list']);
     Route::get('/create', [KeuanganRWController::class, 'create']);
@@ -65,7 +69,7 @@ Route::group(['prefix' => 'KeuanganRW'], function(){
     Route::put('/{id}', [KeuanganRWController::class, 'update']);
     Route::delete('/delete/{id}', [KeuanganRWController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'KeuanganPKK'], function(){
+Route::group(['prefix' => 'KeuanganPKK','middleware' => ['auth']], function(){
     Route::get('/', [KeuanganPKKController::class, 'index']);
     Route::post('/list', [KeuanganPKKController::class, 'list']);
     Route::get('/create', [KeuanganPKKController::class, 'create']);
@@ -76,7 +80,7 @@ Route::group(['prefix' => 'KeuanganPKK'], function(){
     Route::delete('/delete/{id}', [KeuanganPKKController::class, 'destroy']);    
 });
 
-Route::group(['prefix' => 'RT'], function(){
+Route::group(['prefix' => 'RT','middleware' => ['auth']], function(){
     Route::get('/',[RTController::class,'index']);
     Route::get('/create',[RTController::class,'create']);
     Route::post('/', [RTController::class, 'store']);
@@ -85,7 +89,7 @@ Route::group(['prefix' => 'RT'], function(){
     Route::get('/show/{id}', [RTController::class, 'show']);
     Route::delete('/delete/{id}', [RTController::class, 'destroy']);
 });
-Route::group(['prefix' => 'Warga'], function(){
+Route::group(['prefix' => 'Warga','middleware' => ['auth']], function(){
     Route::get('/',[WargaController::class,'index']);
     Route::get('/create',[WargaController::class,'create']);
     Route::post('/', [WargaController::class, 'store']);
@@ -94,7 +98,7 @@ Route::group(['prefix' => 'Warga'], function(){
     Route::get('/show/{id}', [WargaController::class, 'show']);
     Route::delete('/delete/{id}', [WargaController::class, 'destroy']);
 });
-Route::group(['prefix' => 'MahasiswaKos'], function(){
+Route::group(['prefix' => 'MahasiswaKos','middleware' => ['auth']], function(){
     Route::get('/',[MahasiswaKosController::class,'index']);
     Route::get('/create',[MahasiswaKosController::class,'create']);
     Route::post('/', [MahasiswaKosController::class, 'store']);
@@ -103,7 +107,7 @@ Route::group(['prefix' => 'MahasiswaKos'], function(){
     Route::get('/show/{id}', [MahasiswaKosController::class, 'show']);
     Route::delete('/delete/{id}', [MahasiswaKosController::class, 'destroy']);
 });
-Route::group(['prefix' => 'AnggotaPKK'], function(){
+Route::group(['prefix' => 'AnggotaPKK','middleware' => ['auth']], function(){
     Route::get('/',[AnggotaPKKController::class,'index']);
     Route::get('/create',[AnggotaPKKController::class,'create']);
     Route::post('/', [AnggotaPKKController::class, 'store']);
@@ -112,12 +116,7 @@ Route::group(['prefix' => 'AnggotaPKK'], function(){
     Route::get('/show/{id}', [AnggotaPKKController::class, 'show']);
     Route::delete('/delete/{id}', [AnggotaPKKController::class, 'destroy']);
 });
-
-// Route::get('/anggotaPKK',[AnggotaPKKController::class,'index']);
-// Route::get('/anggotaPKK/create',[AnggotaPKKController::class,'create']);
-// Route::get('/anggotaPKK/edit',[AnggotaPKKController::class,'edit']);
-// Route::get('/anggotaPKK/show',[AnggotaPKKController::class,'show']);
-Route::group(['prefix' => 'KegiatanRW'], function(){
+Route::group(['prefix' => 'KegiatanRW', 'middleware' => ['auth']], function(){
     Route::get('/', [KegiatanRWController::class, 'index']);
     Route::post('/list', [KegiatanRWController::class, 'list']);
     Route::get('/create', [KegiatanRWController::class, 'create']);
@@ -127,7 +126,7 @@ Route::group(['prefix' => 'KegiatanRW'], function(){
     Route::put('/{id}', [KegiatanRWController::class, 'update']);
     Route::delete('/delete/{id}', [KegiatanRWController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'KegiatanPKK'], function(){
+Route::group(['prefix' => 'KegiatanPKK','middleware' => ['auth']], function(){
     Route::get('/', [KegiatanPKKController::class, 'index']);
     Route::post('/list', [KegiatanPKKController::class, 'list']);
     Route::get('/create', [KegiatanPKKController::class, 'create']);
@@ -137,15 +136,14 @@ Route::group(['prefix' => 'KegiatanPKK'], function(){
     Route::put('/{id}', [KegiatanPKKController::class, 'update']);
     Route::delete('/delete/{id}', [KegiatanPKKController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'spk'], function(){
+Route::group(['prefix' => 'spk','middleware' => ['auth']], function(){
     Route::get('/', [SpkController::class, 'index']);
 
 });
 
 Route::group(['middleware' => ['auth']], function(){
-
     Route::group(['middleware' => ['cek_login:adminRW']], function(){
-        Route::resource('adminRW',AdminRWController::class);
+    Route::resource('adminRW',AdminRWController::class);
     });
 });
 
