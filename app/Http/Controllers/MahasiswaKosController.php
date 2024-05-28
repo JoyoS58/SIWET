@@ -29,13 +29,13 @@ class MahasiswaKosController extends Controller
         }
 
         // Get the filtered and searched data
-        $mahasiswaKos = $query->get();
+        $MahasiswaKos = $query->get();
 
         // Get distinct universities for the filter dropdown
         $universitas = MahasiswaKos::select('universitas')->distinct()->get();
 
         // Return the view with the data
-        return view('RW.MahasiswaKos.index', compact('mahasiswaKos', 'universitas'));
+        return view('RW.MahasiswaKos.index', compact('MahasiswaKos', 'universitas'));
     }
     public function store(Request $request)
     {
@@ -52,8 +52,8 @@ class MahasiswaKosController extends Controller
         ]);
 
         MahasiswaKos::create([
-            'NIK' => $request->nik,
-            'ID_RT' => $request->id_RT,
+            'NIK' => $request->NIK,
+            'ID_RT' => $request->ID_RT,
             'nama' => $request->nama,
             'tempat_Tanggal_Lahir' => $request->ttl,
             'alamat_Kos' => $request->alamatkos,
@@ -72,9 +72,9 @@ class MahasiswaKosController extends Controller
     }
     public function edit(string $id)
     {
-        $mahasiswaKos = MahasiswaKos::find($id);
+        $MahasiswaKos = MahasiswaKos::find($id);
         $RT = RT::all();
-        return view('RW.MahasiswaKos.edit', ['mahasiswaKos' => $mahasiswaKos, 'RT' => $RT]);
+        return view('RW.MahasiswaKos.edit', ['MahasiswaKos' => $MahasiswaKos, 'RT' => $RT]);
     }
 
     public function update(Request $request, string $id)
@@ -92,8 +92,8 @@ class MahasiswaKosController extends Controller
         ]);
 
         MahasiswaKos::find($id)->update([
-            'NIK' => $request->nik,
-            'ID_RT' => $request->id_RT,
+            'NIK' => $request->NIK,
+            'ID_RT' => $request->ID_RT,
             'nama' => $request->nama,
             'tempat_Tanggal_Lahir' => $request->ttl,
             'alamat_Kos' => $request->alamatkos,
@@ -107,8 +107,8 @@ class MahasiswaKosController extends Controller
     }
     public function show(string $id)
     {
-        $mahasiswaKos = MahasiswaKos::find($id);
-        return view('RW.MahasiswaKos.show', ['mahasiswa' => $mahasiswaKos]);
+        $MahasiswaKos = MahasiswaKos::find($id);
+        return view('RW.MahasiswaKos.show', ['Mahasiswa' => $MahasiswaKos]);
     }
 
     public function destroy(string $id)

@@ -13,22 +13,22 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">NIK</label>
                 <div class="col-10">
-                    <input type="number" class="form-control" id="nik" name="nik" value="{{old('NIK',$MahasiswaKos->NIK)}}" required>
-                    @error('nik')
+                    <input type="number" class="form-control" id="NIK" name="NIK" value="{{old('NIK',$MahasiswaKos->NIK)}}" required>
+                    @error('NIK')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 control-label col-form-label" for="id_RT">ID_RT</label>
+                <label class="col-2 control-label col-form-label" for="ID_RT">ID_RT</label>
                 <div class="col-10">
-                    <select class="form-control" id="id_RT" name="id_RT" required>
+                    <select class="form-control" id="ID_RT" name="ID_RT" required>
                         <option value="">Pilih ID_RT</option>
                         @foreach($RT as $RT)
                             <option value="{{ $RT->ID_RT }}" @if(old('ID_RT', $MahasiswaKos->ID_RT) == $RT->ID_RT) selected @endif> RT {{ $RT->nomor_RT }}</option>
                         @endforeach
                     </select>
-                    @error('id_RT')
+                    @error('ID_RT')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
@@ -63,12 +63,12 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Jenis Kelamin</label>
                 <div class="col-10">
-                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                    <select class="form-control" id="jenis_Kelamin" name="jenis_Kelamin" required>
                         <option value="">Pilih Jenis Kelamin</option>
-                        <option value="Laki-laki" @if(old('jenis_kelamin', $MahasiswaKos->jenis_Kelamin) == 'Laki-laki') selected @endif>Laki-laki</option>
-                        <option value="Perempuan" @if(old('jenis_kelamin', $MahasiswaKos->jenis_Kelamin) == 'Perempuan') selected @endif>Perempuan</option>
+                        <option value="Laki-laki" @if(old('jenis_Kelamin', $MahasiswaKos->jenis_Kelamin) == 'Laki-laki') selected @endif>Laki-laki</option>
+                        <option value="Perempuan" @if(old('jenis_Kelamin', $MahasiswaKos->jenis_Kelamin) == 'Perempuan') selected @endif>Perempuan</option>
                     </select>
-                    @error('jenis_kelamin')
+                    @error('jenis_Kelamin')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>

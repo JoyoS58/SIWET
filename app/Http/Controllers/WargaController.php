@@ -37,7 +37,7 @@ class WargaController extends Controller
     {
         $validate = $request->validate([
             'NIK' => 'required|unique:Warga,NIK',
-            'id_RT' => 'required',
+            'ID_RT' => 'required',
             'nokk' => 'required',
             'nama' => 'required',
             'ttl' => 'required',
@@ -49,8 +49,8 @@ class WargaController extends Controller
 
         Warga::create([
             'NIK' => $request->NIK,
-            'ID_RT' => $request->id_RT,
-            'nomor_KK' => $request->nokk,
+            'ID_RT' => $request->ID_RT,
+            'nomor_KK' => $request->nomor_KK,
             'nama' => $request->nama,
             'tempat_Tanggal_Lahir' => $request->ttl,
             'agama' => $request->agama,
@@ -78,7 +78,7 @@ class WargaController extends Controller
     {
         $request->validate([
             'NIK' => 'required',
-            'id_RT' => 'required',
+            'ID_RT' => 'required',
             'nokk' => 'required',
             'nama' => 'required',
             'ttl' => 'required',
@@ -91,8 +91,8 @@ class WargaController extends Controller
 
         Warga::find($id)->update([
             'NIK' => $request->NIK,
-            'ID_RT' => $request->id_RT,
-            'nomor_KK' => $request->nokk,
+            'ID_RT' => $request->ID_RT,
+            'nomor_KK' => $request->nomor_KK,
             'nama' => $request->nama,
             'tempat_Tanggal_Lahir' => $request->ttl,
             'agama' => $request->agama,
