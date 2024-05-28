@@ -12,16 +12,16 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">NIK</label>
                 <div class="col-10">
-                    <input type="number" class="form-control" id="nik" name="nik" placeholder="Masukkan NIK" required>
-                    @error('nik')
+                    <input type="number" class="form-control" id="NIK" name="NIK" placeholder="Masukkan NIK" required>
+                    @error('NIK')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 control-label col-form-label" for="id_RT">ID_RT</label>
+                <label class="col-2 control-label col-form-label" for="ID_RT">ID_RT</label>
                 <div class="col-10">
-                    <select class="form-control" id="id_RT" name="id_RT" required>
+                    <select class="form-control" id="ID_RT" name="ID_RT" required>
                         <option value="">Pilih ID_RT</option>
                         @foreach($RT as $RT)
                             <option value="{{ $RT->ID_RT }}"> RT {{ $RT->nomor_RT }}</option>
@@ -44,8 +44,8 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Tempat, Tanggal Lahir</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="ttl" name="ttl" placeholder="Masukkan Tempat dan Tanggal Lahir" required>
-                    @error('ttl')
+                    <input type="text" class="form-control" id="tempat_Tanggal_Lahir" name="tempat_Tanggal_Lahir" placeholder="Masukkan Tempat dan Tanggal Lahir" required>
+                    @error('tempat_Tanggal_Lahir')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
@@ -62,12 +62,12 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Jenis Kelamin</label>
                 <div class="col-10">
-                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                    <select class="form-control" id="jenis_Kelamin" name="jenis_Kelamin" required>
                         <option value="">Pilih Jenis Kelamin</option>
                         <option value="Laki-laki">Laki-laki</option>
                         <option value="Perempuan">Perempuan</option>
                     </select>
-                    @error('jenis_kelamin')
+                    @error('jenis_Kelamin')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>

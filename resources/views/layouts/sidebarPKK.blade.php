@@ -22,14 +22,14 @@
             </li>
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
-                <a href="{{ url('/keuanganPKK') }}" class="nav-link text-white">
+                <a href="{{ url('/KeuanganPKK') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-bookmark"></i>
                     <p>Keuangan</p>
                 </a>
             </li>
             <li class="nav-header">Kegiatan</li>
             <li class="nav-item">
-                <a href="{{ url('/kegiatanPKK') }}" class="nav-link text-white">
+                <a href="{{ url('/KegiatanPKK') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>Kegiatan</p>
                 </a>

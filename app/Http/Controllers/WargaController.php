@@ -37,10 +37,10 @@ class WargaController extends Controller
     {
         $validate = $request->validate([
             'NIK' => 'required|unique:Warga,NIK',
-            'id_RT' => 'required',
-            'nokk' => 'required',
+            'ID_RT' => 'required',
+            'nomor_KK' => 'required',
             'nama' => 'required',
-            'ttl' => 'required',
+            'tempat_Tanggal_Lahir' => 'required',
             'jenis_Kelamin' => 'required',
             'alamat' => 'required',
             'agama' => 'required',
@@ -49,10 +49,10 @@ class WargaController extends Controller
 
         Warga::create([
             'NIK' => $request->NIK,
-            'ID_RT' => $request->id_RT,
-            'nomor_KK' => $request->nokk,
+            'ID_RT' => $request->ID_RT,
+            'nomor_KK' => $request->nomor_KK,
             'nama' => $request->nama,
-            'tempat_Tanggal_Lahir' => $request->ttl,
+            'tempat_Tanggal_Lahir' => $request->tempat_Tanggal_Lahir,
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'pekerjaan' => $request->pekerjaan,
@@ -78,10 +78,10 @@ class WargaController extends Controller
     {
         $request->validate([
             'NIK' => 'required',
-            'id_RT' => 'required',
-            'nokk' => 'required',
+            'ID_RT' => 'required',
+            'nomor_KK' => 'required',
             'nama' => 'required',
-            'ttl' => 'required',
+            'tempat_Tanggal_Lahir' => 'required',
             'jenis_Kelamin' => 'required',
             'alamat' => 'required',
             'pekerjaan' => 'required',
@@ -91,10 +91,10 @@ class WargaController extends Controller
 
         Warga::find($id)->update([
             'NIK' => $request->NIK,
-            'ID_RT' => $request->id_RT,
-            'nomor_KK' => $request->nokk,
+            'ID_RT' => $request->ID_RT,
+            'nomor_KK' => $request->nomor_KK,
             'nama' => $request->nama,
-            'tempat_Tanggal_Lahir' => $request->ttl,
+            'tempat_Tanggal_Lahir' => $request->tempat_Tanggal_Lahir,
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'pekerjaan' => $request->pekerjaan,
