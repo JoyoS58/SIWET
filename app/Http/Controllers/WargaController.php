@@ -38,7 +38,7 @@ class WargaController extends Controller
         $validate = $request->validate([
             'NIK' => 'required|unique:Warga,NIK',
             'ID_RT' => 'required',
-            'nokk' => 'required',
+            'nomor_KK' => 'required',
             'nama' => 'required',
             'tempat_Tanggal_Lahir' => 'required',
             'jenis_Kelamin' => 'required',
@@ -79,7 +79,7 @@ class WargaController extends Controller
         $request->validate([
             'NIK' => 'required',
             'ID_RT' => 'required',
-            'nokk' => 'required',
+            'nomor_KK' => 'required',
             'nama' => 'required',
             'tempat_Tanggal_Lahir' => 'required',
             'jenis_Kelamin' => 'required',
