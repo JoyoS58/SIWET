@@ -45,8 +45,8 @@
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Tempat, Tanggal Lahir</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="ttl" name="ttl" value="{{old('tempat_Tanggal_Lahir',$MahasiswaKos->tempat_Tanggal_Lahir)}}" required>
-                    @error('ttl')
+                    <input type="text" class="form-control" id="tempat_Tanggal_Lahir" name="tempat_Tanggal_Lahir" value="{{old('tempat_Tanggal_Lahir',$MahasiswaKos->tempat_Tanggal_Lahir)}}" required>
+                    @error('tempat_Tanggal_Lahir')
                     <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
