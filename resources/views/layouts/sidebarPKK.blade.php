@@ -1,6 +1,6 @@
 <div class="sidebar text-white" style="position: fixed">
     <a href="{{ url('/PKK')}}" class="brand-link text-white">
-      <img src="../resources/img/logo.jpg" class="brand-image img-circle elevation-3">
+      <img src="{{ asset('assets/images/logo.jpg') }}" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">Admin PKK</span>
     </a>
     <!-- Sidebar Menu -->
@@ -22,14 +22,14 @@
             </li>
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
-                <a href="{{ url('/keuanganPKK') }}" class="nav-link text-white">
+                <a href="{{ url('/KeuanganPKK') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-bookmark"></i>
                     <p>Keuangan</p>
                 </a>
             </li>
             <li class="nav-header">Kegiatan</li>
             <li class="nav-item">
-                <a href="{{ url('/kegiatanPKK') }}" class="nav-link text-white">
+                <a href="{{ url('/KegiatanPKK') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>Kegiatan</p>
                 </a>
@@ -56,5 +56,9 @@
                     </li>
                 </ul>
         </ul>
+        <a href="{{ url('/logout') }}" class="nav-link text-white">
+            <i class="nav-icon fas fa-cubes"></i>
+            <p>Logout</p>
+        </a>
     </nav>
 </div>

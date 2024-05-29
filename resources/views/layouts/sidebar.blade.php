@@ -1,6 +1,6 @@
 <div class="sidebar text-white" style="position: fixed">
     <a href="{{ url('/RW')}}" class="brand-link text-white">
-      <img src="../resources/img/logo.jpg"class="brand-image img-circle elevation">
+      <img src="{{ asset('assets/images/logo.jpg') }}" class="brand-image img-circle elevation">
       <span class="brand-text font-weight-light">Admin RW</span>
     </a>
     <!-- Sidebar Menu -->
