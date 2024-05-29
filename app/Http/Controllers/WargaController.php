@@ -18,6 +18,7 @@ class WargaController extends Controller
                 $q->where('nama', 'LIKE', "%$search%")
                   ->orWhere('tempat_Tanggal_Lahir', 'LIKE', "%$search%")
                   ->orWhere('alamat', 'LIKE', "%$search%")
+                  ->orWhere('nomor_KK', 'LIKE', "%$search%")
                   ->orWhere('pekerjaan', 'LIKE', "%$search%");
             });
         }
