@@ -35,7 +35,7 @@ class MahasiswaKosController extends Controller
         $alamatKos = MahasiswaKos::select('alamat_Kos')->distinct()->get();
 
         // Return the view with the data
-        return view('RW.MahasiswaKos.index', compact('mahasiswaKos', 'alamatKos'));
+        return view('RW.MahasiswaKos.index', compact('MahasiswaKos', 'alamatKos'));
     }
     public function store(Request $request)
     {
