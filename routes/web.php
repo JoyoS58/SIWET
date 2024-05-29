@@ -16,7 +16,7 @@ use App\Http\Controllers\SPKController;
 use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\AuthenticateMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
