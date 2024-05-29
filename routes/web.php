@@ -16,7 +16,7 @@ use App\Http\Controllers\SPKController;
 use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\AuthenticateMiddleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -147,6 +147,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('adminRW',AdminRWController::class);
     });
 });
+
 Route::prefix('/spk')->group(function(){
     Route::prefix('alternatif')->group(function(){
         Route::get('/', [SPKController::class, 'indexAlternatif']);
