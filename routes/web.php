@@ -7,6 +7,7 @@ use App\Http\Controllers\KegiatanRWController;
 use App\Http\Controllers\KegiatanPKKController;
 use App\Http\Controllers\KeuanganRWController;
 use App\Http\Controllers\KeuanganPKKController;
+use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\MahasiswaKosController;
 use App\Http\Controllers\RTController;
@@ -193,3 +194,9 @@ Route::prefix('/spk')->group(function(){
         Route::delete('/delete/{id}', [SPKController::class, 'destroy']);
     });
 });
+
+Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
+Route::post('/kriteria', [KriteriaController::class, 'store'])->name('kriteria.store');
+Route::get('/kriteria/{id}/edit', [KriteriaController::class, 'edit'])->name('kriteria.edit');
+Route::post('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
+Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');

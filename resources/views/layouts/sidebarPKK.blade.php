@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/spk/kriteria') }}" class="nav-link text-white">
+                        <a href="{{ url('/kriteria') }}" class="nav-link text-white">
                             <i class="nav-icon fas fa-cubes"></i>
                             <p>Data Kriteria</p>
                         </a>
