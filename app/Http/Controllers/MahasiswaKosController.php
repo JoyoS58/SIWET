@@ -25,17 +25,17 @@ class MahasiswaKosController extends Controller
         // Check if filter input is present and not empty
         if ($request->has('filter') && $request->filter != '') {
             $filter = $request->filter;
-            $query->where('universitas', $filter);
+            $query->where('alamat_Kos', $filter);
         }
 
         // Get the filtered and searched data
         $MahasiswaKos = $query->get();
 
         // Get distinct universities for the filter dropdown
-        $universitas = MahasiswaKos::select('universitas')->distinct()->get();
+        $alamatKos = MahasiswaKos::select('alamat_Kos')->distinct()->get();
 
         // Return the view with the data
-        return view('RW.MahasiswaKos.index', compact('MahasiswaKos', 'universitas'));
+        return view('RW.MahasiswaKos.index', compact('MahasiswaKos', 'alamatKos'));
     }
     public function store(Request $request)
     {
