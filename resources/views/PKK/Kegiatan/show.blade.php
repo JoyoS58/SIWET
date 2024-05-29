@@ -10,30 +10,30 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>Nama Kegiatan</th>
-                        <td>{{$kegiatanPKK->nama_Kegiatan}}</td>
+                        <td>{{$KegiatanPKK->nama_Kegiatan}}</td>
                     </tr>
                     <tr>
                         <th>Waktu Kegiatan</th>
-                        <td>{{$kegiatanPKK->waktu}}</td>
+                        <td>{{$KegiatanPKK->waktu}}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Kegiatan </th>
-                        <td>{{$kegiatanPKK->tanggal}}</td>
+                        <td>{{$KegiatanPKK->tanggal}}</td>
                     </tr>
                     <tr>
                         <th>Penanggung Jawab</th>
-                        <td>{{$kegiatanPKK->penanggung_Jawab}}</td>
+                        <td>{{$KegiatanPKK->penanggung_Jawab}}</td>
                     </tr>
                     <tr>
                         <th>Tempat Kegiatan</th>
-                        <td>{{$kegiatanPKK->tempat}}</td>
+                        <td>{{$KegiatanPKK->tempat}}</td>
                     </tr>
                     <tr>
                         <th>Keterangan</th>
-                        <td>{{$kegiatanPKK->deskripsi}}</td>
+                        <td>{{$KegiatanPKK->deskripsi}}</td>
                     </tr>
                 </table>
-            <a href="{{url('kegiatanPKK')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{url('KegiatanPKK')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection

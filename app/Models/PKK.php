@@ -9,7 +9,7 @@ class PKK extends Model
 {
     use HasFactory;
 
-    protected $table = "pkk";
+    protected $table = "PKK";
     protected $primaryKey ="ID_Pengurus";
 
     protected $fillable = ['ID_RW','nama_Pengurus','jabatan'];

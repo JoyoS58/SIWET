@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KegiatanPKK extends Model
 {
     use HasFactory;
-    protected $table = 'kegiatan_pkk';
+    protected $table = 'Kegiatan_PKK';
     protected $primaryKey = 'ID_Kegiatan';
 
     protected $fillable = [
@@ -20,7 +20,7 @@ class KegiatanPKK extends Model
         'penanggung_Jawab',
         'deskripsi',
     ];
-    public function rw(){
+    public function RW(){
         return $this->belongsTo(PKK::class, 'ID_Pengurus', 'ID_Pengurus');
     }
 }

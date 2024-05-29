@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('alternatif', function(Blueprint $table){
+            $table->id('ID_alternatif');
+            $table->string('nama_alternatif',191);
+            $table->timestamps();
+        });
         
     }
 

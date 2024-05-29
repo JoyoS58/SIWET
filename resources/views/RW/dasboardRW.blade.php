@@ -89,7 +89,7 @@
         <!-- /.row -->
       </div>
       @php
-      $kegiatans = \App\Models\KegiatanRW::all(); // Menghitung jumlah warga
+      $Kegiatans = \App\Models\KegiatanRW::all(); // Menghitung jumlah warga
       @endphp
       <div class="row">
                 <div class="col-md-6">
@@ -109,12 +109,12 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach($kegiatans as $index => $kegiatan)
+                      @foreach($Kegiatans as $index => $Kegiatan)
                       <tr>
                           <td>{{ $index + 1 }}</td>
-                          <td>{{ $kegiatan->nama_Kegiatan }}</td>
-                          <td>{{ $kegiatan->tanggal }}</td>
-                          <td>{{ $kegiatan->deskripsi }}</td>
+                          <td>{{ $Kegiatan->nama_Kegiatan }}</td>
+                          <td>{{ $Kegiatan->tanggal }}</td>
+                          <td>{{ $Kegiatan->deskripsi }}</td>
                       </tr>
                       @endforeach
                   </tbody>
@@ -137,7 +137,7 @@
 
                 <!-- Info box untuk tabel kedua di samping -->
                 @php
-                $keuangans = \App\Models\KeuanganRW::all(); // Menghitung jumlah warga
+                $Keuangans = \App\Models\KeuanganRW::all(); // Menghitung jumlah warga
                 @endphp
                 <div class="col-md-6">
                     <div class="card">
@@ -156,12 +156,12 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  @foreach($keuangans as $index => $keuangan)
+                                  @foreach($Keuangans as $index => $Keuangan)
                                   <tr>
                                       <td>{{ $index + 1 }}</td>
-                                      <td>{{ $keuangan->jenis_Transaksi }}</td>
-                                      <td>{{ $keuangan->nominal }}</td>
-                                      <td>{{ $keuangan->deskripsi }}</td>
+                                      <td>{{ $Keuangan->jenis_Transaksi }}</td>
+                                      <td>{{ $Keuangan->nominal }}</td>
+                                      <td>{{ $Keuangan->deskripsi }}</td>
                                   </tr>
                                   @endforeach
                               </tbody>

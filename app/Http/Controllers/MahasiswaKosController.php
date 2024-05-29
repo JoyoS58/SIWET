@@ -25,39 +25,39 @@ class MahasiswaKosController extends Controller
         // Check if filter input is present and not empty
         if ($request->has('filter') && $request->filter != '') {
             $filter = $request->filter;
-            $query->where('universitas', $filter);
+            $query->where('alamat_Kos', $filter);
         }
 
         // Get the filtered and searched data
-        $mahasiswaKos = $query->get();
+        $MahasiswaKos = $query->get();
 
         // Get distinct universities for the filter dropdown
-        $universitas = MahasiswaKos::select('universitas')->distinct()->get();
+        $alamatKos = MahasiswaKos::select('alamat_Kos')->distinct()->get();
 
         // Return the view with the data
-        return view('RW.MahasiswaKos.index', compact('mahasiswaKos', 'universitas'));
+        return view('RW.MahasiswaKos.index', compact('MahasiswaKos', 'alamatKos'));
     }
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nik' => 'required|unique:mahasiswa_kos,NIK',
-            'id_rt' => 'required',
+            'NIK' => 'required|unique:Mahasiswa_Kos,NIK',
+            'ID_RT' => 'required',
             'nama' => 'required',
-            'ttl' => 'required',
-            'alamatkos' => 'required',
-            'jenis_kelamin' => 'required',
+            'tempat_Tanggal_Lahir' => 'required',
+            'alamatKos' => 'required',
+            'jenis_Kelamin' => 'required',
             'agama' => 'required',
             'universitas' => 'required',
             'jurusan' => 'required',
         ]);
 
         MahasiswaKos::create([
-            'NIK' => $request->nik,
-            'ID_RT' => $request->id_rt,
+            'NIK' => $request->NIK,
+            'ID_RT' => $request->ID_RT,
             'nama' => $request->nama,
-            'tempat_Tanggal_Lahir' => $request->ttl,
-            'alamat_Kos' => $request->alamatkos,
-            'jenis_Kelamin' => $request->jenis_kelamin,
+            'tempat_Tanggal_Lahir' => $request->tempat_Tanggal_Lahir,
+            'alamat_Kos' => $request->alamatKos,
+            'jenis_Kelamin' => $request->jenis_Kelamin,
             'agama' => $request->agama,
             'universitas' => $request->universitas,
             'jurusan' => $request->jurusan,
@@ -72,32 +72,32 @@ class MahasiswaKosController extends Controller
     }
     public function edit(string $id)
     {
-        $mahasiswaKos = MahasiswaKos::find($id);
+        $MahasiswaKos = MahasiswaKos::find($id);
         $RT = RT::all();
-        return view('RW.MahasiswaKos.edit', ['mahasiswaKos' => $mahasiswaKos, 'RT' => $RT]);
+        return view('RW.MahasiswaKos.edit', ['MahasiswaKos' => $MahasiswaKos, 'RT' => $RT]);
     }
 
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nik' => 'required',
-            'id_rt' => 'required',
+            'NIK' => 'required',
+            'ID_RT' => 'required',
             'nama' => 'required',
-            'ttl' => 'required',
-            'alamatkos' => 'required',
-            'jenis_kelamin' => 'required',
+            'tempat_Tanggal_Lahir' => 'required',
+            'alamatKos' => 'required',
+            'jenis_Kelamin' => 'required',
             'agama' => 'required',
             'universitas' => 'required',
             'jurusan' => 'required',
         ]);
 
         MahasiswaKos::find($id)->update([
-            'NIK' => $request->nik,
-            'ID_RT' => $request->id_rt,
+            'NIK' => $request->NIK,
+            'ID_RT' => $request->ID_RT,
             'nama' => $request->nama,
-            'tempat_Tanggal_Lahir' => $request->ttl,
-            'alamat_Kos' => $request->alamatkos,
-            'jenis_Kelamin' => $request->jenis_kelamin,
+            'tempat_Tanggal_Lahir' => $request->tempat_Tanggal_Lahir,
+            'alamat_Kos' => $request->alamatKos,
+            'jenis_Kelamin' => $request->jenis_Kelamin,
             'agama' => $request->agama,
             'universitas' => $request->universitas,
             'jurusan' => $request->jurusan,
@@ -107,8 +107,8 @@ class MahasiswaKosController extends Controller
     }
     public function show(string $id)
     {
-        $mahasiswaKos = MahasiswaKos::find($id);
-        return view('RW.MahasiswaKos.show', ['mahasiswa' => $mahasiswaKos]);
+        $MahasiswaKos = MahasiswaKos::find($id);
+        return view('RW.MahasiswaKos.show', ['Mahasiswa' => $MahasiswaKos]);
     }
 
     public function destroy(string $id)

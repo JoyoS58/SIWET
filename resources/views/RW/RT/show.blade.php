@@ -30,7 +30,7 @@
                     </tr>
                 </table>
             {{-- @endempty --}}
-            <a href="{{url('/RT')}}" class="btn btn-sm btn-danger mt-2">Kembali</a>
+            <a href="{{url('RT')}}" class="btn btn-sm btn-danger mt-2">Kembali</a>
         </div>
     </div>
 @endsection

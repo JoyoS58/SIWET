@@ -31,9 +31,9 @@ class KeuanganRWController extends Controller
         $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
 
         // Calculate saldo for each transaction
-        foreach ($dataKeuangan as $keuanganRw) {
-            $keuanganRw->saldo == $saldoAwal;
-            $saldoAwal += ($keuanganRw->jenis_Transaksi == 'Pemasukan' ? 1 : -1) * $keuanganRw->nominal;
+        foreach ($dataKeuangan as $KeuanganRw) {
+            $KeuanganRw->saldo == $saldoAwal;
+            $saldoAwal += ($KeuanganRw->jenis_Transaksi == 'Pemasukan' ? 1 : -1) * $KeuanganRw->nominal;
         }
 
         $jenisTransaksi = KeuanganRW::select('jenis_Transaksi')->distinct()->get();
@@ -71,7 +71,7 @@ public function store(Request $request)
         'saldo' => $newSaldo,
     ]);
 
-    return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Disimpan');
+    return redirect('KeuanganRW')->with('success', 'Data Keuangan Berhasil Disimpan');
 }
 
 
@@ -98,9 +98,9 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
     }
     public function edit(string $id)
     {
-        $keuanganRW = KeuanganRW::find($id);
+        $KeuanganRW = KeuanganRW::find($id);
         $RW = RW::all();
-        return view('RW.Keuangan.edit', ['keuanganRW' => $keuanganRW,'RW' => $RW]);
+        return view('RW.Keuangan.edit', ['KeuanganRW' => $KeuanganRW,'RW' => $RW]);
     }
     public function update(Request $request, string $id)
 {
@@ -111,20 +111,20 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
         'deskripsi' => 'required',
     ]);
 
-    $keuanganRW = KeuanganRW::find($id);
-    if (!$keuanganRW) {
-        return redirect('keuanganRW')->with('error', 'Data Keuangan tidak ditemukan');
+    $KeuanganRW = KeuanganRW::find($id);
+    if (!$KeuanganRW) {
+        return redirect('KeuanganRW')->with('error', 'Data Keuangan tidak ditemukan');
     }
 
     $saldoAwal = $this->getSaldoAwal(); // Get the initial balance
 
     $newNominal = $request->nominal;
-    $oldNominal = $keuanganRW->nominal;
+    $oldNominal = $KeuanganRW->nominal;
     $jenisTransaksi = $request->jenis_Transaksi;
 
     $newSaldo = $this->calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNominal, $newNominal);
 
-    $keuanganRW->update([
+    $KeuanganRW->update([
         'jenis_Transaksi' => $request->jenis_Transaksi,
         'nominal' => $newNominal,
         'tanggal_Transaksi' => $request->tanggal_Transaksi,
@@ -132,7 +132,7 @@ private function calculateSaldo($saldoAwal, $jenisTransaksi, $nominal)
         'saldo' => $newSaldo,
     ]);
 
-    return redirect('keuanganRW')->with('success', 'Data Keuangan Berhasil Diubah');
+    return redirect('KeuanganRW')->with('success', 'Data Keuangan Berhasil Diubah');
 }
 
 private function calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNominal, $newNominal)
@@ -150,21 +150,21 @@ private function calculateSaldoForUpdate($saldoAwal, $jenisTransaksi, $oldNomina
 
     public function show(string $id)
     {
-        $keuanganRW = KeuanganRW::find($id);
-        return view('RW.Keuangan.show', ['keuanganRW' => $keuanganRW]);
+        $KeuanganRW = KeuanganRW::find($id);
+        return view('RW.Keuangan.show', ['KeuanganRW' => $KeuanganRW]);
     }
     public function destroy(string $id)
     {
         $check = KeuanganRW::find($id);
         if (!$check) {
-            return redirect('keuanganRW')->with('error', 'Data Keuangan tidak ditemukan');
+            return redirect('KeuanganRW')->with('error', 'Data Keuangan tidak ditemukan');
         }
         try {
             KeuanganRW::destroy($id);
 
-            return redirect('keuanganRW')->with('success', 'Data Keuangan berhasil dihapus');
+            return redirect('KeuanganRW')->with('success', 'Data Keuangan berhasil dihapus');
         } catch (\illuminate\Database\QueryException $e) {
-            return redirect('keuanganRW')->with('error', 'Data Keuangan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
+            return redirect('KeuanganRW')->with('error', 'Data Keuangan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
 }

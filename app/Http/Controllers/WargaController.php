@@ -36,28 +36,28 @@ class WargaController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nik' => 'required|unique:warga,nik',
-            'id_rt' => 'required',
-            'nokk' => 'required',
+            'NIK' => 'required|unique:Warga,NIK',
+            'ID_RT' => 'required',
+            'nomor_KK' => 'required',
             'nama' => 'required',
-            'ttl' => 'required',
-            'jenis_kelamin' => 'required',
+            'tempat_Tanggal_Lahir' => 'required',
+            'jenis_Kelamin' => 'required',
             'alamat' => 'required',
             'agama' => 'required',
-            'jenis_penduduk' => 'required',
+            'jenis_Penduduk' => 'required',
         ]);
 
         Warga::create([
-            'NIK' => $request->nik,
-            'ID_RT' => $request->id_rt,
-            'nomor_KK' => $request->nokk,
+            'NIK' => $request->NIK,
+            'ID_RT' => $request->ID_RT,
+            'nomor_KK' => $request->nomor_KK,
             'nama' => $request->nama,
-            'tempat_Tanggal_Lahir' => $request->ttl,
+            'tempat_Tanggal_Lahir' => $request->tempat_Tanggal_Lahir,
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'pekerjaan' => $request->pekerjaan,
-            'jenis_Kelamin' => $request->jenis_kelamin,
-            'jenis_Penduduk' => $request->jenis_penduduk,
+            'jenis_Kelamin' => $request->jenis_Kelamin,
+            'jenis_Penduduk' => $request->jenis_Penduduk,
         ]);
 
         return redirect('Warga')->with('success', 'Data Warga Berhasil Disimpan');
@@ -77,29 +77,29 @@ class WargaController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nik' => 'required',
-            'id_rt' => 'required',
-            'nokk' => 'required',
+            'NIK' => 'required',
+            'ID_RT' => 'required',
+            'nomor_KK' => 'required',
             'nama' => 'required',
-            'ttl' => 'required',
-            'jenis_kelamin' => 'required',
+            'tempat_Tanggal_Lahir' => 'required',
+            'jenis_Kelamin' => 'required',
             'alamat' => 'required',
             'pekerjaan' => 'required',
             'agama' => 'required',
-            'jenis_penduduk' => 'required',
+            'jenis_Penduduk' => 'required',
         ]);
 
         Warga::find($id)->update([
-            'NIK' => $request->nik,
-            'ID_RT' => $request->id_rt,
-            'nomor_KK' => $request->nokk,
+            'NIK' => $request->NIK,
+            'ID_RT' => $request->ID_RT,
+            'nomor_KK' => $request->nomor_KK,
             'nama' => $request->nama,
-            'tempat_Tanggal_Lahir' => $request->ttl,
+            'tempat_Tanggal_Lahir' => $request->tempat_Tanggal_Lahir,
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'pekerjaan' => $request->pekerjaan,
-            'jenis_Kelamin' => $request->jenis_kelamin,
-            'jenis_Penduduk' => $request->jenis_penduduk,
+            'jenis_Kelamin' => $request->jenis_Kelamin,
+            'jenis_Penduduk' => $request->jenis_Penduduk,
         ]);
 
         return redirect('Warga')->with('success', 'Data Warga Berhasil Diubah');

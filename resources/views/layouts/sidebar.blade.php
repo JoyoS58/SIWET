@@ -1,6 +1,6 @@
 <div class="sidebar text-white" style="position: fixed">
     <a href="{{ url('/RW')}}" class="brand-link text-white">
-      <img src="../resources/img/logo.jpg"class="brand-image img-circle elevation">
+      <img src="{{ asset('assets/images/logo.jpg') }}" class="brand-image img-circle elevation">
       <span class="brand-text font-weight-light">Admin RW</span>
     </a>
     <!-- Sidebar Menu -->
@@ -36,14 +36,14 @@
             </li>
             <li class="nav-header">Keuangan</li>
             <li class="nav-item">
-                <a href="{{ url('/keuanganRW') }}" class="nav-link text-white">
+                <a href="{{ url('/KeuanganRW') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-money-bill"></i>
                     <p>Data Keuangan RW</p>
                 </a>
             </li>
             <li class="nav-header">Kegiatan</li>
             <li class="nav-item">
-                <a href="{{ url('/kegiatanRW') }}" class="nav-link text-white">
+                <a href="{{ url('/KegiatanRW') }}" class="nav-link text-white">
                     <i class="nav-icon fas fa-cubes"></i>
                     <p>Data Kegiatan RW</p>
                 </a>

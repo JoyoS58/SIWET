@@ -1,6 +1,5 @@
 <?php
 
-use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Kriteria', function(Blueprint $table){
-            $table->id('ID_Kriteria');
-            $table->string('nama_Kriteria',100);
-            $table->string('kode_Kriteria',100);
-            $table->string('atribute',100);
-            $table->double('bobot_Kriteria',50);
+        Schema::create('Data_Kriteria', function (Blueprint $table) {
+            $table->id('ID_DataKriteria');
+            $table->unsignedBigInteger('ID_Kriteria');
+            $table->string('nama');
+            $table->integer('nilai');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Kriteria');
+        Schema::dropIfExists('Data_Kriteria');
     }
 };

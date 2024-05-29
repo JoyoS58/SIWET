@@ -10,30 +10,30 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>Nama Kegiatan</th>
-                        <td>{{$kegiatanRW->nama_Kegiatan}}</td>
+                        <td>{{$KegiatanRW->nama_Kegiatan}}</td>
                     </tr>
                     <tr>
                         <th>Waktu Kegiatan</th>
-                        <td>{{$kegiatanRW->waktu}}</td>
+                        <td>{{$KegiatanRW->waktu}}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Kegiatan </th>
-                        <td>{{$kegiatanRW->tanggal}}</td>
+                        <td>{{$KegiatanRW->tanggal}}</td>
                     </tr>
                     <tr>
                         <th>Penanggung Jawab</th>
-                        <td>{{$kegiatanRW->penanggung_Jawab}}</td>
+                        <td>{{$KegiatanRW->penanggung_Jawab}}</td>
                     </tr>
                     <tr>
                         <th>Tempat Kegiatan</th>
-                        <td>{{$kegiatanRW->tempat}}</td>
+                        <td>{{$KegiatanRW->tempat}}</td>
                     </tr>
                     <tr>
                         <th>Keterangan</th>
-                        <td>{{$kegiatanRW->deskripsi}}</td>
+                        <td>{{$KegiatanRW->deskripsi}}</td>
                     </tr>
                 </table>
-            <a href="{{url('kegiatanRW')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{url('KegiatanRW')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection

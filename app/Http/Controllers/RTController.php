@@ -32,18 +32,18 @@ class RTController extends Controller
     }
     public function store(Request $request){
         $validate = $request->validate([
-            'ketua_rt' => 'required',
-            'sekretaris_rt' => 'required',
-            'bendahara_rt' => 'required',
-            'nomor_rt' => 'required|unique:RT,nomor_RT',
+            'ketua_RT' => 'required',
+            'sekretaris_RT' => 'required',
+            'bendahara_RT' => 'required',
+            'nomor_RT' => 'required|unique:RT,nomor_RT',
         ]);
     
         RT::create([
             'ID_RW' => '1',
-            'ketua_RT' => $request->ketua_rt,
-            'sekretaris_RT' => $request->sekretaris_rt,
-            'bendahara_RT' => $request->bendahara_rt,
-            'nomor_RT' => $request->nomor_rt,
+            'ketua_RT' => $request->ketua_RT,
+            'sekretaris_RT' => $request->sekretaris_RT,
+            'bendahara_RT' => $request->bendahara_RT,
+            'nomor_RT' => $request->nomor_RT,
         ]);
     
         return redirect('/RT')->with('success', 'Data RT Berhasil Disimpan');
@@ -60,18 +60,18 @@ class RTController extends Controller
 
     public function update(Request $request, string $id){
         $request->validate([
-            'ketua_rt' => 'required',
-            'sekretaris_rt' => 'required',
-            'bendahara_rt' => 'required',
-            'nomor_rt' => 'required|unique:RT,nomor_RT,'.$id.',ID_RT',
+            'ketua_RT' => 'required',
+            'sekretaris_RT' => 'required',
+            'bendahara_RT' => 'required',
+            'nomor_RT' => 'required|unique:RT,nomor_RT,'.$id.',ID_RT',
         ]);
     
         RT::find($id)->update([
             'ID_RW' => '1',
-            'ketua_RT' => $request->ketua_rt,
-            'sekretaris_RT' => $request->sekretaris_rt,
-            'bendahara_RT' => $request->bendahara_rt,
-            'nomor_RT' => $request->nomor_rt,
+            'ketua_RT' => $request->ketua_RT,
+            'sekretaris_RT' => $request->sekretaris_RT,
+            'bendahara_RT' => $request->bendahara_RT,
+            'nomor_RT' => $request->nomor_RT,
         ]);
     
         return redirect('/RT')->with('success', 'Data RT Berhasil Diubah');

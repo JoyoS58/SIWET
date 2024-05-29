@@ -7,6 +7,7 @@ use App\Http\Controllers\KegiatanRWController;
 use App\Http\Controllers\KegiatanPKKController;
 use App\Http\Controllers\KeuanganRWController;
 use App\Http\Controllers\KeuanganPKKController;
+use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\MahasiswaKosController;
 use App\Http\Controllers\RTController;
@@ -26,17 +27,26 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware(['auth'])->group(function () {
+    // Rute-rute yang memerlukan autentikasi
+    Route::get('/RW', function () {
+        return view('RW.dasboardRW');
+    });
+
+    Route::get('/PKK', function () {
+        return view('PKK.dasboardPKK');
+    });
+
+    Route::get('pengajuan/show/{id}', [SPKController::class, 'show']);
+
+    Route::get('welcome', function () {
+        return view('welcome');
+    })->name('welcome');
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/RW', function () {
-    return view('RW.dasboardRW');
-});
-Route::get('/PKK', function () {
-    return view('PKK.dasboardPKK');
-});
-Route::get('pengajuan/show/{id}', [SPKController::class, 'show']);
 
 
 //Auth::routes();
@@ -47,15 +57,10 @@ Route::get('/sesi', [SessionController::class, 'index'])->name('sesi.get');
 Route::post('/proses_login', [SessionController::class, 'login'])->name('sesi.post');
 Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
 
-Route::get('welcome', function () {
-    return view('welcome'); // Atau arahkan ke controller lain sesuai kebutuhan
-})->middleware('auth')->name('welcome');
 
 
 
-
-
-Route::group(['prefix' => 'keuanganRW'], function(){
+Route::group(['prefix' => 'KeuanganRW','middleware' => ['auth']], function(){
     Route::get('/', [KeuanganRWController::class, 'index']);
     Route::post('/list', [KeuanganRWController::class, 'list']);
     Route::get('/create', [KeuanganRWController::class, 'create']);
@@ -65,7 +70,7 @@ Route::group(['prefix' => 'keuanganRW'], function(){
     Route::put('/{id}', [KeuanganRWController::class, 'update']);
     Route::delete('/delete/{id}', [KeuanganRWController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'keuanganPKK'], function(){
+Route::group(['prefix' => 'KeuanganPKK','middleware' => ['auth']], function(){
     Route::get('/', [KeuanganPKKController::class, 'index']);
     Route::post('/list', [KeuanganPKKController::class, 'list']);
     Route::get('/create', [KeuanganPKKController::class, 'create']);
@@ -76,7 +81,7 @@ Route::group(['prefix' => 'keuanganPKK'], function(){
     Route::delete('/delete/{id}', [KeuanganPKKController::class, 'destroy']);    
 });
 
-Route::group(['prefix' => 'RT'], function(){
+Route::group(['prefix' => 'RT','middleware' => ['auth']], function(){
     Route::get('/',[RTController::class,'index']);
     Route::get('/create',[RTController::class,'create']);
     Route::post('/', [RTController::class, 'store']);
@@ -85,7 +90,7 @@ Route::group(['prefix' => 'RT'], function(){
     Route::get('/show/{id}', [RTController::class, 'show']);
     Route::delete('/delete/{id}', [RTController::class, 'destroy']);
 });
-Route::group(['prefix' => 'Warga'], function(){
+Route::group(['prefix' => 'Warga','middleware' => ['auth']], function(){
     Route::get('/',[WargaController::class,'index']);
     Route::get('/create',[WargaController::class,'create']);
     Route::post('/', [WargaController::class, 'store']);
@@ -94,7 +99,7 @@ Route::group(['prefix' => 'Warga'], function(){
     Route::get('/show/{id}', [WargaController::class, 'show']);
     Route::delete('/delete/{id}', [WargaController::class, 'destroy']);
 });
-Route::group(['prefix' => 'MahasiswaKos'], function(){
+Route::group(['prefix' => 'MahasiswaKos','middleware' => ['auth']], function(){
     Route::get('/',[MahasiswaKosController::class,'index']);
     Route::get('/create',[MahasiswaKosController::class,'create']);
     Route::post('/', [MahasiswaKosController::class, 'store']);
@@ -103,7 +108,7 @@ Route::group(['prefix' => 'MahasiswaKos'], function(){
     Route::get('/show/{id}', [MahasiswaKosController::class, 'show']);
     Route::delete('/delete/{id}', [MahasiswaKosController::class, 'destroy']);
 });
-Route::group(['prefix' => 'AnggotaPKK'], function(){
+Route::group(['prefix' => 'AnggotaPKK','middleware' => ['auth']], function(){
     Route::get('/',[AnggotaPKKController::class,'index']);
     Route::get('/create',[AnggotaPKKController::class,'create']);
     Route::post('/', [AnggotaPKKController::class, 'store']);
@@ -112,12 +117,7 @@ Route::group(['prefix' => 'AnggotaPKK'], function(){
     Route::get('/show/{id}', [AnggotaPKKController::class, 'show']);
     Route::delete('/delete/{id}', [AnggotaPKKController::class, 'destroy']);
 });
-
-// Route::get('/anggotaPKK',[AnggotaPKKController::class,'index']);
-// Route::get('/anggotaPKK/create',[AnggotaPKKController::class,'create']);
-// Route::get('/anggotaPKK/edit',[AnggotaPKKController::class,'edit']);
-// Route::get('/anggotaPKK/show',[AnggotaPKKController::class,'show']);
-Route::group(['prefix' => 'kegiatanRW'], function(){
+Route::group(['prefix' => 'KegiatanRW', 'middleware' => ['auth']], function(){
     Route::get('/', [KegiatanRWController::class, 'index']);
     Route::post('/list', [KegiatanRWController::class, 'list']);
     Route::get('/create', [KegiatanRWController::class, 'create']);
@@ -127,7 +127,7 @@ Route::group(['prefix' => 'kegiatanRW'], function(){
     Route::put('/{id}', [KegiatanRWController::class, 'update']);
     Route::delete('/delete/{id}', [KegiatanRWController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'kegiatanPKK'], function(){
+Route::group(['prefix' => 'KegiatanPKK','middleware' => ['auth']], function(){
     Route::get('/', [KegiatanPKKController::class, 'index']);
     Route::post('/list', [KegiatanPKKController::class, 'list']);
     Route::get('/create', [KegiatanPKKController::class, 'create']);
@@ -137,33 +137,66 @@ Route::group(['prefix' => 'kegiatanPKK'], function(){
     Route::put('/{id}', [KegiatanPKKController::class, 'update']);
     Route::delete('/delete/{id}', [KegiatanPKKController::class, 'destroy']);    
 });
-Route::group(['prefix' => 'spk'], function(){
+Route::group(['prefix' => 'spk','middleware' => ['auth']], function(){
     Route::get('/', [SpkController::class, 'index']);
 
 });
-// Route::get('/kegiatanPKK',[KegiatanPKKController::class,'index']);
-// Route::get('/kegiatanPKK/create',[KegiatanPKKController::class,'create']);
-// Route::get('/kegiatanPKK/edit',[KegiatanPKKController::class,'edit']);
-// Route::get('/kegiatanPKK/show',[KegiatanPKKController::class,'show']);
 
 Route::group(['middleware' => ['auth']], function(){
-
     Route::group(['middleware' => ['cek_login:adminRW']], function(){
-        Route::resource('adminRW',AdminRWController::class);
+    Route::resource('adminRW',AdminRWController::class);
     });
 });
 
-Route::get('/SPK',[SPKController::class,'index']);
+// Route::get('/SPK',[SPKController::class,'index']);
 
-Route::prefix('spk')->group(function () {
-    Route::get('criteria', [SpkController::class, 'index'])->name('criteria.index');
-    Route::get('criteria/create', [SpkController::class, 'create'])->name('criteria.create');
-    Route::post('criteria', [SpkController::class, 'store'])->name('criteria.store');
-    Route::get('criteria/{criterion}', [SpkController::class, 'show'])->name('criteria.show');
-    Route::get('criteria/{criterion}/edit', [SpkController::class, 'edit'])->name('criteria.edit');
-    Route::put('criteria/{criterion}', [SpkController::class, 'update'])->name('criteria.update');
-    Route::delete('criteria/{criterion}', [SpkController::class, 'destroy'])->name('criteria.destroy');
+// Route::prefix('spk')->group(function () {
+//     Route::get('criteria', [SpkController::class, 'index'])->name('criteria.index');
+//     Route::get('criteria/create', [SpkController::class, 'create'])->name('criteria.create');
+//     Route::post('criteria', [SpkController::class, 'store'])->name('criteria.store');
+//     Route::get('criteria/{criterion}', [SpkController::class, 'show'])->name('criteria.show');
+//     Route::get('criteria/{criterion}/edit', [SpkController::class, 'edit'])->name('criteria.edit');
+//     Route::put('criteria/{criterion}', [SpkController::class, 'update'])->name('criteria.update');
+//     Route::delete('criteria/{criterion}', [SpkController::class, 'destroy'])->name('criteria.destroy');
 
-    Route::get('edas/calculate', [SpkController::class, 'calculate'])->name('edas.calculate');
-    Route::get('edas/results', [SpkController::class, 'results'])->name('edas.results');
+//     Route::get('edas/calculate', [SpkController::class, 'calculate'])->name('edas.calculate');
+//     Route::get('edas/results', [SpkController::class, 'results'])->name('edas.results');
+// });
+Route::prefix('/spk')->group(function(){
+    Route::prefix('alternatif')->group(function(){
+        Route::get('/', [SPKController::class, 'indexAlternatif']);
+        Route::post('/list', [SPKController::class, 'list']);
+        Route::get('/create', [SPKController::class, 'create']);
+        Route::post('/', [SPKController::class, 'store']);
+        Route::get('/show/{id}', [SPKController::class, 'show']);
+        Route::get('/edit/{id}', [SPKController::class, 'edit']);
+        Route::put('/{id}', [SPKController::class, 'update']);
+        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
+    });
+    Route::prefix('kriteria')->group(function(){
+        Route::get('/', [SPKController::class, 'indexKriteria']);
+        Route::post('/list', [SPKController::class, 'list']);
+        Route::get('/create', [SPKController::class, 'create']);
+        Route::post('/', [SPKController::class, 'store']);
+        Route::get('/show/{id}', [SPKController::class, 'show']);
+        Route::get('/edit/{id}', [SPKController::class, 'edit']);
+        Route::put('/{id}', [SPKController::class, 'update']);
+        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
+    });
+    Route::prefix('pemilihan')->group(function(){
+        Route::get('/', [SPKController::class, 'indexPerhitungan']);
+        Route::post('/list', [SPKController::class, 'list']);
+        Route::get('/create', [SPKController::class, 'create']);
+        Route::post('/', [SPKController::class, 'store']);
+        Route::get('/show/{id}', [SPKController::class, 'show']);
+        Route::get('/edit/{id}', [SPKController::class, 'edit']);
+        Route::put('/{id}', [SPKController::class, 'update']);
+        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);
+    });
 });
+
+Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
+Route::post('/kriteria', [KriteriaController::class, 'store'])->name('kriteria.store');
+Route::get('/kriteria/{id}/edit', [KriteriaController::class, 'edit'])->name('kriteria.edit');
+Route::post('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
+Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');

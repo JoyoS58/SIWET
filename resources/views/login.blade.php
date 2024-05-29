@@ -19,7 +19,7 @@
     font-weight: 600;
 }
 body{
-    background: url('../public/assets/images/bg.jpg');
+    background: url('/assets/images/bg.jpg');
     background-size: cover;
 }
 .container{
@@ -154,7 +154,7 @@ input{
         <div class="container">
             <div class="box">
                 <div class="header">
-                    <header><img src="{{ ('../public/assets/images/logo.png') }}" alt="Logo"></header>
+                    <header><img src="{{ asset('assets/images/logo.png') }}" alt="Logo"></header>
                     <h4>Login</h4>
                 </div>
                 <div class="input-box">

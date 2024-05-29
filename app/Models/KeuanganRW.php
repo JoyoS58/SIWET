@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class KeuanganRW extends Model
 {
-    protected $table = 'kas_rw';
+    protected $table = 'Kas_RW';
     protected $primaryKey = 'ID_Transaksi';
     public $incrementing = true;
 
@@ -21,7 +21,7 @@ class KeuanganRW extends Model
         'saldo',
         'deskripsi',
     ];
-    public function rw(): BelongsTo{
+    public function RW(): BelongsTo{
         return $this->belongsTo(RW::class, 'ID_RW', 'ID_RW');
     }
 }

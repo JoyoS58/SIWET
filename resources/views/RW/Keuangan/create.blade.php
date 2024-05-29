@@ -11,7 +11,7 @@
             {{ session('error') }}
         </div>
         @endif
-        <form action="{{url('keuanganRW')}}" method="POST" class="form-horizontal">
+        <form action="{{url('KeuanganRW')}}" method="POST" class="form-horizontal">
             @csrf
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Jenis Transaksi</label>
@@ -58,7 +58,7 @@
                 <label class="col-2 control-label col-form-label"></label>
                 <div class="col-10">
                     <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-                    <a href="{{url('keuanganRW')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
+                    <a href="{{url('KeuanganRW')}}" class="btn btn-sm btn-danger ml-1">Kembali</a>
                 </div>
             </div>
         </form>

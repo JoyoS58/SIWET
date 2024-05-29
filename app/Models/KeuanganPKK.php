@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KeuanganPKK extends Model
 {
     use HasFactory;
-    protected $table = 'kas_pkk';
+    protected $table = 'Kas_PKK';
     protected $primaryKey = 'ID_Transaksi';
     public $incrementing = true;
 
@@ -20,7 +20,7 @@ class KeuanganPKK extends Model
         'saldo',
         'deskripsi',
     ];
-    public function rw(){
+    public function RW(){
         return $this->belongsTo(PKK::class, 'ID_Pengurus', 'ID_Pengurus');
     }
 }

@@ -10,22 +10,22 @@
                 <table class="table table-bordered table-striped table-hover table-sm">
                     <tr>
                         <th>Jenis Transaksi</th>
-                        <td>{{$keuanganRW->jenis_Transaksi}}</td>
+                        <td>{{$KeuanganRW->jenis_Transaksi}}</td>
                     </tr>
                     <tr>
                         <th>Nominal</th>
-                        <td>{{$keuanganRW->nominal}}</td>
+                        <td>{{$KeuanganRW->nominal}}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Transaksi</th>
-                        <td>{{$keuanganRW->tanggal_Transaksi}}</td>
+                        <td>{{$KeuanganRW->tanggal_Transaksi}}</td>
                     </tr>
                     <tr>
                         <th>Keterangan</th>
-                        <td>{{$keuanganRW->deskripsi}}</td>
+                        <td>{{$KeuanganRW->deskripsi}}</td>
                     </tr>
                 </table>
-            <a href="{{url('keuanganRW')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
+            <a href="{{url('KeuanganRW')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>
     </div>
 @endsection

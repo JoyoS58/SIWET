@@ -50,7 +50,7 @@ class KegiatanPKKController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect('kegiatanPKK')->with('success', 'Data Kegiatan Berhasil Disimpan');
+        return redirect('KegiatanPKK')->with('success', 'Data Kegiatan Berhasil Disimpan');
     }
     public function create()
     {
@@ -59,9 +59,9 @@ class KegiatanPKKController extends Controller
     }
     public function edit(string $id)
     {
-        $kegiatanPKK = KegiatanPKK::find($id);
+        $KegiatanPKK = KegiatanPKK::find($id);
         $PKK = PKK::all();
-        return view('PKK.Kegiatan.edit', ['kegiatanPKK' => $kegiatanPKK,'PKK' => $PKK]);
+        return view('PKK.Kegiatan.edit', ['KegiatanPKK' => $KegiatanPKK,'PKK' => $PKK]);
     }
     public function update(Request $request, string $id)
     {
@@ -84,39 +84,25 @@ class KegiatanPKKController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect('kegiatanPKK')->with('success', 'Data Kegiatan Berhasil Diubah');
+        return redirect('KegiatanPKK')->with('success', 'Data Kegiatan Berhasil Diubah');
     }
     public function show(string $id)
     {
-        $kegiatanPKK = KegiatanPKK::find($id);
-        return view('PKK.Kegiatan.show', ['kegiatanPKK' => $kegiatanPKK]);
+        $KegiatanPKK = KegiatanPKK::find($id);
+        return view('PKK.Kegiatan.show', ['KegiatanPKK' => $KegiatanPKK]);
     }
     public function destroy(string $id)
     {
         $check = KegiatanPKK::find($id);
         if (!$check) {
-            return redirect('kegiatanPKK')->with('error', 'Data Kegiatan tidak ditemukan');
+            return redirect('KegiatanPKK')->with('error', 'Data Kegiatan tidak ditemukan');
         }
         try {
             KegiatanPKK::destroy($id);
 
-            return redirect('kegiatanPKK')->with('success', 'Data Kegiatan berhasil dihapus');
+            return redirect('KegiatanPKK')->with('success', 'Data Kegiatan berhasil dihapus');
         } catch (\illuminate\Database\QueryException $e) {
-            return redirect('kegiatanPKK')->with('error', 'Data Kegiatan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
+            return redirect('KegiatanPKK')->with('error', 'Data Kegiatan gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
-    // public function index()
-    // {
-    //     return view('PKK.Kegiatan.index');
-    // }
-    // public function create()
-    // {
-    //     return view('PKK.Kegiatan.create');
-    // }
-    // public function edit(){
-    //     return view('PKK.Kegiatan.edit');
-    // }
-    // public function show(){
-    //     return view('PKK.Kegiatan.show');
-    // }
 }
