@@ -26,10 +26,10 @@
                             </div>
                             <div class="col-md-4">
                                 <select name="filter" class="form-control">
-                                    <option value="">Select Universitas</option>
-                                    @foreach($universitas as $u)
-                                        <option value="{{ $u->universitas }}" {{ request('filter') == $u->universitas ? 'selected' : '' }}>
-                                            {{ $u->universitas }}
+                                    <option value="">Select Alamat Kos</option>
+                                    @foreach($alamatKos as $ak)
+                                        <option value="{{ $ak->alamat_Kos }}" {{ request('filter') == $ak->alamat_Kos ? 'selected' : '' }}>
+                                            {{ $ak->alamat_Kos }}
                                         </option>
                                     @endforeach
                                 </select>
