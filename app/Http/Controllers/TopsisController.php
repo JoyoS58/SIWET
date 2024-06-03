@@ -8,7 +8,7 @@ class TopsisController extends Controller
 {
     public function index()
     {
-        return view('PKK.SPK.topsis.index');
+        return view('PKK.SPK.topsis.perhitungan');
     }
 
     public function calculate(Request $request)

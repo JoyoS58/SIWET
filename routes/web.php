@@ -19,6 +19,9 @@ use App\Http\Controllers\TopsisController;
 use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataKriteriaController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -189,8 +192,15 @@ Route::put('/kriteria/{id}', [KriteriaController::class, 'update'])->name('krite
 //Route::post('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
 Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
 
+Route::get('/dataKriteria', [DataKriteriaController::class, 'index'])->name('dataKriteria.index');
+Route::get('/dataKriteria/create', [DataKriteriaController::class, 'create'])->name('dataKriteria.create');
+Route::post('/dataKriteria', [DataKriteriaController::class, 'store'])->name('dataKriteria.store');
+Route::get('/dataKriteria/{id}/edit', [DataKriteriaController::class, 'edit'])->name('dataKriteria.edit');
+Route::put('/dataKriteria/{id}', [DataKriteriaController::class, 'update'])->name('dataKriteria.update');
+Route::delete('/dataKriteria/{id}', [DataKriteriaController::class, 'destroy'])->name('dataKriteria.destroy');
 
-Route::get('/saw',[SAWController::class, 'index']);
+Route::get('/saw',[SAWController::class, 'calculate']);
+Route::get('/topsis',[TopsisController::class, 'index']);
 
 Route::get('/alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
 Route::post('/alternatif', [AlternatifController::class, 'store'])->name('alternatif.store');

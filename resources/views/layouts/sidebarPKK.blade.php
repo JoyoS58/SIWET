@@ -49,20 +49,32 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/spk/pemilihan') }}" class="nav-link text-white">
-                            <i class="nav-icon fas fa-check-circle"></i>
-                            <p>Pemilihan</p>
+                        <a href="{{ url('/dataKriteria') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-cubes"></i>
+                            <p>Data Nilai Kriteria</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/saw') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-calculator"></i>
+                            <p>SAW</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/topsis') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-chart-bar"></i>
+                            <p>TOPSIS</p>
                         </a>
                     </li>
                 </ul>
         </ul>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
         
         <a href="#" class="nav-link text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="nav-icon fas fa-sign-out-alt"></i>
             <p>Logout</p>
-        </a>
+        </a> --}}
     </nav>
 </div>

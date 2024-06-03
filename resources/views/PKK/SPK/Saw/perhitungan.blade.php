@@ -1,74 +1,97 @@
+@extends('layouts.templatePKK')
+@section('title', 'SAW')
+
+@section('content_header')
+<h1>SAW</h1>
+@endsection
+
+@section('content')
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Perhitungan SAW</title>
+    <title>Perhitungan SAW</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Hasil Perhitungan SAW</h1>
-    
-    <h2>Data Kriteria dan Bobot</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Kriteria</th>
-                <th>Bobot</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($kriteria as $k => $bobot): ?>
-                <tr>
-                    <td><?= $k ?></td>
-                    <td><?= $bobot ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    
-    <h2>Data Alternatif dan Nilai</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Alternatif</th>
-                <?php foreach($kriteria as $k => $bobot): ?>
-                    <th><?= $k ?></th>
-                <?php endforeach; ?>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($alternatif as $alt): ?>
-                <tr>
-                    <td><?= $alt['nama'] ?></td>
-                    <?php foreach($kriteria as $k => $bobot): ?>
-                        <td><?= $alt[$k] ?></td>
-                    <?php endforeach; ?>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    
-    <h2>Hasil Perhitungan SAW</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Alternatif</th>
-                <?php foreach($kriteria as $k => $bobot): ?>
-                    <th><?= $k ?></th>
-                <?php endforeach; ?>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach($hasil as $h): ?>
-                <tr>
-                    <?php foreach($alternatif[$h['index']] as $nilai): ?>
-                        <td><?= $nilai ?></td>
-                    <?php endforeach; ?>
-                    <td><?= $h['total'] ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <div class="container mt-5">
+        <h1 class="text-center">Hasil Perhitungan SAW</h1>
+
+        <div class="mt-5">
+            <h2>Matriks Keputusan</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Alternatif</th>
+                        @foreach($kriteria as $kri)
+                            <th>{{ $kri->nama_Kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alternatif as $index => $alt)
+                        <tr>
+                            <td>{{ $alt->nama_alternatif }}</td>
+                            @foreach($matriksKeputusan[$index] as $nilai)
+                                <td>{{ $nilai }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-5">
+            <h2>Matriks Normalisasi</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Alternatif</th>
+                        @foreach($kriteria as $kri)
+                            <th>{{ $kri->nama_Kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alternatif as $index => $alt)
+                        <tr>
+                            <td>{{ $alt->nama_alternatif }}</td>
+                            @foreach($normalisasiMatriks[$index] as $nilai)
+                                <td>{{ $nilai }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-5">
+            <h2>Perangkingan</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ranking</th>
+            <th>Alternatif</th>
+            <th>Skor Akhir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @php
+        $ranking = 1; // Inisialisasi peringkat
+        $highestScore = max($skorAkhir); // Mendapatkan skor tertinggi
+        @endphp
+        @foreach($skorAkhir as $index => $skor)
+        <tr>
+            <td>{{ $skor == $highestScore ? 1 : ++$ranking }}</td> <!-- Jika skor adalah skor tertinggi, maka beri peringkat 1, jika tidak, tambahkan peringkat sebelumnya -->
+            <td>{{ $alternatif[$index]->nama_alternatif }}</td>
+            <td>{{ number_format($skor, 2) }}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
+        
+        
+    </div>
 </body>
 </html>
+@endsection
