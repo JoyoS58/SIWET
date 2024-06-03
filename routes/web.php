@@ -42,9 +42,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('pengajuan/show/{id}', [SPKController::class, 'show']);
 
-    Route::get('welcome', function () {
-        return view('welcome');
-    })->name('welcome');
 });
 
 Route::get('/', function () {
