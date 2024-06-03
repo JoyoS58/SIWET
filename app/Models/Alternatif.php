@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alternatif extends Model
 {
-    use HasFactory;
+    protected $table = 'alternatif';
+    protected $primaryKey = 'ID_alternatif';
+    protected $fillable = ['nama_alternatif'];
 }
