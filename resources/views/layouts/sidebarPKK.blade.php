@@ -49,9 +49,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('/spk/pemilihan') }}" class="nav-link text-white">
-                            <i class="nav-icon fas fa-check-circle"></i>
-                            <p>Pemilihan</p>
+                        <a href="{{ url('/saw') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-calculator"></i>
+                            <p>SAW</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/topsis') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-chart-bar"></i>
+                            <p>TOPSIS</p>
                         </a>
                     </li>
                 </ul>

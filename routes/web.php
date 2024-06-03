@@ -190,7 +190,8 @@ Route::put('/kriteria/{id}', [KriteriaController::class, 'update'])->name('krite
 Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
 
 
-Route::get('/saw',[SAWController::class, 'index']);
+Route::get('/saw',[SAWController::class, 'calculate']);
+Route::get('/topsis',[TopsisController::class, 'index']);
 
 Route::get('/alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
 Route::post('/alternatif', [AlternatifController::class, 'store'])->name('alternatif.store');

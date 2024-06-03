@@ -1,4 +1,5 @@
 @extends('layouts.templatePKK')
+
 @section('title', 'Sistem Pendukung Keputusan')
 
 @section('content_header')
@@ -6,77 +7,99 @@
 @endsection
 
 @section('content')
-<head>
-    <h1>Peminjaman Dana Pra-Koperasi</h1>
-</head>
 <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <h3 class="card-title">Sistem Pendukung Keputusan</h3>
-                    
-                </div>
-            </div>
-            <div class="card-body row">
-                <!-- Search and Filter Form -->
-                {{-- <form method="GET" action="{{ url('AnggotaPKK') }}">
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <input type="text" name="search" class="form-control" placeholder="Search by name..." value="{{ request('search') }}">
-                        </div>
-                        <div class="col-md-4">
-                            <select name="filter_jabatan" class="form-control">
-                                <option value="">Select Jabatan</option>
-                                @foreach($jabatanOptions as $jabatan)
-                                    <option value="{{ $jabatan }}" {{ request('filter_jabatan') == $jabatan ? 'selected' : '' }}>
-                                        {{ $jabatan }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
+    <div class="col-md-8">
+        <a href="#tambahKriteria" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+            <h6 class="m-0 font-weight-bold text-primary">Tambah Kriteria</h6>
+        </a>
+        <div class="collapse show" id="tambahKriteria">
+            <div class="card-body">
+                <!-- Success Message -->
+                @if(Session::has('msg'))
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{ Session::get('msg') }}
                     </div>
-                </form>
-                <div class="col text-right">
-                    <a type="button" class="btn btn-info add-transaction-button" href="{{url('AnggotaPKK/create')}}">Tambah</a>
-                </div> --}}
+                @endif
 
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode Kriteria</th>
-                            <th>Nama Kriteria</th>
-                            <th>Bobot Kriteria</th>
-                            <th>Jenis Kriteria</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{-- @foreach($AnggotaPKK as $index => $anggota)
+                <!-- Error Message -->
+                @if(Session::has('error'))
+                    <div class="alert alert-danger">
+                        <strong>Error!</strong> {{ Session::get('error') }}
+                    </div>
+                @endif
+                <form action="{{ route('kriteria.store') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="nama">Nama Kriteria</label>
+                        <input type="text" class="form-control @error('nama_kriteria') is-invalid @enderror" name="nama_kriteria" value="{{ old('nama_kriteria') }}">
+                        @error('nama_kriteria')
+                            <div class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="atribut">Atribut</label>
+                        <select name="atribut" id="atribut" class="form-control" required>
+                            <option value="Benefit">Benefit</option>
+                            <option value="Cost">Cost</option>
+                        </select>
+                        @error('atribut')
+                            <div class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="bobot">Bobot Kriteria</label>
+                        <input type="text" class="form-control @error('bobot') is-invalid @enderror" name="bobot" value="{{ old('bobot') }}">
+                        @error('bobot')
+                            <div class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <button class="btn btn-sm btn-primary">Simpan</button>
+                </form>
+                <div class="table-responsive mt-4">
+                    <table class="table table-striped table-hover">
+                        <thead>
                             <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $anggota->nama }}</td>
-                                <td>{{ $anggota->jabatan }}</td>
-                                <td>{{ $anggota->nomor_Telepon }}</td> --}}
-                                {{-- <td class="action-buttons">
-                                    <a href="{{url('AnggotaPKK/show/' . $anggota->ID_Anggota)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                    <a href="{{url('AnggotaPKK/edit/' . $anggota->ID_Anggota)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                    <form id="deleteForm{{$anggota->ID_Anggota}}" action="{{ url('AnggotaPKK/delete/' . $anggota->ID_Anggota) }}" method="POST" style="display: none;">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$anggota->ID_Anggota}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
-                                </td>
-                            </tr> --}}
-                        {{-- @endforeach --}}
-                    </tbody>
-                </table>
+                                <th>No</th>
+                                <th>Nama Kriteria</th>
+                                <th>Atribut</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $no = 1; @endphp
+                            @foreach ($kriteria as $row)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $row->nama_Kriteria }}</td>
+                                    <td>{{ $row->atribut }}</td>
+                                    <td>
+                                        <a href="{{ route('kriteria.edit', $row->ID_Kriteria) }}" class="btn btn-sm btn-circle btn-warning">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('kriteria.destroy', $row->ID_Kriteria) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-circle btn-danger hapus">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    @if ($kriteria->isEmpty())
+                        <div class="alert alert-warning">No kriteria found.</div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>
-</div>     
+</div>
 @endsection
