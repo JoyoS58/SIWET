@@ -132,7 +132,7 @@ Route::group(['prefix' => 'KegiatanPKK','middleware' => ['auth']], function(){
     Route::get('/show/{id}', [KegiatanPKKController::class, 'show']);
     Route::get('/edit/{id}', [KegiatanPKKController::class, 'edit']);
     Route::put('/{id}', [KegiatanPKKController::class, 'update']);
-    Route::delete('/delete/{id}', [KegiatanPKKController::class, 'destroy']);    
+    Route::delete('/delete/{id}', [KegiatanPKKController::class, 'destroy']);
 });
 Route::group(['prefix' => 'spk','middleware' => ['auth']], function(){
     Route::get('/', [SpkController::class, 'index']);
@@ -144,6 +144,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::resource('adminRW',AdminRWController::class);
     });
 });
+
 
 Route::prefix('/spk')->group(function(){
     Route::prefix('alternatif')->group(function(){
@@ -181,5 +182,6 @@ Route::prefix('/spk')->group(function(){
 Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
 Route::post('/kriteria', [KriteriaController::class, 'store'])->name('kriteria.store');
 Route::get('/kriteria/{id}/edit', [KriteriaController::class, 'edit'])->name('kriteria.edit');
-Route::post('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
+Route::put('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
+//Route::post('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
 Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
