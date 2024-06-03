@@ -49,6 +49,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ url('/dataKriteria') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-cubes"></i>
+                            <p>Data Nilai Kriteria</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ url('/saw') }}" class="nav-link text-white">
                             <i class="nav-icon fas fa-calculator"></i>
                             <p>SAW</p>
