@@ -16,6 +16,9 @@ use App\Http\Controllers\SPKController;
 use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataKriteriaController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -185,3 +188,10 @@ Route::get('/kriteria/{id}/edit', [KriteriaController::class, 'edit'])->name('kr
 Route::put('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
 //Route::post('/kriteria/{id}', [KriteriaController::class, 'update'])->name('kriteria.update');
 Route::delete('/kriteria/{id}', [KriteriaController::class, 'destroy'])->name('kriteria.destroy');
+
+Route::get('/dataKriteria', [DataKriteriaController::class, 'index'])->name('dataKriteria.index');
+Route::get('/dataKriteria/create', [DataKriteriaController::class, 'create'])->name('dataKriteria.create');
+Route::post('/dataKriteria', [DataKriteriaController::class, 'store'])->name('dataKriteria.store');
+Route::get('/dataKriteria/{id}/edit', [DataKriteriaController::class, 'edit'])->name('dataKriteria.edit');
+Route::put('/dataKriteria/{id}', [DataKriteriaController::class, 'update'])->name('dataKriteria.update');
+Route::delete('/dataKriteria/{id}', [DataKriteriaController::class, 'destroy'])->name('dataKriteria.destroy');
