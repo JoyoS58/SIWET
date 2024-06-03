@@ -37,14 +37,14 @@
             <li class="nav-header">Sistem Pendukung Keputusan</li>
                 <ul>
                     <li class="nav-item">
-                        <a href="{{ url('/spk/alternatif') }}" class="nav-link text-white">
-                            <i class="nav-icon fas fa-"></i>
+                        <a href="{{ url('/alternatif') }}" class="nav-link text-white">
+                            <i class="nav-icon fas fa-database"></i>
                             <p>Data Alternatif</p>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('/kriteria') }}" class="nav-link text-white">
-                            <i class="nav-icon fas fa-cubes"></i>
+                            <i class="nav-icon fas fa-list"></i>
                             <p>Data Kriteria</p>
                         </a>
                     </li>
@@ -56,14 +56,18 @@
                     </li>
                     <li>
                         <a href="{{ url('/spk/pemilihan') }}" class="nav-link text-white">
-                            <i class="nav-icon fas fa-cubes"></i>
+                            <i class="nav-icon fas fa-check-circle"></i>
                             <p>Pemilihan</p>
                         </a>
                     </li>
                 </ul>
         </ul>
-        <a href="{{ url('/logout') }}" class="nav-link text-white">
-            <i class="nav-icon fas fa-cubes"></i>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        
+        <a href="#" class="nav-link text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="nav-icon fas fa-sign-out-alt"></i>
             <p>Logout</p>
         </a>
     </nav>

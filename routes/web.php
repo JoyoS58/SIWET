@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminRWController;
+use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\AnggotaPKKController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\KegiatanRWController;
@@ -11,8 +12,10 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\LoginController as ControllersLoginController;
 use App\Http\Controllers\MahasiswaKosController;
 use App\Http\Controllers\RTController;
+use App\Http\Controllers\SAWController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SPKController;
+use App\Http\Controllers\TopsisController;
 use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
@@ -149,38 +152,38 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
 
-Route::prefix('/spk')->group(function(){
-    Route::prefix('alternatif')->group(function(){
-        Route::get('/', [SPKController::class, 'indexAlternatif']);
-        Route::post('/list', [SPKController::class, 'list']);
-        Route::get('/create', [SPKController::class, 'create']);
-        Route::post('/', [SPKController::class, 'store']);
-        Route::get('/show/{id}', [SPKController::class, 'show']);
-        Route::get('/edit/{id}', [SPKController::class, 'edit']);
-        Route::put('/{id}', [SPKController::class, 'update']);
-        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
-    });
-    Route::prefix('kriteria')->group(function(){
-        Route::get('/', [SPKController::class, 'indexKriteria']);
-        Route::post('/list', [SPKController::class, 'list']);
-        Route::get('/create', [SPKController::class, 'create']);
-        Route::post('/', [SPKController::class, 'store']);
-        Route::get('/show/{id}', [SPKController::class, 'show']);
-        Route::get('/edit/{id}', [SPKController::class, 'edit']);
-        Route::put('/{id}', [SPKController::class, 'update']);
-        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
-    });
-    Route::prefix('pemilihan')->group(function(){
-        Route::get('/', [SPKController::class, 'indexPerhitungan']);
-        Route::post('/list', [SPKController::class, 'list']);
-        Route::get('/create', [SPKController::class, 'create']);
-        Route::post('/', [SPKController::class, 'store']);
-        Route::get('/show/{id}', [SPKController::class, 'show']);
-        Route::get('/edit/{id}', [SPKController::class, 'edit']);
-        Route::put('/{id}', [SPKController::class, 'update']);
-        Route::delete('/delete/{id}', [SPKController::class, 'destroy']);
-    });
-});
+// Route::prefix('/spk')->group(function(){
+//     Route::prefix('alternatif')->group(function(){
+//         Route::get('/', [SPKController::class, 'indexAlternatif']);
+//         Route::post('/list', [SPKController::class, 'list']);
+//         Route::get('/create', [SPKController::class, 'create']);
+//         Route::post('/', [SPKController::class, 'store']);
+//         Route::get('/show/{id}', [SPKController::class, 'show']);
+//         Route::get('/edit/{id}', [SPKController::class, 'edit']);
+//         Route::put('/{id}', [SPKController::class, 'update']);
+//         Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
+//     });
+//     Route::prefix('kriteria')->group(function(){
+//         Route::get('/', [SPKController::class, 'indexKriteria']);
+//         Route::post('/list', [SPKController::class, 'list']);
+//         Route::get('/create', [SPKController::class, 'create']);
+//         Route::post('/', [SPKController::class, 'store']);
+//         Route::get('/show/{id}', [SPKController::class, 'show']);
+//         Route::get('/edit/{id}', [SPKController::class, 'edit']);
+//         Route::put('/{id}', [SPKController::class, 'update']);
+//         Route::delete('/delete/{id}', [SPKController::class, 'destroy']);   
+//     });
+//     Route::prefix('pemilihan')->group(function(){
+//         Route::get('/', [SPKController::class, 'indexPerhitungan']);
+//         Route::post('/list', [SPKController::class, 'list']);
+//         Route::get('/create', [SPKController::class, 'create']);
+//         Route::post('/', [SPKController::class, 'store']);
+//         Route::get('/show/{id}', [SPKController::class, 'show']);
+//         Route::get('/edit/{id}', [SPKController::class, 'edit']);
+//         Route::put('/{id}', [SPKController::class, 'update']);
+//         Route::delete('/delete/{id}', [SPKController::class, 'destroy']);
+//     });
+// });
 
 Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria.index');
 Route::post('/kriteria', [KriteriaController::class, 'store'])->name('kriteria.store');
@@ -195,3 +198,11 @@ Route::post('/dataKriteria', [DataKriteriaController::class, 'store'])->name('da
 Route::get('/dataKriteria/{id}/edit', [DataKriteriaController::class, 'edit'])->name('dataKriteria.edit');
 Route::put('/dataKriteria/{id}', [DataKriteriaController::class, 'update'])->name('dataKriteria.update');
 Route::delete('/dataKriteria/{id}', [DataKriteriaController::class, 'destroy'])->name('dataKriteria.destroy');
+
+Route::get('/saw',[SAWController::class, 'index']);
+
+Route::get('/alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');
+Route::post('/alternatif', [AlternatifController::class, 'store'])->name('alternatif.store');
+Route::get('/alternatif/{id}/edit', [AlternatifController::class, 'edit'])->name('alternatif.edit');
+Route::put('/alternatif/{id}', [AlternatifController::class, 'update'])->name('alternatif.update');
+Route::delete('/alternatif/{id}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
