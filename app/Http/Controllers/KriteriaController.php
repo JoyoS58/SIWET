@@ -41,34 +41,33 @@ class KriteriaController extends Controller
 }
 
 
-    public function edit($id)
-    {
-        $data['kriteria'] = Kriteria::findOrFail($id);
-        return view('SPK.kriteria.edit', $data);
+public function edit($id)
+{
+    $kriteria = Kriteria::findOrFail($id);
+    return view('PKK.SPK.Saw.Kriteria.edit', compact('kriteria'));
+}
+
+public function update(Request $request, $id)
+{
+    $request->validate([
+        'nama_kriteria' => 'required|string',
+        'atribut'       => 'required|string',
+        'bobot'         => 'required|numeric',
+    ]);
+
+    try {
+        $kriteria = Kriteria::findOrFail($id);
+        $kriteria->nama_Kriteria = $request->nama_kriteria;
+        $kriteria->atribut = $request->atribut;
+        $kriteria->bobot_Kriteria = $request->bobot;
+        $kriteria->save();
+
+        return redirect()->route('kriteria.index')->with('msg', 'Data berhasil diupdate');
+    } catch (\Exception $e) {
+        Log::emergency("File:" . $e->getFile() . " Line:" . $e->getLine() . " Message:" . $e->getMessage());
+        return redirect()->back()->with('error', 'Gagal mengupdate data');
     }
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'nama_kriteria' => 'required|string',
-            'atribut'       => 'required|string',
-            'bobot'         => 'required|numeric',
-        ]);
-
-        try {
-            $kriteria = Kriteria::findOrFail($id);
-            $kriteria->update([
-                'nama_Kriteria' => $request->nama_kriteria,
-                'atribut'       => $request->atribut,
-                'bobot_Kriteria'=> $request->bobot
-            ]);
-
-            return back()->with('msg', 'Berhasil merubah data');
-        } catch (Exception $e) {
-            Log::emergency("file:" . $e->getFile() . " Line:" . $e->getLine() . " Message:" . $e->getMessage());
-            die("gagal");
-        }
-    }
+}
 
     public function destroy($id)
     {
