@@ -6,261 +6,198 @@
 @endsection
 
 @section('content')
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOPSIS Calculation</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Perhitungan TOPSIS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-align-left mb-4">TOPSIS Calculation</h1>
+        <h1 class="mb-4">Hasil Perhitungan TOPSIS</h1>
 
-        <!-- Matriks Keputusan -->
-        <h2>Matriks Keputusan</h2>
-        <table class="table table-bordered table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th>Alternative</th>
-                    <th>Criteria 1</th>
-                    <th>Criteria 2</th>
-                    <th>Criteria 3</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Alternative 1</td>
-                    <td>4</td>
-                    <td>3</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Alternative 2</td>
-                    <td>2</td>
-                    <td>4</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>Alternative 3</td>
-                    <td>5</td>
-                    <td>2</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Alternative 4</td>
-                    <td>3</td>
-                    <td>5</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Alternative 5</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>3</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 class="mt-4">Matriks Keputusan</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Alternatif</th>
+                        @foreach($kriteria as $kri)
+                            <th>{{ $kri->nama_Kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alternatif as $index => $alt)
+                        <tr>
+                            <td>{{ $alt->nama_alternatif }}</td>
+                            @foreach($matriksKeputusan[$index] as $nilai)
+                                <td>{{ $nilai }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Normalisasi Matriks Keputusan -->
-        <h2>Normalisasi Matriks Keputusan</h2>
-        <table class="table table-bordered table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th>Alternative</th>
-                    <th>Criteria 1</th>
-                    <th>Criteria 2</th>
-                    <th>Criteria 3</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Alternative 1</td>
-                    <td>0.5</td>
-                    <td>0.424</td>
-                    <td>0.566</td>
-                </tr>
-                <tr>
-                    <td>Alternative 2</td>
-                    <td>0.25</td>
-                    <td>0.566</td>
-                    <td>0.453</td>
-                </tr>
-                <tr>
-                    <td>Alternative 3</td>
-                    <td>0.625</td>
-                    <td>0.283</td>
-                    <td>0.34</td>
-                </tr>
-                <tr>
-                    <td>Alternative 4</td>
-                    <td>0.375</td>
-                    <td>0.707</td>
-                    <td>0.226</td>
-                </tr>
-                <tr>
-                    <td>Alternative 5</td>
-                    <td>0.5</td>
-                    <td>0.566</td>
-                    <td>0.34</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 class="mt-4">Matriks Normalisasi</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Alternatif</th>
+                        @foreach($kriteria as $kri)
+                            <th>{{ $kri->nama_Kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alternatif as $index => $alt)
+                        <tr>
+                            <td>{{ $alt->nama_alternatif }}</td>
+                            @foreach($normalisasiMatriks[$index] as $nilai)
+                                <td>{{ $nilai }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Matriks Keputusan Terbobot -->
-        <h2>Matriks Keputusan Terbobot</h2>
-        <table class="table table-bordered table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th>Alternative</th>
-                    <th>Criteria 1 (0.3)</th>
-                    <th>Criteria 2 (0.4)</th>
-                    <th>Criteria 3 (0.3)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Alternative 1</td>
-                    <td>0.15</td>
-                    <td>0.1696</td>
-                    <td>0.1698</td>
-                </tr>
-                <tr>
-                    <td>Alternative 2</td>
-                    <td>0.075</td>
-                    <td>0.2264</td>
-                    <td>0.1359</td>
-                </tr>
-                <tr>
-                    <td>Alternative 3</td>
-                    <td>0.1875</td>
-                    <td>0.1132</td>
-                    <td>0.1017</td>
-                </tr>
-                <tr>
-                    <td>Alternative 4</td>
-                    <td>0.1125</td>
-                    <td>0.2828</td>
-                    <td>0.0678</td>
-                </tr>
-                <tr>
-                    <td>Alternative 5</td>
-                    <td>0.15</td>
-                    <td>0.2264</td>
-                    <td>0.1017</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 class="mt-4">Matriks Terbobot</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Alternatif</th>
+                        @foreach($kriteria as $kri)
+                            <th>{{ $kri->nama_Kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alternatif as $index => $alt)
+                        <tr>
+                            <td>{{ $alt->nama_alternatif }}</td>
+                            @foreach($terbobotMatriks[$index] as $nilai)
+                                <td>{{ $nilai }}</td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Solusi Ideal Positif dan Negatif -->
-        <h2>Solusi Ideal Positif dan Negatif</h2>
-        <table class="table table-bordered table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th></th>
-                    <th>Criteria 1</th>
-                    <th>Criteria 2</th>
-                    <th>Criteria 3</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Solusi Ideal Positif</td>
-                    <td>0.1875</td>
-                    <td>0.2828</td>
-                    <td>0.1698</td>
-                </tr>
-                <tr>
-                    <td>Solusi Ideal Negatif</td>
-                    <td>0.075</td>
-                    <td>0.1132</td>
-                    <td>0.0678</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 class="mt-4">Solusi Ideal</h2>
+        <h3 class="mt-3">Ideal Positif</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        @foreach($kriteria as $kri)
+                            <th>{{ $kri->nama_Kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach($idealPositif as $nilai)
+                            <td>{{ $nilai }}</td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Jarak ke Solusi Ideal Positif dan Negatif -->
-        <h2>Jarak ke Solusi Ideal Positif dan Negatif</h2>
-        <table class="table table-bordered table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th>Alternative</th>
-                    <th>Jarak Positif (S+)</th>
-                    <th>Jarak Negatif (S-)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Alternative 1</td>
-                    <td>0.0742</td>
-                    <td>0.1231</td>
-                </tr>
-                <tr>
-                    <td>Alternative 2</td>
-                    <td>0.1541</td>
-                    <td>0.0985</td>
-                </tr>
-                <tr>
-                    <td>Alternative 3</td>
-                    <td>0.1535</td>
-                    <td>0.0532</td>
-                </tr>
-                <tr>
-                    <td>Alternative 4</td>
-                    <td>0.1741</td>
-                    <td>0.0674</td>
-                </tr>
-                <tr>
-                    <td>Alternative 5</td>
-                    <td>0.1078</td>
-                    <td>0.0998</td>
-                </tr>
-            </tbody>
-        </table>
+        <h3 class="mt-3">Ideal Negatif</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        @foreach($kriteria as $kri)
+                            <th>{{ $kri->nama_Kriteria }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach($idealNegatif as $nilai)
+                            <td>{{ $nilai }}</td>
+                        @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Skor Preferensi dan Perangkingan -->
-        <h2>Skor Preferensi dan Perangkingan</h2>
-        <table class="table table-bordered table-striped">
-            <thead class="table-light">
-                <tr>
-                    <th>Ranking</th>
-                    <th>Alternative</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Alternative 1</td>
-                    <td>0.624</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Alternative 5</td>
-                    <td>0.481</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Alternative 3</td>
-                    <td>0.368</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Alternative 2</td>
-                    <td>0.346</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Alternative 4</td>
-                    <td>0.279</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 class="mt-4">Jarak Terhadap Solusi Ideal</h2>
+        <h3 class="mt-3">Jarak Positif</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Alternatif</th>
+                        <th>Jarak Positif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alternatif as $index => $alt)
+                        <tr>
+                            <td>{{ $alt->nama_alternatif }}</td>
+                            <td>{{ $jarakPositif[$index] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="mt-3">Jarak Negatif</h3>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Alternatif</th>
+                        <th>Jarak Negatif</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alternatif as $index => $alt)
+                        <tr>
+                            <td>{{ $alt->nama_alternatif }}</td>
+                            <td>{{ $jarakNegatif[$index] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="mt-4">Perangkingan</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>Ranking</th>
+                        <th>Alternatif</th>
+                        <th>Skor Akhir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($peringkat as $rank)
+                        <tr>
+                            <td>{{ $rank['ranking'] }}</td>
+                            <td>{{ $rank['alternatif'] }}</td>
+                            <td>{{ $rank['skor'] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
-
-
+</html>
 @endsection
