@@ -17,13 +17,16 @@ class SAWController extends Controller
         $alternatif = Alternatif::all();
 
         // Nilai matriks keputusan (statis)
-        $matriksKeputusan = [
-            [4, 3, 2, 5, 4], // Nilai untuk alternatif 1
-            [2, 5, 3, 4, 2], // Nilai untuk alternatif 2
-            [5, 4, 4, 3, 5], // Nilai untuk alternatif 3
-            [3, 2, 5, 2, 3], // Nilai untuk alternatif 4
-            [1, 4, 3, 5, 1], // Nilai untuk alternatif 5
-        ];
+        $jumlahKriteria = $kriteria->count();
+        $jumlahAlternatif = $alternatif->count();
+
+        // Nilai matriks keputusan (statis)
+        $matriksKeputusan = [];
+        for ($i = 0; $i < $jumlahAlternatif; $i++) {
+            for ($j = 0; $j < $jumlahKriteria; $j++) {
+                $matriksKeputusan[$i][$j] = rand(1, 10);
+            }
+        }
 
         // Normalisasi matriks keputusan
         $normalisasiMatriks = $this->normalisasi($matriksKeputusan);

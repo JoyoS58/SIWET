@@ -3,63 +3,121 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kriteria;
+use App\Models\Alternatif;
 
 class TopsisController extends Controller
 {
     public function index()
     {
-        return view('PKK.SPK.topsis.perhitungan');
+        // Ambil data kriteria
+        $kriteria = Kriteria::all();
+
+        // Ambil data alternatif
+        $alternatif = Alternatif::all();
+
+        $jumlahKriteria = $kriteria->count();
+        $jumlahAlternatif = $alternatif->count();
+
+        // Nilai matriks keputusan (statis)
+        $matriksKeputusan = [];
+        for ($i = 0; $i < $jumlahAlternatif; $i++) {
+            for ($j = 0; $j < $jumlahKriteria; $j++) {
+                $matriksKeputusan[$i][$j] = rand(1, 10);
+            }
+        }
+
+        // Normalisasi matriks keputusan
+        $normalisasiMatriks = $this->normalisasi($matriksKeputusan);
+
+        // Hitung matriks terbobot
+        $terbobotMatriks = $this->terbobot($normalisasiMatriks, $kriteria);
+
+        // Hitung solusi ideal positif dan negatif
+        list($idealPositif, $idealNegatif) = $this->solusiIdeal($terbobotMatriks);
+
+        // Hitung jarak ke solusi ideal positif dan negatif
+        $jarakPositif = $this->jarakIdeal($terbobotMatriks, $idealPositif);
+        $jarakNegatif = $this->jarakIdeal($terbobotMatriks, $idealNegatif);
+
+        // Hitung nilai preferensi
+        $nilaiPreferensi = $this->nilaiPreferensi($jarakPositif, $jarakNegatif);
+
+        // Urutkan alternatif berdasarkan nilai preferensi (peringkat)
+        arsort($nilaiPreferensi);
+
+        // Buat array peringkat
+        $peringkat = [];
+        $ranking = 1;
+        foreach ($nilaiPreferensi as $key => $value) {
+            $peringkat[] = ['ranking' => $ranking++, 'alternatif' => $alternatif[$key]->nama_alternatif, 'skor' => $value];
+        }
+
+        return view('PKK.SPK.topsis.perhitungan', compact('alternatif', 'kriteria', 'matriksKeputusan', 'normalisasiMatriks', 'terbobotMatriks', 'idealPositif', 'idealNegatif', 'jarakPositif', 'jarakNegatif', 'nilaiPreferensi', 'peringkat'));
     }
 
-    public function calculate(Request $request)
+    private function normalisasi($matriks)
     {
-        // Retrieve weights from the form input
-        $weights = [
-            $request->input('pendapatan'),
-            $request->input('riwayat_pembayaran'),
-            $request->input('lama_tinggal'),
-            $request->input('usia'),
-            $request->input('jumlah_tanggungan')
-        ];
+        $normalisasiMatriks = [];
+        $jmlKriteria = count($matriks[0]);
+        $jmlAlternatif = count($matriks);
 
-        // Placeholder data for demonstration purposes
-        $alternativesArray = ['A1', 'A2', 'A3', 'A4', 'A5'];
-        $decisionMatrix = [
-            [5, 3, 4, 2, 1],
-            [4, 4, 3, 3, 2],
-            [3, 5, 2, 4, 3],
-            [2, 2, 5, 5, 4],
-            [1, 1, 1, 1, 5]
-        ];
+        for ($i = 0; $i < $jmlKriteria; $i++) {
+            $pembagi = sqrt(array_sum(array_column($matriks, $i)));
+            for ($j = 0; $j < $jmlAlternatif; $j++) {
+                $normalisasiMatriks[$j][$i] = $matriks[$j][$i] / $pembagi;
+            }
+        }
 
-        // Define criteria and weights
-        $criteria = ['Pendapatan Bulanan', 'Riwayat Pembayaran', 'Lama Tinggal', 'Usia', 'Jumlah Tanggungan'];
-        $criteriaType = ['benefit', 'benefit', 'benefit', 'benefit', 'cost'];
-
-        // Perform TOPSIS steps
-        $normalizedMatrix = $this->normalizeMatrix($decisionMatrix, $criteria);
-        $weightedNormalizedMatrix = $this->weightNormalizedMatrix($normalizedMatrix, $weights);
-        list($idealBest, $idealWorst) = $this->determineIdealSolutions($weightedNormalizedMatrix, $criteria, $criteriaType);
-        $distances = $this->calculateDistances($weightedNormalizedMatrix, $idealBest, $idealWorst);
-        $scores = $this->calculateScores($distances);
-        $rankings = $this->getRankings($alternativesArray, $scores);
-
-        // Store steps for display
-        $steps = [
-            'normalizedMatrix' => $normalizedMatrix,
-            'weightedNormalizedMatrix' => $weightedNormalizedMatrix,
-            'idealBest' => $idealBest,
-            'idealWorst' => $idealWorst,
-            'distances' => $distances,
-            'scores' => $scores,
-            'rankings' => $rankings
-        ];
-
-        // Pass the steps data to the view
-        return view('PKK.SPK.topsis.index', compact('steps', 'criteria', 'alternativesArray', 'weights'));
+        return $normalisasiMatriks;
     }
 
-    // Other TOPSIS calculation functions...
+    private function terbobot($normalisasiMatriks, $kriteria)
+    {
+        $terbobotMatriks = [];
+        foreach ($normalisasiMatriks as $i => $baris) {
+            foreach ($baris as $j => $nilai) {
+                $terbobotMatriks[$i][$j] = $nilai * $kriteria[$j]->bobot_Kriteria;
+            }
+        }
+        return $terbobotMatriks;
+    }
 
-    // Placeholder functions for other TOPSIS calculation steps
+    private function solusiIdeal($terbobotMatriks)
+    {
+        $idealPositif = [];
+        $idealNegatif = [];
+
+        foreach (array_keys($terbobotMatriks[0]) as $j) {
+            $col = array_column($terbobotMatriks, $j);
+            $idealPositif[$j] = max($col);
+            $idealNegatif[$j] = min($col);
+        }
+
+        return [$idealPositif, $idealNegatif];
+    }
+
+    private function jarakIdeal($terbobotMatriks, $ideal)
+    {
+        $jarak = [];
+        foreach ($terbobotMatriks as $i => $baris) {
+            $jarak[$i] = sqrt(array_sum(array_map(
+                function ($x, $y) {
+                    return pow($x - $y, 2);
+                },
+                $baris,
+                $ideal
+            )));
+        }
+        return $jarak;
+    }
+
+    private function nilaiPreferensi($jarakPositif, $jarakNegatif)
+    {
+        $nilaiPreferensi = [];
+        foreach (array_keys($jarakPositif) as $i) {
+            $nilaiPreferensi[$i] = $jarakNegatif[$i] / ($jarakNegatif[$i] + $jarakPositif[$i]);
+        }
+        return $nilaiPreferensi;
+    }
 }
