@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id('ID_Kriteria');
             $table->string('nama_Kriteria',100);
             $table->string('kode_Kriteria',100);
-            $table->string('atribute',100);
+            $table->string('atribut',100);
             $table->double('bobot_Kriteria',50);
             $table->timestamps();
         });
