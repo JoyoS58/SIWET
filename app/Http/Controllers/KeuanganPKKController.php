@@ -16,7 +16,7 @@ class KeuanganPKKController extends Controller
         $query = KeuanganPKK::query();
     
         if ($search) {
-            $query->where('ID_Transaksi', 'LIKE', "%$search%");
+            $query->where('jenis_Transaksi', 'LIKE', "%$search%");
         }
     
         if ($filterJenis) {
