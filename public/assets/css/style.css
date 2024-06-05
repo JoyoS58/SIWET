@@ -215,11 +215,16 @@ body { background: var(--white); }
 
 .menu-toggle-btn { font-size: 25px; }
 
+.header {
+  position: relative;
+  /* Properti CSS lainnya */
+}
+
 .navbar {
   position: absolute;
-  width: 100%;
-  top: 64px;
+  top: 0;
   left: 0;
+  width: 100%;
   padding-inline: 30px;
   visibility: hidden;
   opacity: 0;
@@ -229,6 +234,7 @@ body { background: var(--white); }
 .header.active .navbar {
   visibility: visible;
   opacity: 1;
+  top: 100%; /* Sesuaikan dengan tinggi header */
 }
 
 .navbar-link,
@@ -239,7 +245,9 @@ body { background: var(--white); }
   padding-block: 8px;
 }
 
-:is(.navbar-link, .header-action-link):is(:hover, :focus) { color: var(--majorelle-blue); }
+:is(.navbar-link, .header-action-link):is(:hover, :focus) {
+  color: var(--majorelle-blue);
+}
 
 
 
@@ -297,6 +305,7 @@ body { background: var(--white); }
   object-position: center;
   border-radius: 10%;
 }
+
 
 
 
