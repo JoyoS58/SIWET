@@ -200,6 +200,7 @@ Route::put('/dataKriteria/{id}', [DataKriteriaController::class, 'update'])->nam
 Route::delete('/dataKriteria/{id}', [DataKriteriaController::class, 'destroy'])->name('dataKriteria.destroy');
 
 Route::get('/saw',[SAWController::class, 'calculate']);
+Route::match(['get', 'post'], '/saw/calculate', [SAWController::class, 'calculate'])->name('SPK.calculate');
 Route::get('/topsis',[TopsisController::class, 'index']);
 
 Route::get('/alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');

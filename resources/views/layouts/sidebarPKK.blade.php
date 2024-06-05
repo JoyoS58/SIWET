@@ -68,13 +68,13 @@
                     </li>
                 </ul>
         </ul>
-        {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
         
         <a href="#" class="nav-link text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="nav-icon fas fa-sign-out-alt"></i>
             <p>Logout</p>
-        </a> --}}
+        </a>
     </nav>
 </div>

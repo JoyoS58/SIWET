@@ -16,7 +16,7 @@
             <tbody>
                 @foreach($dataKriteria as $data)
                     <tr>
-                        <td>{{ $data->kriteria->nama_Kriteria }}</td>
+                        <td>{{ $data->kriteria->nama }}</td> <!-- Ubah nama_Kriteria menjadi nama -->
                         <td>{{ $data->nama }}</td>
                         <td>{{ $data->nilai }}</td>
                         <td>
