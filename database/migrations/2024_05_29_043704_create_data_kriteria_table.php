@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('Data_Kriteria', function (Blueprint $table) {
             $table->id('ID_DataKriteria');
             $table->unsignedBigInteger('ID_Kriteria');
-            $table->string('nama');
+            $table->string('kategori');
             $table->integer('nilai');
             $table->timestamps();
+
+            $table->foreign('ID_Kriteria')->references('ID_Kriteria')->on('Kriteria');
         });
     }
 

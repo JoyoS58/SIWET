@@ -12,7 +12,7 @@ class DataKriteriaController extends Controller
 {
     public function index()
     {
-        $dataKriteria = DataKriteria::with('kriteria')->orderBy('nama', 'ASC')->get();
+        $dataKriteria = DataKriteria::with('kriteria')->get();
         return view('PKK.SPK.DataKriteria.index', compact('dataKriteria'));
     }
 
@@ -28,18 +28,20 @@ class DataKriteriaController extends Controller
 
         $request->validate([
             'ID_Kriteria' => 'required|exists:Kriteria,ID_Kriteria',
-            'nama'        => 'required',
+            'kategori'        => 'required',
             'nilai'       => 'required|numeric',
         ]);
 
         try {
             $dataKriteria = new DataKriteria();
             $dataKriteria->ID_Kriteria = $request->ID_Kriteria;
-            $dataKriteria->nama = $request->nama;
+            $dataKriteria->kategori = $request->kategori;
             $dataKriteria->nilai = $request->nilai;
+
+            $dataKriteria->nama_Kriteria = Kriteria::findOrFail($request->ID_Kriteria)->nama_Kriteria;
             $dataKriteria->save();
 
-            return redirect()->route('dataKriteria.index')->with('msg', 'Berhasil menambah data');
+            return redirect()->route('DataKriteria.index')->with('msg', 'Berhasil menambah data');
         } catch (Exception $e) {
             Log::emergency("File:" . $e->getFile() . " Line:" . $e->getLine() . " Message:" . $e->getMessage());
             return redirect()->back()->with('error', 'Gagal menambah data');
@@ -57,18 +59,18 @@ class DataKriteriaController extends Controller
     {
         $request->validate([
             'ID_Kriteria' => 'required|exists:Kriteria,ID_Kriteria',
-            'nama'        => 'required|string',
+            'kategori'    => 'required|string',
             'nilai'       => 'required|numeric',
         ]);
 
         try {
             $dataKriteria = DataKriteria::findOrFail($id);
             $dataKriteria->ID_Kriteria = $request->ID_Kriteria;
-            $dataKriteria->nama = $request->nama;
+            $dataKriteria->kategori = $request->kategori;
             $dataKriteria->nilai = $request->nilai;
             $dataKriteria->save();
 
-            return redirect()->route('dataKriteria.index')->with('msg', 'Data berhasil diupdate');
+            return redirect()->route('DataKriteria.index')->with('msg', 'Data berhasil diupdate');
         } catch (\Exception $e) {
             Log::emergency("File:" . $e->getFile() . " Line:" . $e->getLine() . " Message:" . $e->getMessage());
             return redirect()->back()->with('error', 'Gagal mengupdate data');
@@ -81,7 +83,7 @@ class DataKriteriaController extends Controller
             $dataKriteria = DataKriteria::findOrFail($id);
             $dataKriteria->delete();
 
-            return redirect()->route('dataKriteria.index')->with('msg', 'Berhasil menghapus data');
+            return redirect()->route('DataKriteria.index')->with('msg', 'Berhasil menghapus data');
         } catch (Exception $e) {
             Log::emergency("File:" . $e->getFile() . " Line:" . $e->getLine() . " Message:" . $e->getMessage());
             return redirect()->back()->with('error', 'Gagal menghapus data');

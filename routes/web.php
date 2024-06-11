@@ -199,7 +199,17 @@ Route::get('/dataKriteria/{id}/edit', [DataKriteriaController::class, 'edit'])->
 Route::put('/dataKriteria/{id}', [DataKriteriaController::class, 'update'])->name('dataKriteria.update');
 Route::delete('/dataKriteria/{id}', [DataKriteriaController::class, 'destroy'])->name('dataKriteria.destroy');
 
-Route::get('/saw',[SAWController::class, 'calculate']);
+// Route::get('/saw', [SAWController::class, 'calculate']);
+Route::get('/nilai/create', [SAWController::class, 'create'])->name('nilai.create');
+Route::post('/nilai/store', [SAWController::class, 'store'])->name('nilai.store');
+Route::get('/saw/calculate', [SAWController::class, 'calculate'])->name('saw.calculate');
+Route::get('/saw/confirm_edit/{ID_alternatif}', [SAWController::class, 'confirmEdit'])->name('saw.confirm_edit');
+Route::get('/saw/edit/{ID_alternatif}', [SAWController::class, 'edit'])->name('saw.edit');
+Route::put('/saw/update/{ID_alternatif}', [SAWController::class, 'update'])->name('saw.update');
+Route::get('/nilai/check/{ID_alternatif}', [SAWController::class, 'checkNilai'])->name('nilai.check');
+
+
+
 Route::get('/topsis',[TopsisController::class, 'index']);
 
 Route::get('/alternatif', [AlternatifController::class, 'index'])->name('alternatif.index');

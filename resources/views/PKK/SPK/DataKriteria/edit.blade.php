@@ -17,8 +17,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="nama">Nama Data Kriteria</label>
-                <input type="text" name="nama" id="nama" class="form-control" value="{{ $dataKriteria->nama }}" required>
+                <label for="kategori">Kategori</label>
+                <input type="text" name="kategori" id="kategori" class="form-control" value="{{ $dataKriteria->kategori }}" required>
             </div>
             <div class="form-group">
                 <label for="nilai">Nilai</label>
