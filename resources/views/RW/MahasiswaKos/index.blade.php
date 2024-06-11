@@ -2,18 +2,16 @@
 @section('title', 'Pengelolaan Data Mahasiswa Kos')
 
 @section('content_header')
-    <h1>Pengelolaan Data Mahasiswa Kos</h1>
+    <h1>Pengelolaan Data Penghuni Kos</h1>
 @endsection
+
 @section('content')
-<head>
-    <h1>Pengelolaan Data Mahasiswa Kos</h1>
-</head>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <h3 class="card-title">Pengelolaan Data Mahasiswa Kos</h3>
+                    <h3 class="card-title">Pengelolaan Data Penghuni Kos</h3>
                 </div>
             </div>
             <div class="card-body row">
@@ -53,8 +51,9 @@
                             <th width="200px" class="text-center">Alamat Kos</th>
                             <th width="150px" class="text-center">Jenis Kelamin</th>
                             <th width="100px" class="text-center">Agama</th>
-                            <th width="150px" class="text-center">Universitas</th>
-                            <th width="150px" class="text-center">Jurusan</th>
+                            <th width="150px" class="text-center">Status</th>
+                            <th width="150px" class="text-center">Universitas / Pekerjaan</th>
+                            <th width="150px" class="text-center">Jurusan / Alamat Kerja</th>
                             <th width="100px" class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -67,11 +66,17 @@
                                 <td>{{ $Mahasiswa->alamat_Kos }}</td>
                                 <td>{{ $Mahasiswa->jenis_Kelamin }}</td>
                                 <td>{{ $Mahasiswa->agama }}</td>
-                                <td>{{ $Mahasiswa->universitas }}</td>
-                                <td>{{ $Mahasiswa->jurusan }}</td>
+                                <td>{{ $Mahasiswa->status }}</td>
+                                @if ($Mahasiswa->status == 'Mahasiswa')
+                                    <td>{{ $Mahasiswa->universitas }}</td>
+                                    <td>{{ $Mahasiswa->jurusan }}</td>
+                                @else
+                                    <td>{{ $Mahasiswa->pekerjaan }}</td>
+                                    <td>{{ $Mahasiswa->alamatKerja }}</td>
+                                @endif
                                 <td class="action-buttons">
                                     <a href="{{url('MahasiswaKos/show/' . $Mahasiswa->NIK)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
-                                    <a href="{{url('MahasiswaKos/edit/' . $Mahasiswa->NIK)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="{{ url('MahasiswaKos/edit/' . $Mahasiswa->NIK) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
                                     <form id="deleteForm{{$Mahasiswa->NIK}}" action="{{ url('MahasiswaKos/delete/' . $Mahasiswa->NIK) }}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')

@@ -47,11 +47,10 @@ class MahasiswaKosController extends Controller
             'alamatKos' => 'required',
             'jenis_Kelamin' => 'required',
             'agama' => 'required',
-            'universitas' => 'required',
-            'jurusan' => 'required',
+            'status' => 'required',
         ]);
-
-        MahasiswaKos::create([
+    
+        $data = [
             'NIK' => $request->NIK,
             'ID_RT' => $request->ID_RT,
             'nama' => $request->nama,
@@ -59,24 +58,36 @@ class MahasiswaKosController extends Controller
             'alamat_Kos' => $request->alamatKos,
             'jenis_Kelamin' => $request->jenis_Kelamin,
             'agama' => $request->agama,
-            'universitas' => $request->universitas,
-            'jurusan' => $request->jurusan,
-        ]);
-
+            'status' => $request->status,
+        ];
+    
+        if ($request->status == 'Mahasiswa') {
+            $data['universitas'] = $request->universitas;
+            $data['jurusan'] = $request->jurusan;
+            $data['wali'] = $request->wali;
+        } else if ($request->status == 'Pekerja') {
+            $data['pekerjaan'] = $request->pekerjaan;
+            $data['alamatKerja'] = $request->alamatKerja;
+        }
+    
+        MahasiswaKos::create($data);
+    
         return redirect('MahasiswaKos')->with('success', 'Data Mahasiswa Berhasil Disimpan');
     }
+    
     public function create()
     {
         $dataRT = RT::all();
         return view('RW.MahasiswaKos.create', ['RT' => $dataRT]);
     }
+    
     public function edit(string $id)
     {
         $MahasiswaKos = MahasiswaKos::find($id);
         $RT = RT::all();
         return view('RW.MahasiswaKos.edit', ['MahasiswaKos' => $MahasiswaKos, 'RT' => $RT]);
     }
-
+    
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -87,11 +98,10 @@ class MahasiswaKosController extends Controller
             'alamatKos' => 'required',
             'jenis_Kelamin' => 'required',
             'agama' => 'required',
-            'universitas' => 'required',
-            'jurusan' => 'required',
+            'status' => 'required',
         ]);
-
-        MahasiswaKos::find($id)->update([
+    
+        $data = [
             'NIK' => $request->NIK,
             'ID_RT' => $request->ID_RT,
             'nama' => $request->nama,
@@ -99,10 +109,20 @@ class MahasiswaKosController extends Controller
             'alamat_Kos' => $request->alamatKos,
             'jenis_Kelamin' => $request->jenis_Kelamin,
             'agama' => $request->agama,
-            'universitas' => $request->universitas,
-            'jurusan' => $request->jurusan,
-        ]);
-
+            'status' => $request->status,
+        ];
+    
+        if ($request->status == 'Mahasiswa') {
+            $data['universitas'] = $request->universitas;
+            $data['jurusan'] = $request->jurusan;
+            $data['wali'] = $request->wali;
+        } else if ($request->status == 'Pekerja') {
+            $data['pekerjaan'] = $request->pekerjaan;
+            $data['alamatKerja'] = $request->alamatKerja;
+        }
+    
+        MahasiswaKos::find($id)->update($data);
+    
         return redirect('MahasiswaKos')->with('success', 'Data Mahasiswa Berhasil Diubah');
     }
     public function show(string $id)

@@ -374,7 +374,7 @@ $Kegiatans = \App\Models\KegiatanRW::all(); // Menghitung jumlah warga
         - CONTACT
       -->
 
-      <section class="contact" id="contact">
+      {{-- <section class="contact" id="contact">
         <div class="container">
           <h2 class="h2 section-title">Pengajuan Pinjaman Pra Koperasi</h2>
           <p class="section-text">
@@ -443,7 +443,7 @@ $Kegiatans = \App\Models\KegiatanRW::all(); // Menghitung jumlah warga
             </ul>
           </div>
         </div>
-      </section>
+      </section> --}}
 
     </article>
   </main>

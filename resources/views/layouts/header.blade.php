@@ -9,8 +9,6 @@
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-        <span>Admin</span>
-        <i class="fas fa-user"></i>
       </a>
     </li>
   </ul>

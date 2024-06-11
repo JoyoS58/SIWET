@@ -27,7 +27,7 @@
                             <option value="{{ $RT->ID_RT }}"> RT {{ $RT->nomor_RT }}</option>
                         @endforeach
                     </select>
-                    @error('id_RT')
+                    @error('ID_RT')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
@@ -91,21 +91,65 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-2 control-label col-form-label">Universitas</label>
+                <label class="col-2 control-label col-form-label">Status</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" id="universitas" name="universitas" placeholder="Masukkan Universitas" required>
-                    @error('universitas')
-                    <small class="form-text text-danger">{{$message}}</small>
+                    <select class="form-control" id="status" name="status" required onchange="toggleStatusFields()">
+                        <option value="">Pilih Status</option>
+                        <option value="Mahasiswa">Mahasiswa</option>
+                        <option value="Pekerja">Pekerja</option>
+                    </select>
+                    @error('status')
+                        <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-2 control-label col-form-label">Jurusan</label>
-                <div class="col-10">
-                    <input type="text" class="form-control" id="jurusan" name="jurusan" placeholder="Masukkan Jurusan" required>
-                    @error('jurusan')
-                    <small class="form-text text-danger">{{$message}}</small>
-                    @enderror
+            <div id="mahasiswa-fields" style="display: none;">
+                <div class="form-group row">
+                    <label class="col-2 control-label col-form-label">Universitas</label>
+                    <div class="col-10">
+                        <input type="text" class="form-control" id="universitas" name="universitas" placeholder="Masukkan Universitas">
+                        @error('universitas')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 control-label col-form-label">Jurusan</label>
+                    <div class="col-10">
+                        <input type="text" class="form-control" id="jurusan" name="jurusan" placeholder="Masukkan Jurusan">
+                        @error('jurusan')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 control-label col-form-label">Wali</label>
+                    <div class="col-10">
+                        <input type="text" class="form-control" id="wali" name="wali" placeholder="Masukkan Nama Wali">
+                        @error('wali')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div id="pekerja-fields" style="display: none;">
+                <div class="form-group row">
+                    <label class="col-2 control-label col-form-label">Pekerjaan</label>
+                    <div class="col-10">
+                        <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" placeholder=" Masukkan Pekerjaan">
+                        @error('tempatKerja')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 control-label col-form-label">Alamat Kerja</label>
+                    <div class="col-10">
+                        <input type="text" class="form-control" id="alamatKerja" name="alamatKerja" placeholder="Masukkan Alamat Kerja">
+                        @error('alamatKerja')
+                        <small class="form-text text-danger">{{$message}}</small>
+                        @enderror
+                    </div>
                 </div>
             </div>
             <div class="form-group row">
@@ -118,4 +162,24 @@
         </form>
     </div>
 </div>
+
+<script>
+    function toggleStatusFields() {
+        var status = document.getElementById('status').value;
+        var mahasiswaFields = document.getElementById('mahasiswa-fields');
+        var pekerjaFields = document.getElementById('pekerja-fields');
+
+        if (status === 'Mahasiswa') {
+            mahasiswaFields.style.display = 'block';
+            pekerjaFields.style.display = 'none';
+        } else if (status === 'Pekerja') {
+            mahasiswaFields.style.display = 'none';
+            pekerjaFields.style.display = 'block';
+        } else {
+            mahasiswaFields.style.display = 'none';
+            pekerjaFields.style.display = 'none';
+        }
+    }
+</script>
+
 @endsection

@@ -27,11 +27,11 @@
                     <p>Data Warga</p>
                 </a>
             </li>
-            <li class="nav-header">Mahasiswa Kos</li>
+            <li class="nav-header">Penghuni Kos</li>
             <li class="nav-item">
                 <a href="{{ url('/MahasiswaKos') }}" class="nav-link text-white">
                     <i class="nav-icon far fa-user"></i>
-                    <p>Data Mahasiswa Kos</p>
+                    <p>Data Penghuni Kos</p>
                 </a>
             </li>
             <li class="nav-header">Keuangan</li>
@@ -50,4 +50,12 @@
             </li>
         </ul>
     </nav>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    
+    <a href="#" class="nav-link text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <i class="nav-icon fas fa-sign-out-alt"></i>
+        <p>Logout</p>
+    </a>
 </div>
