@@ -3,7 +3,6 @@
 
 @section('content_header')
     <h1>Input Nilai Alternatif & Hasil Perhitungan SAW</h1>
-    <h1>SAW</h1>
 @endsection
 
 @section('content')
@@ -163,5 +162,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
-
 @endsection
