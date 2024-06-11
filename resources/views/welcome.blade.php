@@ -10,6 +10,7 @@
   <!-- 
     - favicon
   -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
 
   <!-- 
@@ -52,11 +53,6 @@
           <li>
             <a href="#features" class="navbar-link">Features</a>
           </li>
-
-          <!-- <li>
-            <a href="#" class="navbar-link">Pricing</a>
-          </li> -->
-
           <li>
             <a href="#blog" class="navbar-link">Kegiatan</a>
           </li>
@@ -270,140 +266,115 @@
       -->
 
       <section class="blog" id="blog">
-        <div class="container">
+        @php
+$Kegiatans = \App\Models\KegiatanRW::all(); // Menghitung jumlah warga
+@endphp
 
-          <h2 class="h2 section-title">Kegiatan Warga</h2>
+{{-- <!DOCTYPE html>
+<html lang="en"> --}}
 
-          <p class="section-text">
+    <!-- Bootstrap CSS -->
+
+    <div class="container mt-4">
+      <h2 class="h2 section-title">Kegiatan Warga</h2>
+        <p class="section-text">
             Kegiatan Yang Dilakukan di RW 10 jln oro oro dowo .
-          </p>
+        </p>
 
-          <ul class="blog-list">
+        <div class="row">
+            @foreach($Kegiatans as $Kegiatan)
+            <div class="col-md-4 mb-3">
+                <div class="blog-card">
+                    <figure class="hero-banner">
+                        <img src="{{ asset('assets/images/rukun_warga3.jpg') }}" alt="Best Traveling Place">
+                    </figure>
 
-            <li>
-              <div class="blog-card">
+                    <div class="blog-meta">
+                        <span>
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <time datetime="{{ $Kegiatan->tanggal }}">{{ $Kegiatan->tanggal }}</time>
+                        </span>
 
-                <figure class="blog-banner">
-                  <img src="{{ asset('assets/images/rukun_warga3.jpg') }}" alt="Best Traveling Place">
-                </figure>
+                        <span>
+                            <ion-icon name="person-outline"></ion-icon>
+                            <p>admin</p>
+                        </span>
+                    </div>
 
-                <div class="blog-meta">
+                    <h3 class="blog-title">{{ $Kegiatan->nama_Kegiatan }}</h3>
 
-                  <span>
-                    <ion-icon name="calendar-outline"></ion-icon>
+                    <p class="blog-text">{{ $Kegiatan->deskripsi }}</p>
 
-                    <time datetime="2021-04-10">april 10 2023</time>
-                  </span>
-
-                  <span>
-                    <ion-icon name="person-outline"></ion-icon>
-
-                    <p>admin</p>
-                  </span>
-
+                    <a href="#" class="blog-link-btn">
+                        <span>Learn More</span>
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </a>
                 </div>
-
-                <h3 class="blog-title">kegiatan keagamaan</h3>
-
-                <p class="blog-text">
-                  Integer ante arcu accumsan a consectetuer eget posuere mauris praesent adipiscing phasellus ullamcorper ipsum rutrum punc.
-                </p>
-
-                <a href="#" class="blog-link-btn">
-                  <span>Learn More</span>
-
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <figure class="blog-banner">
-                  <img src="{{ asset('assets/images/rukun_warga.jpg') }}" alt="Best Traveling Place">
-                </figure>
-
-                <div class="blog-meta">
-
-                  <span>
-                    <ion-icon name="calendar-outline"></ion-icon>
-
-                    <time datetime="2021-04-10">April 10, 2023</time>
-                  </span>
-
-                  <span>
-                    <ion-icon name="person-outline"></ion-icon>
-
-                    <p>Admin</p>
-                  </span>
-
-                </div>
-
-                <h3 class="blog-title">Kegiatan Seni Budaya</h3>
-
-                <p class="blog-text">
-                  Integer ante arcu accumsan a consectetuer eget posuere mauris praesent adipiscing phasellus ullamcorper ipsum rutrum punc.
-                </p>
-
-                <a href="#" class="blog-link-btn">
-                  <span>Learn More</span>
-
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="blog-card">
-
-                <figure class="blog-banner">
-                  <img src="{{ asset('assets/images/rukun_warga2.jpg') }}" alt="Best Traveling Place">
-                </figure>
-
-                <div class="blog-meta">
-
-                  <span>
-                    <ion-icon name="calendar-outline"></ion-icon>
-
-                    <time datetime="2021-04-10">April 10, 2023</time>
-                  </span>
-
-                  <span>
-                    <ion-icon name="person-outline"></ion-icon>
-
-                    <p>Admin</p>
-                  </span>
-
-                </div>
-
-                <h3 class="blog-title">Bagi bagi makanan gratis</h3>
-
-                <p class="blog-text">
-                  Kegiatan Berbagi makanan yang dilakukan di RW 10 jln besar ijen kelurahan Oro-Oro dowo.
-                </p>
-
-                <a href="#" class="blog-link-btn">
-                  <span>Learn More</span>
-
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-          </ul>
-
+            </div>
+            @endforeach
         </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       </section>
 
+
+
+      {{-- kegiatan pkk --}}
+
+      <section class="blog" id="blog">
+        @php
+            $Kegiatans = \App\Models\KegiatanPKK::all(); // Menghitung jumlah warga
+        @endphp
+    
+        <div class="container mt-4">
+            <h2 class="h2 section-title">Kegiatan PKK</h2>
+            <p class="section-text">
+                Kegiatan Yang Dilakukan di RW 10 jln oro oro dowo.
+            </p>
+    
+            <div class="row">
+                @foreach($Kegiatans as $Kegiatan)
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="{{ asset('assets/images/rukun_warga3.jpg') }}" class="card-img-top" alt="Kegiatan PKK">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $Kegiatan->nama_Kegiatan }}</h5>
+                                <p class="card-text">{{ $Kegiatan->deskripsi }}</p>
+                                <div class="blog-meta">
+                                    <span>
+                                        <ion-icon name="calendar-outline"></ion-icon>
+                                        <time datetime="{{ $Kegiatan->tanggal }}">{{ $Kegiatan->tanggal }}</time>
+                                    </span>
+                                    <span>
+                                        <ion-icon name="person-outline"></ion-icon>
+                                        <p>admin</p>
+                                    </span>
+                                </div>
+                                <a href="#" class="btn btn-primary blog-link-btn">
+                                    <span>Learn More</span>
+                                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </section>
       <!-- 
         - CONTACT
       -->
 
-      <section class="contact" id="contact">
+      {{-- <section class="contact" id="contact">
         <div class="container">
           <h2 class="h2 section-title">Pengajuan Pinjaman Pra Koperasi</h2>
           <p class="section-text">
@@ -472,7 +443,7 @@
             </ul>
           </div>
         </div>
-      </section>
+      </section> --}}
 
     </article>
   </main>

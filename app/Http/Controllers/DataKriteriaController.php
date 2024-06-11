@@ -24,8 +24,7 @@ class DataKriteriaController extends Controller
 
     public function store(Request $request)
     {
-        Log::info($request->all());
-
+        // Validate the request
         $request->validate([
             'ID_Kriteria' => 'required|exists:Kriteria,ID_Kriteria',
             'kategori'        => 'required',
@@ -48,15 +47,9 @@ class DataKriteriaController extends Controller
         }
     }
 
-    public function edit($id)
-    {
-        $dataKriteria = DataKriteria::findOrFail($id);
-        $kriteria = Kriteria::all();
-        return view('PKK.SPK.DataKriteria.edit', compact('dataKriteria', 'kriteria'));
-    }
-
     public function update(Request $request, $id)
     {
+        // Validate the request
         $request->validate([
             'ID_Kriteria' => 'required|exists:Kriteria,ID_Kriteria',
             'kategori'    => 'required|string',
@@ -75,6 +68,14 @@ class DataKriteriaController extends Controller
             Log::emergency("File:" . $e->getFile() . " Line:" . $e->getLine() . " Message:" . $e->getMessage());
             return redirect()->back()->with('error', 'Gagal mengupdate data');
         }
+    }
+
+
+    public function edit($id)
+    {
+        $dataKriteria = DataKriteria::findOrFail($id);
+        $kriteria = Kriteria::all();
+        return view('PKK.SPK.DataKriteria.edit', compact('dataKriteria', 'kriteria'));
     }
 
     public function destroy($id)

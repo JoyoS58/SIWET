@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
+use App\Models\kriteria;
 use Illuminate\Http\Request;
 
 class AlternatifController extends Controller
@@ -11,7 +12,8 @@ class AlternatifController extends Controller
     public function index()
     {
         $alternatif = Alternatif::all();
-        return view('PKK.SPK.alternatif.index', compact('alternatif'));
+        $kriteria = kriteria::all();
+        return view('PKK.SPK.alternatif.index', compact('alternatif','kriteria'));
     }
     public function store(Request $request)
     {
@@ -39,7 +41,7 @@ class AlternatifController extends Controller
         $alternatif = Alternatif::findOrFail($id);
         $alternatif->update($request->all());
 
-        return redirect()->route('spk.index')->with('msg_alternatif', 'Alternatif berhasil diperbarui.');
+        return redirect()->route('alternatif.index')->with('msg_alternatif', 'Alternatif berhasil diperbarui.');
     }
 
     public function destroy($id)

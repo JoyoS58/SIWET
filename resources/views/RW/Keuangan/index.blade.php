@@ -48,7 +48,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>ID Transaksi</th>
                             <th>Jenis Transaksi</th>
                             <th>Nominal</th>
                             <th>Tanggal Transaksi</th>
@@ -61,10 +60,9 @@
                         @foreach($dataKeuangan as $index => $KeuanganRW)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $KeuanganRW->ID_Transaksi }}</td>
                                 <td>{{ $KeuanganRW->jenis_Transaksi }}</td>
                                 <td>{{ $KeuanganRW->nominal }}</td>
-                                <td>{{ $KeuanganRW->tanggal_Transaksi }}</td>
+                                <td>{{ \Carbon\Carbon::parse($KeuanganRW->tanggal_Transaksi)->translatedFormat('d F Y') }}</td>
                                 <td>{{ $KeuanganRW->deskripsi }}</td>
                                 {{-- <td>{{ $KeuanganRW->saldo }}</td> --}}
                                 <td class="action-buttons">
