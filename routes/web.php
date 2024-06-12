@@ -20,6 +20,11 @@ use App\Http\Controllers\WargaController;
 use App\Models\MahasiswaKos;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataKriteriaController;
+use App\Http\Controllers\UploadController;
+
+Route::get('/upload', [UploadController::class, 'create']);
+Route::post('/upload', [UploadController::class, 'store'])->name('upload.store');
+
 
 
 

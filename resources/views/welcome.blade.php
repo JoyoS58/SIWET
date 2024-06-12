@@ -11,7 +11,7 @@
     - favicon
   -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+  <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/svg+xml">
 
   <!-- 
     - custom css link

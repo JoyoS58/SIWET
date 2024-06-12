@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{config('app.name','SIWET')}}</title>
+  <title>Siwet</title>
+  <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/svg+xml">
 
   <meta name="csrf-token" content="{{ csrf_token()}}"> <!-- Untuk mengirimkan token laravel csrf pada setiap request ajax
 

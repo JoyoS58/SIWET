@@ -4,10 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{config('app.name','SIWET')}}</title>
+  <title>Siwet</title>
 
   <meta name="csrf-token" content="{{ csrf_token()}}"> <!-- Untuk mengirimkan token laravel csrf pada setiap request ajax
 
   <!-- Google Font: Source Sans Pro -->
+  <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/svg+xml">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
