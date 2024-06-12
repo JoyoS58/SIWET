@@ -85,8 +85,7 @@
                                         <form action="{{ route('kriteria.destroy', $row->ID_Kriteria) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-circle btn-danger hapus">
-                                                <i class="fa fa-trash"></i>
+                                            <button type="submit" class="btn btn-sm btn-circle btn-danger hapus"><i class="fa fa-trash"></i>
                                             </button>
                                         </form>
                                     </td>

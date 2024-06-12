@@ -72,11 +72,11 @@
                                     <td class="action-buttons">
                                         <a href="{{url('KegiatanPKK/show/' . $KegiatanPKK->ID_Kegiatan)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                         <a href="{{url('KegiatanPKK/edit/' . $KegiatanPKK->ID_Kegiatan)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                        <form id="deleteForm{{$KegiatanPKK->ID_Kegiatan}}" action="{{ url('KegiatanPKK/delete/' . $KegiatanPKK->ID_Kegiatan) }}" method="POST" style="display: none;">
+                                        <form id="deleteForm{{$KegiatanPKK->ID_Kegiatan}}" action="{{ url('KegiatanPKK/delete/' . $KegiatanPKK->ID_Kegiatan) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
+                                            <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletion('deleteForm{{$KegiatanPKK->ID_Kegiatan}}')"><i class="fas fa-trash"></i> Delete</button>
                                         </form>
-                                        <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$KegiatanPKK->ID_Kegiatan}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -87,6 +87,13 @@
                 </div>
             </div>
         </div>
-    </div>     
+    </div>
+    <script>
+        function confirmDeletion(formId) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                document.getElementById(formId).submit();
+            }
+        }
+        </script>     
 @endsection
 

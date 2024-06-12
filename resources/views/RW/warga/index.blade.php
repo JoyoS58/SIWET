@@ -71,11 +71,11 @@
                                     <td class="action-buttons">
                                         <a href="{{url('Warga/show/' . $warga->NIK)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                         <a href="{{url('Warga/edit/' . $warga->NIK)}}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                        <form id="deleteForm{{$warga->NIK}}" action="{{ url('Warga/delete/' . $warga->NIK) }}" method="POST" style="display: none;">
+                                        <form id="deleteForm{{$warga->NIK}}" action="{{ url('Warga/delete/' . $warga->NIK) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
+                                            <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletion('deleteForm{{$warga->NIK}}')"><i class="fas fa-trash"></i> Delete</button>
                                         </form>
-                                        <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$warga->NIK}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -85,4 +85,11 @@
             </div>
         </div>
     </div>     
+    <script>
+        function confirmDeletion(formId) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                document.getElementById(formId).submit();
+            }
+        }
+        </script>
 @endsection

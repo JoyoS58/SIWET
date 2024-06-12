@@ -45,7 +45,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>ID Transaksi</th>
                             <th>Jenis Transaksi</th>
                             <th>Nominal</th>
                             <th>Tanggal Transaksi</th>
@@ -57,7 +56,6 @@
                         @foreach($dataKeuangan as $index => $KeuanganPKK)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $KeuanganPKK->ID_Transaksi }}</td>
                                 <td>{{ $KeuanganPKK->jenis_Transaksi }}</td>
                                 <td>{{ $KeuanganPKK->nominal }}</td>
                                 <td>{{ $KeuanganPKK->tanggal }}</td>
@@ -65,11 +63,11 @@
                                 <td class="action-buttons">
                                     <a href="{{url('KeuanganPKK/show/' . $KeuanganPKK->ID_Transaksi)}}" class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i> Detail</a>
                                     <a href="{{ url('KeuanganPKK/edit/' . $KeuanganPKK->ID_Transaksi) }}" class="btn btn-primary btn-sm edit-button"><i class="fas fa-edit"></i> Edit</a>
-                                    <form id="deleteForm{{$KeuanganPKK->ID_Transaksi}}" action="{{ url('KeuanganPKK/delete/' . $KeuanganPKK->ID_Transaksi) }}" method="POST" style="display: none;">
+                                    <form id="deleteForm{{$KeuanganPKK->ID_Transaksi}}" action="{{ url('KeuanganPKK/delete/' . $KeuanganPKK->ID_Transaksi) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
+                                        <button type="button" class="btn btn-danger btn-sm delete-button" onclick="confirmDeletion('deleteForm{{$KeuanganPKK->ID_Transaksi}}')"><i class="fas fa-trash"></i> Delete</button>
                                     </form>
-                                    <a href="#" onclick="if(confirm('Apakah Anda yakin ingin menghapus data ini?')) event.preventDefault(); document.getElementById('deleteForm{{$KeuanganPKK->ID_Transaksi}}').submit();" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -81,4 +79,11 @@
         </div>
     </div>
 </div>
+<script>
+    function confirmDeletion(formId) {
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            document.getElementById(formId).submit();
+        }
+    }
+    </script>
 @endsection
