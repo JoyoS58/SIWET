@@ -57,10 +57,6 @@
             <a href="#blog" class="navbar-link">Kegiatan</a>
           </li>
 
-          <li>
-            <a href="#contact" class="navbar-link">Pengajuan Pinjaman</a>
-          </li>
-
         </ul>
 
         <div class="header-actions">
