@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KegiatanRW;
 use Illuminate\Http\Request;
 use App\Models\RW;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class KegiatanRWController extends Controller
@@ -39,8 +40,17 @@ class KegiatanRWController extends Controller
             'penanggung_Jawab' =>'required',
             'tempat' =>'required',
             'deskripsi' => 'required',
+            'gambar' => 'image|max:5000',
         ]);
+        $pathBaru = null;
+        if ($request->hasFile('gambar')) {
+            $imageFile = $request->file('gambar');
+            $extFile = $request->gambar->getClientOriginalExtension();
+            $namaFile = 'web-'.time().".". $extFile;
 
+            Storage::disk('img_inventaris')->put($namaFile, file_get_contents($imageFile));
+            $pathBaru = $namaFile;
+        }
         KegiatanRW::create([
             'ID_RW' => 1,
             'nama_Kegiatan' => $request->nama_Kegiatan,
@@ -49,6 +59,7 @@ class KegiatanRWController extends Controller
             'penanggung_Jawab' => $request->penanggung_Jawab,
             'tempat' => $request->tempat,
             'deskripsi' => $request->deskripsi,
+            'gambar' => $pathBaru,
         ]);
 
         return redirect('KegiatanRW')->with('success', 'Data Kegiatan Berhasil Disimpan');
@@ -73,17 +84,36 @@ class KegiatanRWController extends Controller
             'penanggung_Jawab' =>'required',
             'tempat' =>'required',
             'deskripsi' => 'required',
+            'gambar' => 'image|max:5000',
         ]);
+        if ($request->hasFile('gambar')) {
+            $imageFile = $request->file('gambar');
+            $extFile = $request->gambar->getClientOriginalExtension();
+            $namaFile = 'web-'.time().".". $extFile;
 
-        KegiatanRW::find($id)->update([
-            // 'ID_RW' =>  $request->ID_RW,
-            'nama_Kegiatan' => $request->nama_Kegiatan,
+            Storage::disk('img_inventaris')->put($namaFile, file_get_contents($imageFile));
+            $pathBaru = $namaFile;
+
+            KegiatanRW::find($request->ID_Kegiatan)->update([
+                'nama_Kegiatan' => $request->nama_Kegiatan,
             'waktu' => $request->waktu,
             'tanggal' => $request->tanggal,
             'penanggung_Jawab' => $request->penanggung_Jawab,
             'tempat' => $request->tempat,
             'deskripsi' => $request->deskripsi,
-        ]);
+            'gambar' => $pathBaru,
+            ]);
+        } else {
+            KegiatanRW::find($request->ID_Kegiatan)->update([
+                'nama_Kegiatan' => $request->nama_Kegiatan,
+            'waktu' => $request->waktu,
+            'tanggal' => $request->tanggal,
+            'penanggung_Jawab' => $request->penanggung_Jawab,
+            'tempat' => $request->tempat,
+            'deskripsi' => $request->deskripsi,
+            ]);
+        }
+
 
         return redirect('KegiatanRW')->with('success', 'Data Kegiatan Berhasil Diubah');
     }

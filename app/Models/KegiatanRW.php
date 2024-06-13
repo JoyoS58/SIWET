@@ -19,6 +19,7 @@ class KegiatanRW extends Model
         'tempat',
         'penanggung_Jawab',
         'deskripsi',
+        'gambar',
     ];
     public function RW(): BelongsTo{
         return $this->belongsTo(RW::class, 'ID_RW', 'ID_RW');

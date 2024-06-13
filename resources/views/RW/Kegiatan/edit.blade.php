@@ -7,7 +7,7 @@
         <div class="card-tools"></div>
     </div>
     <div class="card-body">
-        <form action="{{url('KegiatanRW/' . $KegiatanRW->ID_Kegiatan_RW)}}" method="POST" class="form-horizontal">
+        <form action="{{url('KegiatanRW/' . $KegiatanRW->ID_Kegiatan_RW)}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
             @csrf
             {!! method_field('PUT') !!}
             <div class="form-group row">
@@ -60,6 +60,15 @@
                 <div class="col-10">
                     <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{old('deskripsi',$KegiatanRW->deskripsi)}}" required>
                     @error('deskripsi')
+                        <small class="form-text text-danger">{{$message}}</small>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 control-label col-form-label">Gambar</label>
+                <div class="col-10">
+                    <input type="file" class="form-control" id="gambar" name="gambar">
+                    @error('gambar')
                         <small class="form-text text-danger">{{$message}}</small>
                     @enderror
                 </div>

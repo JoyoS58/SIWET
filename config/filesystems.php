@@ -58,6 +58,19 @@ return [
 
     ],
 
+'img_inventaris' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/inventaris'),
+            'url' => env('APP_URL').'/storage/inventaris',
+            'visibility' => 'public',
+        ],
+        // 'img_kks' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public/kks'),
+        //     'url' => env('APP_URL').'/storage/kks',
+        //     'visibility' => 'public',
+        // ],
+
     /*
     |--------------------------------------------------------------------------
     | Symbolic Links

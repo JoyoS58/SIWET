@@ -59,6 +59,7 @@
                                 <th>Penanggung Jawab</th>
                                 <th>Tempat Kegiatan</th>
                                 <th>Keterangan</th>
+                                <th>Gambar</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -73,6 +74,7 @@
                                     <td>{{ $KegiatanRW->penanggung_Jawab }}</td>
                                     <td>{{ $KegiatanRW->tempat }}</td>
                                     <td>{{ $KegiatanRW->deskripsi }}</td>
+                                    <td><img src="{{asset{'storage/inventaris/'}}}" alt="Kegiatan"></td>
                                     <td class="action-buttons">
                                         <a href="{{ url('KegiatanRW/show/' . $KegiatanRW->ID_Kegiatan_RW) }}"
                                             class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i>

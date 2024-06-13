@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('tempat',100);
             $table->string('penanggung_Jawab',100);
             $table->text('deskripsi');
+            $table->string('gambar',500)->nullable();
             $table->timestamps();
 
             $table->foreign('ID_RW')->references('ID_RW')->on('RW');

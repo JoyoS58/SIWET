@@ -32,6 +32,10 @@
                         <th>Keterangan</th>
                         <td>{{$KegiatanRW->deskripsi}}</td>
                     </tr>
+                    <tr>
+                        <th>Gambar</th>
+                        <td><img src="{{asset{'storage/inventaris/'}}}" alt="Kegiatan"></td>
+                    </tr>
                 </table>
             <a href="{{url('KegiatanRW')}}" class="btn btn-sm btn-default mt-2">Kembali</a>
         </div>

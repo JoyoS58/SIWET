@@ -10,8 +10,7 @@
         <form action="{{ url('MahasiswaKos/' . $MahasiswaKos->NIK) }}" method="POST">
             @csrf
             @method('PUT')
-            <!-- Isi formulir edit di sini -->
-        </form>
+            <!-- NIK Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">NIK</label>
                 <div class="col-10">
@@ -21,20 +20,22 @@
                     @enderror
                 </div>
             </div>
+            <!-- ID_RT Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label" for="ID_RT">ID_RT</label>
                 <div class="col-10">
                     <select class="form-control" id="ID_RT" name="ID_RT" required>
                         <option value="">Pilih ID_RT</option>
-                        @foreach($RT as $RT)
-                            <option value="{{ $RT->ID_RT }}" {{ $MahasiswaKos->ID_RT == $RT->ID_RT ? 'selected' : '' }}> RT {{ $RT->nomor_RT }}</option>
+                        @foreach($RT as $rt)
+                            <option value="{{ $rt->ID_RT }}" {{ $MahasiswaKos->ID_RT == $rt->ID_RT ? 'selected' : '' }}> RT {{ $rt->nomor_RT }}</option>
                         @endforeach
                     </select>
                     @error('ID_RT')
-                        <small class="form-text text-danger">{{ $message }}</small>
+                    <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
+            <!-- Nama Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Nama</label>
                 <div class="col-10">
@@ -44,6 +45,7 @@
                     @enderror
                 </div>
             </div>
+            <!-- Tempat, Tanggal Lahir Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Tempat, Tanggal Lahir</label>
                 <div class="col-10">
@@ -53,6 +55,7 @@
                     @enderror
                 </div>
             </div>
+            <!-- Alamat Kos Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Alamat Kos</label>
                 <div class="col-10">
@@ -62,6 +65,7 @@
                     @enderror
                 </div>
             </div>
+            <!-- Jenis Kelamin Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Jenis Kelamin</label>
                 <div class="col-10">
@@ -71,10 +75,11 @@
                         <option value="Perempuan" {{ $MahasiswaKos->jenis_Kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                     </select>
                     @error('jenis_Kelamin')
-                        <small class="form-text text-danger">{{ $message }}</small>
+                    <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
+            <!-- Agama Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Agama</label>
                 <div class="col-10">
@@ -88,10 +93,11 @@
                         <option value="Konghucu" {{ $MahasiswaKos->agama == 'Konghucu' ? 'selected' : '' }}>Konghucu</option>
                     </select>
                     @error('agama')
-                        <small class="form-text text-danger">{{ $message }}</small>
+                    <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
+            <!-- Status Input -->
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Status</label>
                 <div class="col-10">
@@ -101,10 +107,11 @@
                         <option value="Pekerja" {{ $MahasiswaKos->status == 'Pekerja' ? 'selected' : '' }}>Pekerja</option>
                     </select>
                     @error('status')
-                        <small class="form-text text-danger">{{ $message }}</small>
+                    <small class="form-text text-danger">{{ $message }}</small>
                     @enderror
                 </div>
             </div>
+            <!-- Mahasiswa Fields -->
             <div id="mahasiswa-fields" style="display: none;">
                 <div class="form-group row">
                     <label class="col-2 control-label col-form-label">Universitas</label>
@@ -134,6 +141,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Pekerja Fields -->
             <div id="pekerja-fields" style="display: none;">
                 <div class="form-group row">
                     <label class="col-2 control-label col-form-label">Pekerjaan</label>
@@ -154,6 +162,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Submit and Back Buttons -->
             <div class="form-group row">
                 <div class="col-2"></div>
                 <div class="col-10">
