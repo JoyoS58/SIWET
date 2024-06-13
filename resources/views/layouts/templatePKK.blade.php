@@ -6,7 +6,8 @@
   <title>{{config('app.name','SIWET')}}</title>
   <title>Siwet</title>
 
-  <meta name="csrf-token" content="{{ csrf_token()}}"> <!-- Untuk mengirimkan token laravel csrf pada setiap request ajax
+  <meta name="csrf-token" content="{{ csrf_token()}}"> <!-- Untuk mengirimkan token laravel csrf padlesheet" href="{{asset('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <!-- Theme stya setiap request ajax
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="shortcut icon" href="{{ asset('assets/favicon.ico') }}" type="image/svg+xml">
@@ -16,8 +17,7 @@
   <!-- Data Tables -->
   <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-  <link rel="stylesheet" href="{{asset('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
-  <!-- Theme style -->
+  <link rel="style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">
 
   @stack('css') <!-- Digunakan untuk memanggil custom css dari perintah push('css') pada masing-masing view -->
