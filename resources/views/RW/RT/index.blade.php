@@ -7,6 +7,7 @@
 @section('content')
 <head>
     <h1>Pengelolaan Data RT</h1>
+    <title>SIWET</title>
 </head>
 <div class="row">
     <div class="col-md-12">

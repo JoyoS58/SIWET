@@ -10,6 +10,7 @@
         <form action="{{url('KegiatanRW/' . $KegiatanRW->ID_Kegiatan_RW)}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
             @csrf
             {!! method_field('PUT') !!}
+            <input type="hidden" name="ID_Kegiatan" id="" value="">
             <div class="form-group row">
                 <label class="col-2 control-label col-form-label">Nama Kegiatan</label>
                 <div class="col-10">

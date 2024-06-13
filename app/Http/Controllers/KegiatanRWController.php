@@ -33,6 +33,7 @@ class KegiatanRWController extends Controller
     }
     public function store(Request $request)
     {
+        // dd($request);
         $validate = $request->validate([
             'nama_Kegiatan' => 'required',
             'waktu' => 'required',
@@ -84,8 +85,9 @@ class KegiatanRWController extends Controller
             'penanggung_Jawab' =>'required',
             'tempat' =>'required',
             'deskripsi' => 'required',
-            'gambar' => 'image|max:5000',
+            'gambar' => 'mimes:jpg,png,pdf|max:5000',
         ]);
+        // dd($request);
         if ($request->hasFile('gambar')) {
             $imageFile = $request->file('gambar');
             $extFile = $request->gambar->getClientOriginalExtension();
@@ -94,7 +96,7 @@ class KegiatanRWController extends Controller
             Storage::disk('img_inventaris')->put($namaFile, file_get_contents($imageFile));
             $pathBaru = $namaFile;
 
-            KegiatanRW::find($request->ID_Kegiatan)->update([
+            KegiatanRW::find($id)->update([
                 'nama_Kegiatan' => $request->nama_Kegiatan,
             'waktu' => $request->waktu,
             'tanggal' => $request->tanggal,

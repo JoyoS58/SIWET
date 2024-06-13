@@ -3,6 +3,7 @@
 
 @section('content_header')
     <h1>Pengelolaan Data Penghuni Kos</h1>
+    <title>SIWET</title>
 @endsection
 
 @section('content')

@@ -4,6 +4,7 @@
 
 @section('content_header')
     <h1>Sistem Pendukung Keputusan</h1>
+    <title>SIWET</title>
 @endsection
 
 @section('content')

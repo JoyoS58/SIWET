@@ -9,6 +9,7 @@
 
     <head>
         <h1>Pengelolaan Kegiatan Warga</h1>
+        <title>SIWET</title>
     </head>
     <div class="row">
         <div class="col-md-12">
@@ -74,7 +75,7 @@
                                     <td>{{ $KegiatanRW->penanggung_Jawab }}</td>
                                     <td>{{ $KegiatanRW->tempat }}</td>
                                     <td>{{ $KegiatanRW->deskripsi }}</td>
-                                    <td><img src="{{asset{'storage/inventaris/'}}}" alt="Kegiatan"></td>
+                                    <td><img src="{{asset('storage/inventaris/')}}" alt="Kegiatan"></td>
                                     <td class="action-buttons">
                                         <a href="{{ url('KegiatanRW/show/' . $KegiatanRW->ID_Kegiatan_RW) }}"
                                             class="btn btn-success btn-sm detail-button"><i class="fas fa-info-circle"></i>

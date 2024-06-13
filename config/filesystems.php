@@ -56,14 +56,16 @@ return [
             'throw' => false,
         ],
 
-    ],
-
-'img_inventaris' => [
+        'img_inventaris' => [
             'driver' => 'local',
             'root' => storage_path('app/public/inventaris'),
             'url' => env('APP_URL').'/storage/inventaris',
             'visibility' => 'public',
         ],
+
+    ],
+
+
         // 'img_kks' => [
         //     'driver' => 'local',
         //     'root' => storage_path('app/public/kks'),

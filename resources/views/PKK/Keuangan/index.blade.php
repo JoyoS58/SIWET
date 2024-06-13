@@ -8,6 +8,7 @@
 @section('content')
 <head>
     <h1>Pengelolaan Keuangan PKK</h1>
+    <title>SIWET</title>
 </head>
 <div class="row">
     <div class="col-md-12">
